@@ -1,5 +1,5 @@
 .login-box{
-    width: 500px;
+    max-width: 500px;
 }
 a.login-logo {
     width: 200px;

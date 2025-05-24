@@ -1,12 +1,12 @@
 @include('layouts.admin.head')
-@auth
+@auth('admin')
     @include('layouts.admin.sidebar-navbar')
 @endauth
 
 
 @yield('dashboard')
 
-@auth
+@auth('admin')
     @include('layouts.admin.footer')
 @endauth
 
