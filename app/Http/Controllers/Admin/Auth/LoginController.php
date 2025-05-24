@@ -16,11 +16,12 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'username' => 'required|string',
             'password' => 'required',
+            'remember' => 'nullable|boolean',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
         $remember = $request->filled('remember');
 
         if (Auth::guard('admin')->attempt($credentials, $remember)) {
@@ -29,8 +30,8 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Invalid credentials or not an admin user.',
-        ])->withInput($request->only('email', 'remember'));
+            'error' => 'Invalid credentials. Please try again.',
+        ])->withInput($request->only('username', 'remember'));
     }
 
     public function logout(Request $request)
