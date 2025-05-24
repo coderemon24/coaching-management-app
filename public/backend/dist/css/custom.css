@@ -1,0 +1,8 @@
+.login-box{
+    width: 500px;
+}
+a.login-logo {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
