@@ -145,21 +145,23 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+
+            <li class="nav-item menu-open">
+            <a href="{{route('admin.dashboard')}}" class="nav-link  @if(request()->routeIs('admin.dashboard')) active @endif">
+              <i class="nav-icon fas fa-home"></i>
                 Dashboard
             </a>
           </li>
+
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="{{route('admin.settings')}}" class="nav-link @if(request()->is('admin/settings*')) active @endif">
+              <i class="nav-icon far fa-sliders-h"></i>
               <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
+                Settings
               </p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
@@ -195,6 +197,7 @@
               </li>
             </ul>
           </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

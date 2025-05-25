@@ -11,3 +11,29 @@ footer.main-footer {
     width: 100%;
     bottom: 0;
 }
+.set_card_desc {
+    font-size: 16px;
+    color: #6d6d6d;
+    margin-top: -10px;
+    padding-left: 40px;
+}
+.set_card_title {
+    font-size: 18px;
+    font-weight: 600;
+}
+.set_card {
+    padding: 10px 20px;
+}
+.set_icon.mr-2 {
+    background: #40404042;
+    color: #001f3f;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.set_title {
+    margin-top: -15px;
+}
