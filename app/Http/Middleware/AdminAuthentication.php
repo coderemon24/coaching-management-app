@@ -15,16 +15,17 @@ class AdminAuthentication
     public function handle(Request $request, Closure $next): Response
     {
         $admin = auth()->guard('admin');
-        $isLoginPage = $request->is('admin/login') || $request->is('admin/login-form');
+        $isLoginPage = $request->is('admin/login') || $request->is('admin/login*');
 
-        // If not authenticated and not on login page, redirect to login
-        if (!$admin->check() && !$isLoginPage) {
-            return redirect()->route('admin.login');
-        }
-
-        // If authenticated and trying to access login page, redirect to dashboard
-        if ($admin->check() && $isLoginPage) {
-            return redirect()->route('admin.dashboard');
+        if($admin->check())
+        {
+            if ($isLoginPage) {
+                return redirect()->route('admin.dashboard');
+            }
+        } else {
+            if (!$isLoginPage) {
+                return redirect()->route('admin.login');
+            }
         }
 
         return $next($request);

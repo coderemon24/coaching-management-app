@@ -6,3 +6,8 @@ a.login-logo {
     display: block;
     margin: 0 auto;
 }
+footer.main-footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

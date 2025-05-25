@@ -4,13 +4,17 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
     Route::controller('App\\Http\\Controllers\\Admin\\Auth\\LoginController')->group(function () {
         Route::get('/login', 'showLoginForm')->name('admin.login');
         Route::post('/login-form', 'login')->name('admin.login.submit');
         Route::post('/logout', 'logout')->name('admin.logout');
     });
-    Route::get('/', function () {
-        return view('backend.dashboard');
-    })->middleware(['admin.auth'])->name('admin.dashboard');
+
+
+    Route::controller('App\\Http\\Controllers\\Admin\\AdminController')->group(function () {
+        Route::get('/', 'index')->name('admin.dashboard');
+        Route::get('/dashboard', 'index')->name('admin.dashboard');
+    });
+
 });
