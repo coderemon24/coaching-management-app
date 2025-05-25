@@ -1,4 +1,3 @@
-
 (function ($) {
     "use strict";
 
@@ -31,7 +30,7 @@
                 }.bind(this);
 
                 reader.readAsDataURL(this.files[0]);
-            }else{
+            } else {
                 // If no file is selected, reset the label
                 let label = $('label[for="' + $(this).attr("id") + '"]');
                 label.find(".preview_image").attr("src", "");
@@ -39,13 +38,9 @@
             }
         });
 
-
-
-
+        
 
 
 
     });
-
-
 })(jQuery);
