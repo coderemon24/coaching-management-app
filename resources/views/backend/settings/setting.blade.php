@@ -30,7 +30,7 @@
                                     <div class="col-md-4 col-lg-4 col-sm-6 col-12 mb-3">
                                         <div class="set_card">
                                             <div class="set_card_title d-flex gap-2 align-items-center">
-                                                <div class="set_icon mr-2">
+                                                <div class="set_icon mr-3">
                                                     <i class="fas fa-cog"></i>
                                                 </div>
 
@@ -49,7 +49,7 @@
                                     <div class="col-md-4 col-lg-4 col-sm-6 col-12 mb-3">
                                         <div class="set_card">
                                             <div class="set_card_title d-flex gap-2 align-items-center">
-                                                <div class="set_icon mr-2">
+                                                <div class="set_icon mr-3">
                                                     <i class="fas fa-envelope"></i>
                                                 </div>
 
@@ -68,7 +68,7 @@
                                     <div class="col-md-4 col-lg-4 col-sm-6 col-12 mb-3">
                                         <div class="set_card">
                                             <div class="set_card_title d-flex gap-2 align-items-center">
-                                                <div class="set_icon mr-2">
+                                                <div class="set_icon mr-3">
                                                     <i class="fas fa-envelope-open"></i>
                                                 </div>
 
@@ -87,7 +87,7 @@
                                     <div class="col-md-4 col-lg-4 col-sm-6 col-12 mb-3">
                                         <div class="set_card">
                                             <div class="set_card_title d-flex gap-2 align-items-center">
-                                                <div class="set_icon mr-2">
+                                                <div class="set_icon mr-3">
                                                     <i class="fas fa-plug"></i>
                                                 </div>
 
@@ -106,7 +106,7 @@
                                     <div class="col-md-4 col-lg-4 col-sm-6 col-12 mb-3">
                                         <div class="set_card">
                                             <div class="set_card_title d-flex gap-2 align-items-center">
-                                                <div class="set_icon mr-2">
+                                                <div class="set_icon mr-3">
                                                     <i class="fas fa-credit-card"></i>
                                                 </div>
 
@@ -125,7 +125,7 @@
                                     <div class="col-md-4 col-lg-4 col-sm-6 col-12 mb-3">
                                         <div class="set_card">
                                             <div class="set_card_title d-flex gap-2 align-items-center">
-                                                <div class="set_icon mr-2">
+                                                <div class="set_icon mr-3">
                                                     <i class="fas fa-h1"></i>
                                                 </div>
 
@@ -144,7 +144,7 @@
                                     <div class="col-md-4 col-lg-4 col-sm-6 col-12 mb-3">
                                         <div class="set_card">
                                             <div class="set_card_title d-flex gap-2 align-items-center">
-                                                <div class="set_icon mr-2">
+                                                <div class="set_icon mr-3">
                                                     <i class="fab fa-searchengin"></i>
                                                 </div>
 
@@ -163,7 +163,7 @@
                                     <div class="col-md-4 col-lg-4 col-sm-6 col-12 mb-3">
                                         <div class="set_card">
                                             <div class="set_card_title d-flex gap-2 align-items-center">
-                                                <div class="set_icon mr-2">
+                                                <div class="set_icon mr-3">
                                                     <i class="fas fa-phone" style="transform: rotate(90deg)"></i>
                                                 </div>
 
@@ -182,7 +182,7 @@
                                     <div class="col-md-4 col-lg-4 col-sm-6 col-12 mb-3">
                                         <div class="set_card">
                                             <div class="set_card_title d-flex gap-2 align-items-center">
-                                                <div class="set_icon mr-2">
+                                                <div class="set_icon mr-3">
                                                     <i class="fas fa-tools"></i>
                                                 </div>
 

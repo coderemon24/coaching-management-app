@@ -15,7 +15,7 @@ footer.main-footer {
     font-size: 16px;
     color: #6d6d6d;
     margin-top: -10px;
-    padding-left: 40px;
+    padding-left: 48px;
 }
 .set_card_title {
     font-size: 18px;
@@ -24,7 +24,7 @@ footer.main-footer {
 .set_card {
     padding: 10px 20px;
 }
-.set_icon.mr-2 {
+.set_icon {
     background: #40404042;
     color: #001f3f;
     height: 30px;
