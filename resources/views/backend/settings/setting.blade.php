@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('dashboard')
     <div class="content-wrapper">
-        <div class="content-heade">
+        <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2 ">
                     <div class="col-sm-12">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
                             <li class="breadcrumb-item active">Settings</li>
                         </ol>
                     </div>
@@ -35,7 +35,7 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">General Settings</a>
+                                                    <a href="{{route('admin.general.settings')}}">General Settings</a>
                                                 </div>
 
                                             </div>

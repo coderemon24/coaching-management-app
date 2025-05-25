@@ -11,4 +11,9 @@ class SettingController extends Controller
     {
         return view('backend.settings.setting');
     }
+
+    public function showGeneralSettings()
+    {
+        return view('backend.settings.general-setting');
+    }
 }

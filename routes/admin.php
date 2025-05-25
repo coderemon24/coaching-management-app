@@ -20,6 +20,10 @@ Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
     ->prefix('settings')
     ->group(function () {
         Route::get('/', 'showSettings')->name('admin.settings');
+        Route::get('/general-settings', 'showGeneralSettings')->name('admin.general.settings');
+        Route::post('/update-general-settings', 'updateGeneralSettings')->name('admin.update.general.settings');
+        Route::get('/email-settings', 'showEmailSettings')->name('admin.email.settings');
+        Route::post('/update-email-settings', 'updateEmailSettings')->name('admin.update.email.settings');
     });
 
 });

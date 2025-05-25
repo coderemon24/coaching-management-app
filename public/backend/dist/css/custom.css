@@ -37,3 +37,24 @@ footer.main-footer {
 .set_title {
     margin-top: -15px;
 }
+label.preview_wrapper {
+    border: 1px dashed gray;
+    padding: 18px;
+    border-radius: 5px;
+    color: gray;
+    font-weight: 100;
+    width: 100%;
+    text-align: center;
+}
+
+.file_name {
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    text-align: center;
+}
+
+.info_wrapper{
+    width: 300px;
+}
+
