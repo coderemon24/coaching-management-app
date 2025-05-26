@@ -25,7 +25,10 @@
                 reader.onload = function (e) {
                     let label = $('label[for="' + $(this).attr("id") + '"]');
 
-                    label.find(".preview_image").attr("src", e.target.result);
+                    label.find(".preview_image").attr({
+                        src: e.target.result,
+                        width: "200",
+                    });
                     label.find(".file_name").text(fileName);
                 }.bind(this);
 
@@ -33,12 +36,15 @@
             } else {
                 // If no file is selected, reset the label
                 let label = $('label[for="' + $(this).attr("id") + '"]');
-                label.find(".preview_image").attr("src", "");
+                label.find(".preview_image").attr({
+                    src: "",
+                    width: "200",
+                });
                 label.find(".file_name").text("Choose file");
             }
         });
 
-        
+
 
 
 

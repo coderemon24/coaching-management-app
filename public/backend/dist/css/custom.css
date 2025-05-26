@@ -45,6 +45,7 @@ label.preview_wrapper {
     font-weight: 100;
     width: 100%;
     text-align: center;
+    cursor: pointer;
 }
 
 .file_name {
