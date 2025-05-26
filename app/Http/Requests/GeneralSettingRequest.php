@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Status;
+use App\Enums\ImageMimeType;
 use Illuminate\Foundation\Http\FormRequest;
 
 class GeneralSettingRequest extends FormRequest
@@ -24,7 +26,16 @@ class GeneralSettingRequest extends FormRequest
         return [
             'site_name' => 'required|string|max:50',
             'site_title' => 'required|string|max:100',
-            'site_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'site_logo' => 'required|image|max:55000|mimes:'.ImageMimeType::values(),
+            'site_favicon' => 'required|image|max:55000|mimes:'.ImageMimeType::values(),
+            'timezone' => 'required|string|max:50',
+            'currency_symbol' => 'required|string|max:10',
+            'currency_position' => 'required|string|in:left,right',
+            'currency_text' => 'required|string|max:10',
+            'currency_text_position' => 'required|string|in:left,right',
+            'currency_rate' => 'required|numeric|min:0',
+            'site_color' => 'required|string|max:7',
+            'status' => 'required|in:'.Status::values(),
         ];
     }
 }

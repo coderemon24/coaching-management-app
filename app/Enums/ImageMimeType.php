@@ -16,7 +16,7 @@ enum ImageMimeType: string
     case AVIF = 'avif';
     case HEIC = 'heic';
 
-    public static function types(): string
+    public static function values(): string
     {
         return collect(self::cases())
             ->map(fn($type) => $type->value)

@@ -18,3 +18,6 @@
   <link rel="stylesheet" href="{{asset('backend')}}/dist/css/custom.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="loader-wrapper d-none" id="loader_main">
+        <div class="loader"></div>
+    </div>

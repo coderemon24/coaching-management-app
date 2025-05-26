@@ -113,5 +113,9 @@
     </script>
 @endif
 
+<script src="{{asset('backend/custom-js/ajax-request.js')}}"></script>
+
+@stack('scripts')
+
 </body>
 </html>
