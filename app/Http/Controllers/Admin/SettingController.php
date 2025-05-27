@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EmailSettingRequest;
 use App\Http\Requests\GeneralSettingRequest;
 use App\Models\Settings\GeneralSetting;
+use App\Repositories\Interfaces\EmailSettingRepositoryInterface;
 use App\Repositories\Interfaces\GeneralSettingRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -12,11 +14,14 @@ class SettingController extends Controller
 {
 
     protected $generalSetting;
+    protected $emailSetting;
 
     public function __construct(
-        GeneralSettingRepositoryInterface $generalSettingRepository
+        GeneralSettingRepositoryInterface $generalSettingRepository,
+        EmailSettingRepositoryInterface $emailSettingRepository
     ){
         $this->generalSetting = $generalSettingRepository;
+        $this->emailSetting = $emailSettingRepository;
     }
 
     public function showSettings()
@@ -41,5 +46,21 @@ class SettingController extends Controller
         }
 
         return redirect()->back()->with('success', 'General settings updated successfully.');
+    }
+
+    public function showEmailSettings()
+    {
+        $data['emailSetting'] = $this->emailSetting->getFirst();
+        return view('backend.settings.email-setting', $data);
+    }
+
+    public function updateEmailSettings(EmailSettingRequest $request)
+    {
+        $request->validated();
+        $emailSetting = $this->emailSetting->update($request);
+        if (!$emailSetting) {
+            return redirect()->back()->with('error', 'Failed to update email settings.');
+        }
+        return redirect()->back()->with('success', 'Email settings updated successfully.');
     }
 }

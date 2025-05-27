@@ -274,8 +274,8 @@
 
                     </div>
 
-                    <div class="col-md-12 div col-lg-12 mb-4">
-                        <button class="btn btn-primary mx-auto save_changes" type="submit">
+                    <div class="col-md-12 div text-center col-lg-12 mb-4">
+                        <button class="btn btn-primary save_changes" type="submit">
                             Save Changes
                         </button>
                     </div>

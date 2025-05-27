@@ -54,7 +54,7 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">Email Settings</a>
+                                                    <a href="{{route('admin.email.settings')}}">Email Settings</a>
                                                 </div>
 
                                             </div>

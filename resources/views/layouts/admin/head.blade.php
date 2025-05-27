@@ -31,6 +31,13 @@
                 l32-1 1s infinite,
                 l32-2 1s infinite;
         }
+        .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+            background-color: {{@$generalSetting->site_color}};
+        }
+        [class$=-primary]{
+            background-color: {{@$generalSetting->site_color}} ;
+            border-color: {{@$generalSetting->site_color}} ;
+        }
     </style>
 
 </head>

@@ -13,6 +13,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $repositories = [
             "GeneralSetting" => "singleton",
+            "EmailSetting" => "singleton",
         ];
 
         foreach ($repositories as $repository => $method) {
