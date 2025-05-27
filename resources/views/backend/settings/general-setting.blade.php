@@ -40,26 +40,36 @@
                                         <div class="info_wrapper form-group">
                                             <label for="icon" class="text-left">Logo <span
                                                     class="text-danger">*</span></label>
-                                            <input type="file" name="site_logo" class="input_file d-none"
+                                            <input type="file" name="site_logo" class="input_file d-none @error('site_logo') is-invalid @enderror"
                                                 id="main_logo" />
                                             <label for="main_logo" class="preview_wrapper">
                                                 <img width="50" src="{{asset('assets/upload-icon.png')}}"
                                                     class="preview_image">
                                                 <div class="logo_text file_name">Choose file</div>
                                             </label>
+                                            @error('site_logo')
+                                            <div class="invalid-feedback message">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="col-md-6 mb-3">
                                         <div class="info_wrapper form-group">
                                             <label for="icon">Favicon <span class="text-danger">*</span></label>
-                                            <input type="file" name="site_favicon" class="input_file d-none"
+                                            <input type="file" name="site_favicon" class="input_file d-none @error('site_favicon') is-invalid @enderror"
                                                 id="favicon" />
                                             <label for="favicon" class="preview_wrapper">
                                                 <img width="50" src="{{asset('assets/upload-icon.png')}}"
                                                     class="preview_image">
                                                 <div class="logo_text file_name">Choose file</div>
                                             </label>
+                                            @error('site_favicon')
+                                            <div class="invalid-feedback message">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -67,8 +77,13 @@
                                         <div class="form-group">
                                             <label for="website_name">Website Name <span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" name="site_name" class="form-control"
+                                            <input type="text" name="site_name" class="form-control @error('site_name') is-invalid @enderror"
                                                 placeholder="Enter website name" value="">
+                                            @error('site_name')
+                                            <div class="invalid-feedback message">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -76,9 +91,14 @@
                                         <div class="form-group">
                                             <label for="website_name">Website Title <span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" name="site_title" class="form-control"
+                                            <input type="text" name="site_title" class="form-control @error('site_title') is-invalid @enderror"
                                                 placeholder="Enter site title"
                                                 value="{{ $settings->site_title ?? '' }}">
+                                            @error('site_title')
+                                            <div class="invalid-feedback message">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -100,7 +120,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="timezone">Select Timezone <span class="text-danger">*</span></label>
-                                    <select name="timezone" class="select2 form-control" id="timezone">
+                                    <select name="timezone" class="select2 form-control @error('timezone') is-invalid @enderror" id="timezone">
                                         <option value="">Select Timezone</option>
                                         @foreach (timezone_identifiers_list() as $timezone)
                                         <option value="{{ $timezone }}">
@@ -108,6 +128,11 @@
                                         </option>
                                         @endforeach
                                     </select>
+                                    @error('timezone')
+                                    <div class="invalid-feedback message">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -126,7 +151,12 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="color_scheme">Website Color <span class="text-danger">*</span></label>
-                                    <input data-jscolor="{}" name="site_color" value="#FF2020" class="form-control" />
+                                    <input data-jscolor="{}" name="site_color" value="#FF2020" class="form-control @error('site_color') is-invalid @enderror" />
+                                    @error('site_color')
+                                    <div class="invalid-feedback message">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -150,7 +180,12 @@
                                             <label for="currency">Currency Symbol <span
                                                     class="text-danger">*</span></label>
                                             <input type="text" name="currency" value="$" placeholder="Enter currency"
-                                                class="form-control">
+                                                class="form-control @error('currency') is-invalid @enderror">
+                                            @error('currency')
+                                            <div class="invalid-feedback message">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -158,10 +193,16 @@
                                         <div class="form-group">
                                             <label for="currency">Currency Position <span
                                                     class="text-danger">*</span></label>
-                                            <select name="currency_position" class="form-control">
+                                            <select name="currency_position" class="form-control @error('currency_position') is-invalid @enderror">
+                                                <option value="" selected disabled>Select Position</option>
                                                 <option value="left">Left</option>
                                                 <option value="right">Right</option>
                                             </select>
+                                            @error('currency_position')
+                                            <div class="invalid-feedback message">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -170,7 +211,12 @@
                                             <label for="currency">Currency Text <span
                                                     class="text-danger">*</span></label>
                                             <input type="text" name="currency_text" value="USD"
-                                                placeholder="Enter currency text" class="form-control">
+                                                placeholder="Enter currency text" class="form-control @error('currency_text') is-invalid @enderror">
+                                            @error('currency_text')
+                                            <div class="invalid-feedback message">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -178,10 +224,16 @@
                                         <div class="form-group">
                                             <label for="currency">Currency Text Position <span
                                                     class="text-danger">*</span></label>
-                                            <select name="currency_position" class="form-control">
+                                            <select name="currency_text_position" class="form-control @error('currency_text_position') is-invalid @enderror">
+                                                <option value="" selected disabled>Select Position</option>
                                                 <option value="left">Left</option>
                                                 <option value="right">Right</option>
                                             </select>
+                                            @error('currency_text_position')
+                                            <div class="invalid-feedback message">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -194,10 +246,15 @@
                                                     <span class="input-group-text">1 USD = </span>
                                                 </div>
                                                 <input type="text" name="currency_rate" value="1"
-                                                    placeholder="Enter currency rate" class="form-control">
+                                                    placeholder="Enter currency rate" class="form-control @error('currency_rate') is-invalid @enderror">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">USD</span>
                                                 </div>
+                                                @error('currency_rate')
+                                                <div class="invalid-feedback message">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
