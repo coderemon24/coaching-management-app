@@ -43,7 +43,9 @@
                                             <input type="file" name="site_logo" class="input_file d-none @error('site_logo') is-invalid @enderror"
                                                 id="main_logo" />
                                             <label for="main_logo" class="preview_wrapper">
-                                                <img width="50" src="{{asset('assets/upload-icon.png')}}"
+                                                <img
+                                                {{ @$generalSetting->site_logo ? 'width=200' : 'width=50' }}
+                                                src="{{asset(@$generalSetting->site_logo) ?? asset('assets/upload-icon.png')}}"
                                                     class="preview_image">
                                                 <div class="logo_text file_name">Choose file</div>
                                             </label>
@@ -61,7 +63,9 @@
                                             <input type="file" name="site_favicon" class="input_file d-none @error('site_favicon') is-invalid @enderror"
                                                 id="favicon" />
                                             <label for="favicon" class="preview_wrapper">
-                                                <img width="50" src="{{asset('assets/upload-icon.png')}}"
+                                                <img
+                                                {{ @$generalSetting->site_favicon ? 'width=200' : 'width=50' }}
+                                                src="{{asset(@$generalSetting->site_favicon) ?? asset('assets/upload-icon.png')}}"
                                                     class="preview_image">
                                                 <div class="logo_text file_name">Choose file</div>
                                             </label>
@@ -78,7 +82,7 @@
                                             <label for="website_name">Website Name <span
                                                     class="text-danger">*</span></label>
                                             <input type="text" name="site_name" class="form-control @error('site_name') is-invalid @enderror"
-                                                placeholder="Enter website name" value="">
+                                                placeholder="Enter website name" value="{{ @$generalSetting->site_name}}">
                                             @error('site_name')
                                             <div class="invalid-feedback message">
                                                 {{ $message }}
@@ -93,7 +97,7 @@
                                                     class="text-danger">*</span></label>
                                             <input type="text" name="site_title" class="form-control @error('site_title') is-invalid @enderror"
                                                 placeholder="Enter site title"
-                                                value="{{ $settings->site_title ?? '' }}">
+                                                value="{{ @$generalSetting->site_title}}">
                                             @error('site_title')
                                             <div class="invalid-feedback message">
                                                 {{ $message }}
@@ -123,7 +127,7 @@
                                     <select name="timezone" class="select2 form-control @error('timezone') is-invalid @enderror" id="timezone">
                                         <option value="">Select Timezone</option>
                                         @foreach (timezone_identifiers_list() as $timezone)
-                                        <option value="{{ $timezone }}">
+                                        <option value="{{ $timezone }}" {{ @$generalSetting->timezone == $timezone ? 'selected' : '' }}>
                                             {{ $timezone }}
                                         </option>
                                         @endforeach
@@ -151,7 +155,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="color_scheme">Website Color <span class="text-danger">*</span></label>
-                                    <input data-jscolor="{}" name="site_color" value="#FF2020" class="form-control @error('site_color') is-invalid @enderror" />
+                                    <input data-jscolor="{}" name="site_color" value="{{ @$generalSetting->site_color ?? '#FF2020'}}" class="form-control @error('site_color') is-invalid @enderror" />
                                     @error('site_color')
                                     <div class="invalid-feedback message">
                                         {{ $message }}
@@ -179,7 +183,7 @@
                                         <div class="form-group">
                                             <label for="currency">Currency Symbol <span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" name="currency" value="$" placeholder="Enter currency"
+                                            <input type="text" name="currency" value="{{ @$generalSetting->currency_symbol ?? '$'}}" placeholder="Enter currency"
                                                 class="form-control @error('currency') is-invalid @enderror">
                                             @error('currency')
                                             <div class="invalid-feedback message">
@@ -195,8 +199,8 @@
                                                     class="text-danger">*</span></label>
                                             <select name="currency_position" class="form-control @error('currency_position') is-invalid @enderror">
                                                 <option value="" selected disabled>Select Position</option>
-                                                <option value="left">Left</option>
-                                                <option value="right">Right</option>
+                                                <option value="left" {{ @$generalSetting->currency_position == 'left' ? 'selected' : ''}}>Left</option>
+                                                <option value="right" {{ @$generalSetting->currency_position == 'right' ? 'selected' : ''}}>Right</option>
                                             </select>
                                             @error('currency_position')
                                             <div class="invalid-feedback message">
@@ -210,7 +214,7 @@
                                         <div class="form-group">
                                             <label for="currency">Currency Text <span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" name="currency_text" value="USD"
+                                            <input type="text" name="currency_text" value="{{ @$generalSetting->currency_text ?? 'USD'}}"
                                                 placeholder="Enter currency text" class="form-control @error('currency_text') is-invalid @enderror">
                                             @error('currency_text')
                                             <div class="invalid-feedback message">
@@ -226,8 +230,8 @@
                                                     class="text-danger">*</span></label>
                                             <select name="currency_text_position" class="form-control @error('currency_text_position') is-invalid @enderror">
                                                 <option value="" selected disabled>Select Position</option>
-                                                <option value="left">Left</option>
-                                                <option value="right">Right</option>
+                                                <option value="left" {{ @$generalSetting->currency_text_position == 'left' ? 'selected' : ''}}>Left</option>
+                                                <option value="right" {{ @$generalSetting->currency_text_position == 'right' ? 'selected' : ''}}>Right</option>
                                             </select>
                                             @error('currency_text_position')
                                             <div class="invalid-feedback message">
@@ -245,7 +249,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">1 USD = </span>
                                                 </div>
-                                                <input type="text" name="currency_rate" value="1"
+                                                <input type="text" name="currency_rate" value="{{ @$generalSetting->currency_rate ?? '1.00'}}"
                                                     placeholder="Enter currency rate" class="form-control @error('currency_rate') is-invalid @enderror">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">USD</span>

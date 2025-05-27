@@ -26,8 +26,8 @@ class GeneralSettingRequest extends FormRequest
         return [
             'site_name' => 'required|string|max:50',
             'site_title' => 'required|string|max:100',
-            'site_logo' => 'required|image|max:55000|mimes:'.ImageMimeType::values(),
-            'site_favicon' => 'required|image|max:55000|mimes:'.ImageMimeType::values(),
+            'site_logo' => 'nullable|image|max:55000|mimes:'.ImageMimeType::values(),
+            'site_favicon' => 'nullable|image|max:55000|mimes:'.ImageMimeType::values(),
             'timezone' => 'required|string|max:50',
             'currency' => 'required|string|max:10',
             'currency_position' => 'required|string|in:left,right',

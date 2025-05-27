@@ -26,7 +26,8 @@ class SettingController extends Controller
 
     public function showGeneralSettings()
     {
-        return view('backend.settings.general-setting');
+        $data['generalSetting'] = $this->generalSetting->getFirst();
+        return view('backend.settings.general-setting', $data);
     }
 
     public function updateGeneralSettings(GeneralSettingRequest $request)

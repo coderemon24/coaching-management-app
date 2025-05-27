@@ -11,6 +11,7 @@ class GeneralSettingRepository implements GeneralSettingRepositoryInterface
     {
         return GeneralSetting::first();
     }
+
     public function update($request)
     {
         $generalSetting = $this->getFirst();
@@ -20,6 +21,11 @@ class GeneralSettingRepository implements GeneralSettingRepositoryInterface
         }
 
         if ($request->hasFile('site_logo')) {
+
+            if($generalSetting->site_logo && file_exists($generalSetting->site_logo)) {
+                unlink($generalSetting->site_logo);
+            }
+
             $file = $request->file('site_logo');
             $extension = $file->getClientOriginalExtension();
             $fileName = time() . rand(10,99). '.'.$extension;
@@ -28,6 +34,11 @@ class GeneralSettingRepository implements GeneralSettingRepositoryInterface
             $generalSetting->site_logo = $path . $fileName;
         }
         if ($request->hasFile('site_favicon')) {
+
+            if($generalSetting->site_favicon && file_exists($generalSetting->site_favicon)) {
+                unlink($generalSetting->site_favicon);
+            }
+
             $file = $request->file('site_favicon');
             $extension = $file->getClientOriginalExtension();
             $fileName = time() . rand(10,99). '.'.$extension;
