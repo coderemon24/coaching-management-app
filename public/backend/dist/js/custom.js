@@ -44,7 +44,10 @@
             }
         });
 
-
+        // datatable initialization
+        $(".datatable").DataTable({
+            responsive: true,
+        });
 
 
 

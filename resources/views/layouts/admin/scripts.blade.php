@@ -3,6 +3,7 @@
 <script src="{{asset('backend')}}/plugins/sweetalert2/sweetalert2.min.js"></script>
 <script src="{{asset('backend')}}/plugins/select2/js/select2.min.js"></script>
 <script src="{{asset('backend')}}/plugins/jscolor/jscolor.js"></script>
+<script src="{{asset('backend')}}/plugins/datatables/jquery.dataTables.min.js"></script>
 <!-- Bootstrap -->
 <script src="{{asset('backend')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->

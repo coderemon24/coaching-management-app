@@ -73,7 +73,7 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">Email Templates</a>
+                                                    <a href="{{route('admin.email.templates')}}">Email Templates</a>
                                                 </div>
 
                                             </div>

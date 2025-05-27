@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{{asset('backend')}}/plugins/fontawesome/css/all.min.css">
     <!-- IonIcons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- plugins -->
+    <link rel="stylesheet" href="{{asset('backend')}}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{asset('backend')}}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="{{asset('backend')}}/plugins/sweetalert2/sweetalert2.min.css">
     <link rel="stylesheet" href="{{asset('backend')}}/plugins/select2/css/select2.min.css">
     <!-- Theme style -->

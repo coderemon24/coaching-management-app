@@ -3,7 +3,7 @@
 <div class="login-page">
     <div class="login-box">
         <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card">
             <div class="card-header text-center">
                 <a href="#" class="login-logo">
                     <img class="img-fluid brand-logo" src="{{asset('assets/logo/kommerce-dark.png')}}" alt="kommerce">
@@ -51,7 +51,7 @@
 
                     <div class="row">
                         <div class="col-8">
-                            <div class="icheck-primary">
+                            <div class="">
                                 <input type="checkbox" value="1" class=" @error('remember') is-invalid @enderror" name="remember" id="remember">
                                 <label for="remember">
                                     Remember Me

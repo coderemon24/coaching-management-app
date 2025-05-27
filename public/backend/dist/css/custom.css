@@ -103,3 +103,77 @@ label.preview_wrapper {
     position: absolute;
     width: 100%;
 }
+
+
+/*****=== DataTables ===****/
+div#DataTables_Table_0_length {
+    float: left;
+}
+
+div#DataTables_Table_0_filter {
+    float: right;
+    margin-bottom: 15px;
+}
+
+div#DataTables_Table_0_info {
+    float: left;
+}
+
+div#DataTables_Table_0_paginate {
+    float: right;
+    margin-top: 15px;
+}
+
+a#DataTables_Table_0_previous {
+    background: #1a1a1a;
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+div#DataTables_Table_0_paginate {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    gap: 20px;
+}
+
+a#DataTables_Table_0_next {
+    background: #1a1a1a;
+    padding: 6px 17px;
+    border-radius: 5px;
+    color: white;
+}
+
+div#DataTables_Table_0_paginate>span {
+    display: flex !important;
+    flex-direction: row;
+    gap: 11px;
+}
+a.paginate_button {
+    background: #e9e9e9;
+    padding: 6px 10px;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+a.paginate_button.current {
+    background: #1a1a1a;
+    color: white !important;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+div#DataTables_Table_0_filter>label>input[type='search'] {
+    border: 1.5px solid #424242;
+    border-radius: 3px;
+    padding: 4px;
+}
+
+div#DataTables_Table_0_filter>label>input[type='search']:focus {
+    outline: none;
+    border: 2px solid;
+}
+
+div#DataTables_Table_0_length>label>select {
+    padding: 3px 8px;
+}
