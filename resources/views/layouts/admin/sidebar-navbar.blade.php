@@ -137,7 +137,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img class="img-fluid brand-logo" src="{{asset('assets/logo/kommerce.png')}}" alt="kommerce">
+      <img class="img-fluid brand-logo" src="{{asset(@$generalSetting->site_logo) ?? asset('assets/logo/kommerce.png')}}" alt="kommerce">
     </a>
 
     <!-- Sidebar -->

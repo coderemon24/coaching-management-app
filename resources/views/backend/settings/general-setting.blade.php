@@ -25,13 +25,18 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-12 mb-2">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header d-flex justify-content-between">
                                 <h3 class="card-title d-flex align-items-center mr-3">
                                     <span class="icon text-info">
                                         <i class="far fa-info-circle"></i>
                                     </span>
                                     <span class="ml-2">Website Information</span>
                                 </h3>
+                                <div class="get-back">
+                                    <a href="{{route('admin.settings')}}" class="btn btn-primary">
+                                        <i class="far fa-angle-double-left"></i> &nbsp; Go Back
+                                    </a>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <div class="row">

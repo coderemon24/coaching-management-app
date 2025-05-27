@@ -68,17 +68,7 @@ label.preview_wrapper {
 
 /*=== Loader ===*/
 /* HTML: <div class="loader"></div> */
-.loader {
-  --c:no-repeat linear-gradient(rgb(255, 0, 55) 0 0);
-  background:
-    var(--c),var(--c),var(--c),
-    var(--c),var(--c),var(--c),
-    var(--c),var(--c),var(--c);
-  background-size: 16px 16px;
-  animation:
-    l32-1 1s infinite,
-    l32-2 1s infinite;
-}
+
 @keyframes l32-1 {
   0%,100% {width:45px;height: 45px}
   35%,65% {width:65px;height: 65px}
@@ -107,4 +97,9 @@ label.preview_wrapper {
 }
 .message {
     font-size: 17px;
+}
+.card-header::after {
+    content: "";
+    position: absolute;
+    width: 100%;
 }
