@@ -111,4 +111,9 @@ class SettingController extends Controller
         }
         return redirect()->back()->with('success', 'Contact info updated successfully.');
     }
+
+    public function showMaintenanceMode()
+    {
+        return view('backend.settings.maintenance-mode');
+    }
 }

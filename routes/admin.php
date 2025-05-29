@@ -34,6 +34,9 @@ Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
         # contact infos
         Route::get('/contact-infos', 'showContactInfos')->name('admin.contact.infos');
         Route::post('/update/contact-info', 'updateContactInfo')->name('admin.update.contact.info');
+        # maintenance mode
+        Route::get('/maintenance-mode', 'showMaintenanceMode')->name('admin.maintenance.mode');
+        Route::post('/update/maintenance-mode', 'updateMaintenanceMode')->name('admin.update.maintenance.mode');
 
     });
 

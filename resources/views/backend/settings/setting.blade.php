@@ -187,7 +187,7 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">Maintenance Mode</a>
+                                                    <a href="{{ route('admin.maintenance.mode') }}">Maintenance Mode</a>
                                                 </div>
 
                                             </div>
