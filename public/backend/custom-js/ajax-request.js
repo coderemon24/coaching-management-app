@@ -4,7 +4,7 @@
     $(document).ready(function () {
 
         // general settings loader
-        $("#update_general_settings").on("submit", function () {
+        $(".show_loader").on("submit", function () {
              $("#loader_main").css("display", "flex");
         });
 

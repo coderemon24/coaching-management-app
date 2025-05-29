@@ -19,7 +19,7 @@
 
     <div class="content">
         <div class="container">
-            <form action="{{route('admin.update.general.settings')}}" id="update_general_settings" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.update.general.settings')}}" class="show_loader" id="update_general_settings" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row">

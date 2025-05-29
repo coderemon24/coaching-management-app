@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactInfoRequest;
 use App\Http\Requests\EmailSettingRequest;
 use App\Http\Requests\EmailTemplateRequest;
 use App\Http\Requests\GeneralSettingRequest;
 use App\Models\Settings\GeneralSetting;
+use App\Repositories\Interfaces\ContactInfoRepositoryInterface;
 use App\Repositories\Interfaces\EmailSettingRepositoryInterface;
 use App\Repositories\Interfaces\EmailTemplateRepositoryInterface;
 use App\Repositories\Interfaces\GeneralSettingRepositoryInterface;
@@ -18,15 +20,18 @@ class SettingController extends Controller
     protected $generalSetting;
     protected $emailSetting;
     protected $emailTemplate;
+    protected $contactInfo;
 
     public function __construct(
         GeneralSettingRepositoryInterface $generalSettingRepository,
         EmailSettingRepositoryInterface $emailSettingRepository,
-        EmailTemplateRepositoryInterface $emailTemplateRepository
+        EmailTemplateRepositoryInterface $emailTemplateRepository,
+        ContactInfoRepositoryInterface $contactInfoRepository
     ){
         $this->generalSetting = $generalSettingRepository;
         $this->emailSetting = $emailSettingRepository;
         $this->emailTemplate = $emailTemplateRepository;
+        $this->contactInfo = $contactInfoRepository;
     }
 
     public function showSettings()
@@ -89,5 +94,21 @@ class SettingController extends Controller
             return redirect()->back()->with('error', 'Failed to update email template.');
         }
         return redirect()->route('admin.email.templates')->with('success', 'Email template updated successfully.');
+    }
+
+    public function showContactInfos()
+    {
+        $data['contactInfo'] = $this->contactInfo->getFirst();
+        return view('backend.settings.contact-info', $data);
+    }
+
+    public function updateContactInfo(ContactInfoRequest $request)
+    {
+        $request->validated();
+        $contactInfo = $this->contactInfo->update($request);
+        if (!$contactInfo) {
+            return redirect()->back()->with('error', 'Failed to update contact info.');
+        }
+        return redirect()->back()->with('success', 'Contact info updated successfully.');
     }
 }

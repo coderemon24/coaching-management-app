@@ -31,6 +31,9 @@ Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
         Route::get('/email-templates', 'showEmailTemplates')->name('admin.email.templates');
         Route::get('/edit/email-template/{id}', 'editEmailTemplate')->name('admin.edit.email.template');
         Route::patch('/update/email-template', 'updateEmailTemplate')->name('admin.update.email.template');
+        # contact infos
+        Route::get('/contact-infos', 'showContactInfos')->name('admin.contact.infos');
+        Route::post('/update/contact-info', 'updateContactInfo')->name('admin.update.contact.info');
 
     });
 

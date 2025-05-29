@@ -168,7 +168,7 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">Contact Information</a>
+                                                    <a href="{{route('admin.contact.infos')}}">Contact Information</a>
                                                 </div>
 
                                             </div>

@@ -15,6 +15,7 @@ class RepositoryServiceProvider extends ServiceProvider
             "GeneralSetting" => "singleton",
             "EmailSetting" => "singleton",
             "EmailTemplate" => "singleton",
+            "ContactInfo" => "singleton",
         ];
 
         foreach ($repositories as $repository => $method) {
