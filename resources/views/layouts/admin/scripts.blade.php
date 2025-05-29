@@ -4,6 +4,7 @@
 <script src="{{asset('backend')}}/plugins/select2/js/select2.min.js"></script>
 <script src="{{asset('backend')}}/plugins/jscolor/jscolor.js"></script>
 <script src="{{asset('backend')}}/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.6.1/tinymce.min.js"></script>
 <!-- Bootstrap -->
 <script src="{{asset('backend')}}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->

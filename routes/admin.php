@@ -29,10 +29,8 @@ Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
         Route::post('/update-email-settings', 'updateEmailSettings')->name('admin.update.email.settings');
         # email templates
         Route::get('/email-templates', 'showEmailTemplates')->name('admin.email.templates');
-        Route::post('/store/email-template', 'storeEmailTemplate')->name('admin.store.email.template');
         Route::get('/edit/email-template/{id}', 'editEmailTemplate')->name('admin.edit.email.template');
-        Route::post('/update/email-template', 'updateEmailTemplate')->name('admin.update.email.template');
-        Route::post('/delete/email-template', 'deleteEmailTemplate')->name('admin.delete.email.template');
+        Route::patch('/update/email-template', 'updateEmailTemplate')->name('admin.update.email.template');
 
     });
 

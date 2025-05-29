@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmailSettingRequest;
+use App\Http\Requests\EmailTemplateRequest;
 use App\Http\Requests\GeneralSettingRequest;
 use App\Models\Settings\GeneralSetting;
 use App\Repositories\Interfaces\EmailSettingRepositoryInterface;
@@ -72,5 +73,21 @@ class SettingController extends Controller
     {
         $data['emailTemplates'] = $this->emailTemplate->getAllTemplates();
         return view('backend.settings.email-templates', $data);
+    }
+
+    public function editEmailTemplate($id)
+    {
+        $data['template'] = $this->emailTemplate->getTemplateById($id);
+        return view('backend.settings.edit-email-template', $data);
+    }
+
+    public function updateEmailTemplate(EmailTemplateRequest $request)
+    {
+        $request->validated();
+        $template = $this->emailTemplate->updateTemplate($request->id, $request->all());
+        if (!$template) {
+            return redirect()->back()->with('error', 'Failed to update email template.');
+        }
+        return redirect()->route('admin.email.templates')->with('success', 'Email template updated successfully.');
     }
 }

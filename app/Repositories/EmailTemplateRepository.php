@@ -27,11 +27,6 @@ class EmailTemplateRepository implements EmailTemplateRepositoryInterface
         return $this->model->find($id);
     }
 
-    public function createTemplate(array $data)
-    {
-        return $this->model->create($data);
-    }
-
     public function updateTemplate($id, array $data)
     {
         $template = $this->getTemplateById($id);
@@ -41,17 +36,8 @@ class EmailTemplateRepository implements EmailTemplateRepositoryInterface
         return false;
     }
 
-    public function deleteTemplate($id)
-    {
-        $template = $this->getTemplateById($id);
-        if ($template) {
-            return $template->delete();
-        }
-        return false;
-    }
-
     public function getTemplateByType($type)
     {
-        return $this->model->where('type', $type)->first();
+        return $this->model->where('type', $type)->firstOrFail();
     }
 }

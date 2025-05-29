@@ -51,7 +51,7 @@
                                                     <td>{{ $template->type }}</td>
                                                     <td>{{ $template->subject }}</td>
                                                     <td class="text-center">
-                                                        <a href=""
+                                                        <a href="{{ route('admin.edit.email.template', $template->id) }}"
                                                             class="btn btn-primary btn-sm">
                                                             <i class="fas fa-edit"></i>
                                                         </a>
