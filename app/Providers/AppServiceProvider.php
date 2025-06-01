@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use App\Repositories\Interfaces\EmailSettingRepositoryInterface;
 use App\Repositories\Interfaces\GeneralSettingRepositoryInterface;
-use Illuminate\Support\ServiceProvider;
+use App\Repositories\Interfaces\MaintenanceModeRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $general = app(GeneralSettingRepositoryInterface::class)->getFirst();
         $email = app(EmailSettingRepositoryInterface::class)->getFirst();
+        $maintenance = app(MaintenanceModeRepositoryInterface::class)->getMaintenanceMode();
 
         if( $email) {
             config([
@@ -44,6 +46,9 @@ class AppServiceProvider extends ServiceProvider
                 'app.timezone' => $general->timezone,
             ]);
         }
-        view()->share('generalSetting', $general);
+        view()->share([
+            'generalSetting' => $general,
+            'maintenance' => $maintenance
+        ]);
     }
 }
