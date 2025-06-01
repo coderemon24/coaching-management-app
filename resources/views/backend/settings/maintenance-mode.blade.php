@@ -19,7 +19,7 @@
 
     <div class="content">
         <div class="container">
-            <form action="#" class="show_loader" method="POST">
+            <form action="{{ route('admin.update.maintenance.mode') }}" enctype="multipart/form-data" class="show_loader" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
@@ -41,12 +41,18 @@
 
                                 <div class="info_wrapper form-group">
                                     <label for="icon" class="text-left">Image <span class="text-danger">*</span></label>
-                                    <input type="file" name="site_logo"
-                                        class="input_file d-none @error('site_logo') is-invalid @enderror"
+                                    <input type="file" name="image"
+                                        class="input_file d-none @error('image') is-invalid @enderror"
                                         id="main_logo" />
+                                    @php
+                                    $image = isset($maintenance->image) && $maintenance->image
+                                    ? asset($maintenance->image)
+                                    : asset('assets/upload-icon.png');
+                                    @endphp
+
                                     <label for="main_logo" class="preview_wrapper">
-                                        <img {{ false ? 'width=200' : 'width=50' }}
-                                            src="{{ asset('assets/upload-icon.png')}}" class="preview_image">
+                                        <img width="{{ isset($maintenance->image) && $maintenance->image ? 200 : 50 }}"
+                                            src="{{ $image }}" class="preview_image">
                                         <div class="logo_text file_name">Choose file</div>
                                     </label>
                                     @error('site_logo')
@@ -57,14 +63,17 @@
                                 </div>
 
                                 <div class="form-group">
-                                     <label for="icon" class="text-left"> Maintenance Mode <span class="text-danger">*</span></label>
+                                    <label for="icon" class="text-left"> Maintenance Mode <span
+                                            class="text-danger">*</span></label>
                                     <div class="radio-list">
                                         <div class="radio-item">
-                                            <input name="radio" id="radio1" type="radio">
+                                            <input name="status" value="activated" {{ @$maintenance->status == 'activated' ? 'checked' : ''
+                                            }} id="radio1" type="radio">
                                             <label for="radio1">ACTIVATED</label>
                                         </div>
                                         <div class="radio-item">
-                                            <input name="radio" checked id="radio2" type="radio">
+                                            <input name="status" value="deactivated" {{ @$maintenance->status == 'deactivated' ? 'checked' :
+                                            '' }} id="radio2" type="radio">
                                             <label for="radio2">DEACTIVATED</label>
                                         </div>
                                     </div>
@@ -72,10 +81,11 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="maintenance_message">Maintenance Message <span class="text-danger">*</span></label>
+                                    <label for="maintenance_message">Maintenance Message <span
+                                            class="text-danger">*</span></label>
                                     <textarea name="maintenance_message" rows="5"
                                         class="form-control @error('maintenance_message') is-invalid @enderror"
-                                        placeholder="Maintenance Message"></textarea>
+                                        placeholder="Maintenance Message">{{@$maintenance->message}}</textarea>
                                     @error('maintenance_message')
                                     <div class="invalid-feedback message">
                                         {{ $message }}
@@ -85,12 +95,13 @@
 
                                 <div class="form-group">
                                     <label for="by_pass_token">Bypass Token <span class="text-danger">*</span></label>
-                                    <input type="text" name="bypass_token" value="3301"
-                                        placeholder="Enter by pass token" class="form-control @error('by_pass_token') is-invalid @enderror">
+                                    <input type="text" name="bypass_token" value="{{ @$maintenance->bypass_token }}"
+                                        placeholder="Enter by pass token"
+                                        class="form-control @error('bypass_token') is-invalid @enderror">
 
                                     <p class="text-danger h6">Don't use any special characters as bypass token.</p>
 
-                                     @error('by_pass_token')
+                                    @error('bypass_token')
                                     <div class="invalid-feedback message">
                                         {{ $message }}
                                     </div>
@@ -98,7 +109,8 @@
 
                                     <div class="bypass_token_content mt-3">
                                         <p class="mb-2 text-info">{{request()->root()}}/{bypass_token}</p>
-                                        <p class="text-success h6">During maintenance mode, you can use this token to bypass the maintenance mode.</p>
+                                        <p class="text-success h6">During maintenance mode, you can use this token to
+                                            bypass the maintenance mode.</p>
                                     </div>
                                 </div>
 

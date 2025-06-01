@@ -7,11 +7,14 @@ use App\Http\Requests\ContactInfoRequest;
 use App\Http\Requests\EmailSettingRequest;
 use App\Http\Requests\EmailTemplateRequest;
 use App\Http\Requests\GeneralSettingRequest;
+use App\Http\Requests\MaintenanceModeRequest;
+use App\Models\Admin\MaintenanceMode;
 use App\Models\Settings\GeneralSetting;
 use App\Repositories\Interfaces\ContactInfoRepositoryInterface;
 use App\Repositories\Interfaces\EmailSettingRepositoryInterface;
 use App\Repositories\Interfaces\EmailTemplateRepositoryInterface;
 use App\Repositories\Interfaces\GeneralSettingRepositoryInterface;
+use App\Repositories\Interfaces\MaintenanceModeRepositoryInterface;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -21,17 +24,20 @@ class SettingController extends Controller
     protected $emailSetting;
     protected $emailTemplate;
     protected $contactInfo;
+    protected $maintenanceMode;
 
     public function __construct(
         GeneralSettingRepositoryInterface $generalSettingRepository,
         EmailSettingRepositoryInterface $emailSettingRepository,
         EmailTemplateRepositoryInterface $emailTemplateRepository,
-        ContactInfoRepositoryInterface $contactInfoRepository
+        ContactInfoRepositoryInterface $contactInfoRepository,
+        MaintenanceModeRepositoryInterface $maintenanceModeRepository
     ){
         $this->generalSetting = $generalSettingRepository;
         $this->emailSetting = $emailSettingRepository;
         $this->emailTemplate = $emailTemplateRepository;
         $this->contactInfo = $contactInfoRepository;
+        $this->maintenanceMode = $maintenanceModeRepository;
     }
 
     public function showSettings()
@@ -114,6 +120,17 @@ class SettingController extends Controller
 
     public function showMaintenanceMode()
     {
-        return view('backend.settings.maintenance-mode');
+        $data['maintenance'] = $this->maintenanceMode->getMaintenanceMode();
+        return view('backend.settings.maintenance-mode', $data);
+    }
+
+    public function updateMaintenanceMode(MaintenanceModeRequest $request)
+    {
+        $request->validated();
+        $maintenanceMode = $this->maintenanceMode->update($request);
+        if (!$maintenanceMode) {
+            return redirect()->back()->with('error', 'Failed to update maintenance mode.');
+        }
+        return redirect()->back()->with('success', 'Maintenance mode updated successfully.');
     }
 }
