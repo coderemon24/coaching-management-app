@@ -3,8 +3,9 @@
 namespace App\Repositories;
 
 use App\Helpers\ImageUpload;
-use App\Repositories\Interfaces\MaintenanceModeRepositoryInterface;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Artisan;
+use App\Repositories\Interfaces\MaintenanceModeRepositoryInterface;
 
 class MaintenanceModeRepository implements MaintenanceModeRepositoryInterface
 {
@@ -26,43 +27,46 @@ class MaintenanceModeRepository implements MaintenanceModeRepositoryInterface
 
     public function update($request)
     {
-        if(!$this->model->first()) {
-            $maintenance = $this->model;
-        } else {
-            $maintenance = $this->getMaintenanceMode();
-        }
+        $maintenance = $this->getMaintenanceMode() ?? $this->model;
 
+        // Update main fields
         $maintenance->status = $request->status;
         $maintenance->message = $request->maintenance_message;
-        $maintenance->bypass_token = $request->bypass_token;
 
-        if($request->hasFile('image'))
-        {
-            if($maintenance->image && file_exists(public_path($maintenance->image))) {
+        // Only set new bypass token if user sent it
+        if ($request->filled('bypass_token')) {
+            $maintenance->bypass_token = $request->bypass_token;
+        }
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            if ($maintenance->image && file_exists(public_path($maintenance->image))) {
                 ImageUpload::delete($maintenance->image);
             }
+
             $image = ImageUpload::upload('uploads/maintenance', $request->file('image'));
-            if($image) {
+            if ($image) {
                 $maintenance->image = $image;
             }
         }
 
-        if($request->status == 'activated' && $request->bypass_token != null)
-        {
-            Artisan::call('down',[
-                '--secret' => $request->bypass_token
-            ]);
-            Artisan::call('optimize:clear');
-        }
+        // Save before calling Artisan so token is persisted
+        $maintenance->save();
 
-        if($request->status == 'deactivated')
-        {
+        // Maintenance mode handling
+        if ($request->status === 'activated') {
+            $secret = $maintenance->bypass_token;
+            Artisan::call('down', ['--secret' => $secret]);
+            Artisan::call('optimize:clear');
+            Log::info('Site is in maintenance mode with secret: ' . $secret);
+        } elseif ($request->status === 'deactivated') {
             Artisan::call('up');
             Artisan::call('optimize:clear');
+            Log::info('Site is live now');
         }
 
-        $maintenance->save();
         return $maintenance;
     }
+
 
 }

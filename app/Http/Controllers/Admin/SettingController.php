@@ -133,4 +133,5 @@ class SettingController extends Controller
         }
         return redirect()->back()->with('success', 'Maintenance mode updated successfully.');
     }
+
 }
