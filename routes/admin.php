@@ -40,7 +40,21 @@ Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
         Route::post('/update/maintenance-mode', 'updateMaintenanceMode')->name('admin.update.maintenance.mode');
     });
 
-    
+    # product management
+    Route::prefix('product-management')->group(function () {
+        # categories
+        Route::controller('App\\Http\\Controllers\\Admin\\CategoryController')
+        ->prefix('categories')
+        ->group(function () {
+            Route::get('/', 'index')->name('admin.categories');
+            Route::get('/create', 'create')->name('admin.categories.create');
+            Route::post('/store', 'store')->name('admin.categories.store');
+            Route::get('/edit/{id}', 'edit')->name('admin.categories.edit');
+            Route::post('/update/{id}', 'update')->name('admin.categories.update');
+            Route::get('/delete/{id}', 'destroy')->name('admin.categories.delete');
+        });
+
+    });
 
 
 });

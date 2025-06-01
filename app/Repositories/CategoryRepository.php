@@ -17,7 +17,8 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function getCategories()
     {
-        return $this->model->all();
+        $data = $this->model->select('id', 'cat_name', 'slug', 'cat_image', 'cat_status','is_featured','cat_order')->get();
+        return $data;
     }
 
     public function getCategoryById($id)

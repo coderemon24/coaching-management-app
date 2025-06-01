@@ -162,8 +162,8 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link active">
+          <li class="nav-item {{request()->is('admin/product-management*') ? 'menu-open' : ''}}">
+            <a href="#" class="nav-link {{request()->is('admin/product-management*') ? 'active' : ''}}">
               {{-- <i class="nav-icon fas fa-chart-pie"></i> --}}
               <i class="nav-icon fab fa-product-hunt"></i>
               <p>
@@ -175,7 +175,7 @@
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.categories') }}" class="nav-link {{request()->is('admin/product-management/categories*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Categories</p>
                 </a>
