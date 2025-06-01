@@ -37,10 +37,10 @@
         .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
             background-color: {{@$generalSetting->site_color}};
         }
-        [class$=-primary]{
+        /* [class$=-primary]{
             background-color: {{@$generalSetting->site_color}} ;
             border-color: {{@$generalSetting->site_color}} ;
-        }
+        } */
     </style>
 
 </head>

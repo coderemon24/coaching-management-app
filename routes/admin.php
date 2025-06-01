@@ -38,8 +38,9 @@ Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
         # maintenance mode
         Route::get('/maintenance-mode', 'showMaintenanceMode')->name('admin.maintenance.mode');
         Route::post('/update/maintenance-mode', 'updateMaintenanceMode')->name('admin.update.maintenance.mode');
-
     });
+
+    
 
 
 });
