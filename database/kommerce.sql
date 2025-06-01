@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2025 at 02:07 PM
+-- Generation Time: Jun 01, 2025 at 02:55 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,7 +48,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `username`, `email`, `password`, `remember_token`, `phone`, `address`, `profile_picture`, `role`, `details`, `created_at`, `updated_at`) VALUES
-(1, 'Ahmed Emon', 'admin', 'programmer.nullspectre@gmail.com', '$2y$12$LKgCwVMCbqXUIey.JBp5HuWB8lhLYQiiTq6CfFtuA7.S/T2Xy49JC', 'pJpJz197mToun3Aym9E7W0rfLY8OezBEPAxMDKfT0ziwfc1FoozbmYoIG8Vg', '01607249358', 'Pabna, Bangladesh', NULL, 'Super_Admin', NULL, '2025-05-24 08:12:12', '2025-05-27 11:26:31');
+(1, 'Ahmed Emon', 'admin', 'programmer.nullspectre@gmail.com', '$2y$12$LKgCwVMCbqXUIey.JBp5HuWB8lhLYQiiTq6CfFtuA7.S/T2Xy49JC', '3kHMWRLE5V0JSDFIg3yQQyTeTEjEhOe7652mK62AxCkNYcXwHv7P0G4kXtk2', '01607249358', 'Pabna, Bangladesh', NULL, 'Super_Admin', NULL, '2025-05-24 08:12:12', '2025-05-27 12:09:31');
 
 -- --------------------------------------------------------
 
@@ -73,6 +73,47 @@ CREATE TABLE `cache_locks` (
   `owner` varchar(255) NOT NULL,
   `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `cat_name` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `cat_image` varchar(255) DEFAULT NULL,
+  `cat_status` varchar(255) DEFAULT NULL,
+  `is_featured` varchar(255) DEFAULT NULL,
+  `cat_order` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_infos`
+--
+
+CREATE TABLE `contact_infos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `map` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contact_infos`
+--
+
+INSERT INTO `contact_infos` (`id`, `email`, `phone`, `address`, `map`, `created_at`, `updated_at`) VALUES
+(1, 'ahmedemon.dev24@gmail.com', '01607249358', 'Pabna', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3514.0084524799863!2d90.38430417507249!3d23.750733288764057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9ac5fce59cb%3A0xfd3e17cbaa2f7805!2sKaizen%20IT%20Ltd.!5e1!3m2!1sen!2sbd!4v1748508245485!5m2!1sen!2sbd', '2025-05-29 02:50:54', '2025-05-29 03:06:42');
 
 -- --------------------------------------------------------
 
@@ -121,16 +162,16 @@ CREATE TABLE `email_templates` (
 --
 
 INSERT INTO `email_templates` (`id`, `type`, `subject`, `body`, `created_at`, `updated_at`) VALUES
-(1, 'welcome', 'Welcome to Our Platform', 'Hello {name}, welcome to our platform!', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
-(2, 'password_reset', 'Password Reset Request', 'Click here to reset your password: {reset_link}', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
-(3, 'verify_email', 'Verify Your Email Address', 'Please verify your email address by clicking the link: {verification_link}', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
+(1, 'welcome', 'Welcome to Our Platform', '<p>Hello <strong>{customer_name}</strong>, welcome to our platform!</p>', '2025-05-27 05:09:23', '2025-05-29 01:07:34'),
+(2, 'password_reset', 'Password Reset Request', '<p>Hi, <strong>{customer_name}</strong></p>\r\n<p>We have got a password reset request from your account. If you actually want reset your account password, then you can the password reset link below:</p>\r\n<p>Click here to reset your password:&nbsp;<strong>{reset_link}</strong></p>', '2025-05-27 05:09:23', '2025-05-29 01:10:09'),
+(3, 'verify_email', 'Verify Your Email Address', '<p>Please verify your email address by clicking the link: <strong>{verification_link}</strong></p>', '2025-05-27 05:09:23', '2025-05-29 01:12:12'),
 (4, 'account_activation', 'Activate Your Account', 'Please activate your account by clicking the link: {activation_link}', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
 (5, 'membership_buying', 'Membership Purchase Confirmation', 'Thank you for purchasing a membership! Your membership details are as follows: {membership_details}', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
 (6, 'payment_success', 'Payment Successful', 'Your payment was successful! Transaction ID: {transaction_id}', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
 (7, 'payment_failed', 'Payment Failed', 'Your payment failed. Please try again or contact support.', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
 (8, 'payment_cancelled', 'Payment Cancelled', 'Your payment has been cancelled. If this was a mistake, please try again.', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
 (9, 'payment_refunded', 'Payment Refunded', 'Your payment has been refunded. Transaction ID: {transaction_id}', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
-(10, 'subscription_renewal', 'Subscription Renewal Reminder', 'Your subscription is due for renewal on {renewal_date}. Please ensure your payment details are up to date.', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
+(10, 'subscription_renewal', 'Subscription Renewal Reminder', '<p>Your subscription is due for renewal on <strong>{renewal_date}</strong>. Please ensure your payment details are up to date.</p>', '2025-05-27 05:09:23', '2025-05-29 01:11:39'),
 (11, 'subscription_expired', 'Subscription Expired', 'Your subscription has expired. Please renew to continue enjoying our services.', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
 (12, 'subscription_cancelled', 'Subscription Cancelled', 'Your subscription has been cancelled. If this was a mistake, please contact support.', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
 (13, 'subscription_renewal_success', 'Subscription Renewal Successful', 'Your subscription has been successfully renewed. Transaction ID: {transaction_id}', '2025-05-27 05:09:23', '2025-05-27 05:09:23'),
@@ -230,6 +271,29 @@ CREATE TABLE `job_batches` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `maintenance_modes`
+--
+
+CREATE TABLE `maintenance_modes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `bypass_token` varchar(255) DEFAULT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'Deactivated',
+  `message` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `maintenance_modes`
+--
+
+INSERT INTO `maintenance_modes` (`id`, `bypass_token`, `status`, `message`, `image`, `created_at`, `updated_at`) VALUES
+(1, '3301', 'deactivated', 'This site is under maintenance.', 'uploads/maintenance/77ff5c6c-11dd-4a8e-be91-9c0e46db8163.png', '2025-05-31 23:56:45', '2025-06-01 06:49:19');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -250,7 +314,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2025_05_24_063825_create_admins_table', 1),
 (5, '2025_05_25_064931_create_general_settings_table', 2),
 (6, '2025_05_25_064951_create_email_settings_table', 2),
-(7, '2025_05_27_104241_create_email_templates_table', 3);
+(7, '2025_05_27_104241_create_email_templates_table', 3),
+(9, '2025_05_29_081117_create_contact_infos_table', 4),
+(10, '2025_06_01_044633_create_maintenance_modes_table', 5),
+(11, '2025_06_01_091335_create_categories_table', 6);
 
 -- --------------------------------------------------------
 
@@ -284,8 +351,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('Afs8eH2Wvk5zR4PsNtD3rU3h0PaeJ6hR1KIKNsSt', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoic2R5QUpYWlo1SVlUYzVGek5WMW1RelZrRWFhOFpMM3prVE1TanYwaiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM2OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vc2V0dGluZ3MiO319', 1748336815),
-('DwUT4aHNJdXweCt2vktYyFMdjbo0L7VSwwLYx9cd', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoidVA3YkFITjBKRGQ2OVlQRHNkRFFkaWxueWtCNTY5S0xmVG43ZklSMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9zZXR0aW5ncy9lbWFpbC10ZW1wbGF0ZXMiO31zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1748347139);
+('32t1InXLwHBqiwGmiIs1YudtpRIjZ7kcXIEVewVb', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiOXRNR3AzMmd0dktleFhNVDJ3d0VpdVJuVEIyN1dwbzhmNExmN3JjTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9kdWN0LW1hbmFnZW1lbnQvY2F0ZWdvcmllcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1748782168);
 
 -- --------------------------------------------------------
 
@@ -336,6 +402,18 @@ ALTER TABLE `cache_locks`
   ADD PRIMARY KEY (`key`);
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contact_infos`
+--
+ALTER TABLE `contact_infos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `email_settings`
 --
 ALTER TABLE `email_settings`
@@ -372,6 +450,12 @@ ALTER TABLE `jobs`
 -- Indexes for table `job_batches`
 --
 ALTER TABLE `job_batches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `maintenance_modes`
+--
+ALTER TABLE `maintenance_modes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -412,6 +496,18 @@ ALTER TABLE `admins`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `contact_infos`
+--
+ALTER TABLE `contact_infos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `email_settings`
 --
 ALTER TABLE `email_settings`
@@ -442,10 +538,16 @@ ALTER TABLE `jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `maintenance_modes`
+--
+ALTER TABLE `maintenance_modes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
