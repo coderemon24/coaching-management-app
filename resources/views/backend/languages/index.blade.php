@@ -96,7 +96,7 @@
 </div>
 
 <!-- add modal -->
-<form action="{{ route('admin.categories.store') }}" enctype="multipart/form-data" method="POST" class="show_loader">
+<form action="{{ route('admin.languages.store') }}"  method="POST" class="show_loader">
     @csrf
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
         aria-hidden="true">
@@ -106,7 +106,7 @@
                     <h5 class="modal-title" id="addModalLabel">
                         <i class="far fa-plus-circle text-info"></i>
                         &nbsp;
-                        Add Category
+                        Add Language
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-danger" aria-hidden="true">&times;</span>
@@ -114,31 +114,13 @@
                 </div>
                 <div class="modal-body px-4">
 
-                    <x-image-input name="image" />
+                    <x-input type="text" name="name" label="Name" placeholder="Enter language name" />
 
-                    <div class="form-group">
-                        <label for="name">Category Name <span class="text-danger">*</span></label>
-                        <input type="text" name="cat_name" placeholder="Enter category name"
-                            class="form-control @error('cat_name') is-invalid @enderror">
-                        @error('cat_name')
-                        <div class="invalid-feedback message">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
+                    <x-input type="text" name="code" label="Code" placeholder="Enter language code" />
 
-                    <x-status-input name="cat_status" selected="active" label="Status" />
-
-                    <div class="form-group">
-                        <label for="name">Serial Number <span class="text-danger">*</span></label>
-                        <input type="text" min="1"  name="cat_order" placeholder="Enter serial number"
-                            class="form-control @error('cat_order') is-invalid @enderror">
-                        @error('cat_order')
-                        <div class="invalid-feedback message">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
+                    <x-select name="direction" label="Direction"
+                    :options="['ltr'=>'Left to Right', 'rtl'=>'Right to Left']"
+                    />
 
                 </div>
                 <div class="modal-footer">
