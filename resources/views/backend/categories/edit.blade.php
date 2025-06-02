@@ -30,21 +30,21 @@
                                     <span class="icon text-info">
                                         <i class="far fa-info-circle"></i>
                                     </span>
-                                    <span class="ml-2">Email Information</span>
+                                    <span class="ml-2">Edit Category</span>
                                 </h3>
                                 <div class="get-back">
-                                    <a href="{{route('admin.settings')}}" class="btn btn-primary">
+                                    <a href="{{route('admin.categories')}}" class="btn btn-primary">
                                         <i class="far fa-angle-double-left"></i> &nbsp; Go Back
                                     </a>
                                 </div>
                             </div>
                             <div class="card-body">
 
-                                <x-image-input name="image" />
+                                <x-image-input name="image" :image="@$category->cat_image" />
 
                                 <div class="form-group">
                                     <label for="name">Category Name <span class="text-danger">*</span></label>
-                                    <input type="text" name="cat_name" placeholder="Enter category name"
+                                    <input type="text" name="cat_name" value="{{@$category->cat_name}}" placeholder="Enter category name"
                                         class="form-control @error('cat_name') is-invalid @enderror">
                                     @error('cat_name')
                                     <div class="invalid-feedback message">
@@ -58,7 +58,7 @@
 
                                 <div class="form-group">
                                     <label for="name">Serial Number <span class="text-danger">*</span></label>
-                                    <input type="text" min="1" name="cat_order" placeholder="Enter serial number"
+                                    <input type="text" min="1" value="{{@$category->cat_order}}" name="cat_order" placeholder="Enter serial number"
                                         class="form-control @error('cat_order') is-invalid @enderror">
                                     @error('cat_order')
                                     <div class="invalid-feedback message">

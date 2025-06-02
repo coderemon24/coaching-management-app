@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 class CategoryController extends Controller
 {
@@ -36,5 +37,15 @@ class CategoryController extends Controller
     {
         $data['category'] = $this->category->getCategoryById($id);
         return view('backend.categories.edit', $data);
+    }
+
+    public function update($id, CategoryUpdateRequest $request)
+    {
+        $request->validated();
+        $this->category->updateCategory($id, $request);
+
+        $request->session()->flash('success', 'Category updated successfully.');
+
+        return redirect()->route('admin.categories');
     }
 }

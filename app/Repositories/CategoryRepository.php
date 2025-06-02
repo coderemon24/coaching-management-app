@@ -18,7 +18,11 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function getCategories()
     {
-        $data = $this->model->select('id', 'cat_name', 'slug', 'cat_image', 'cat_status','is_featured','cat_order')->get();
+        $data = $this->model->select('id', 'cat_name', 'slug',
+        'cat_image', 'cat_status',
+        'is_featured','cat_order')
+        ->orderBy('cat_order', 'asc')
+        ->get();
         return $data;
     }
 
@@ -43,7 +47,26 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function updateCategory($id, $request)
     {
-        return $this->model->where('id', $id)->update($request->all());
+        $category = $this->getCategoryById($id);
+        $category->cat_name = $request->cat_name;
+        $category->slug = slugify($request->cat_name);
+
+        if($request->hasFile('image'))
+        {
+            if($category->cat_image && file_exists($category->cat_image)) {
+                ImageUpload::delete($category->cat_image);
+            }
+
+            $image = ImageUpload::upload('uploads/categories', $request->file('image'));
+            $category->cat_image = $image;
+        }
+
+        $category->cat_status = $request->cat_status;
+        $category->is_featured = $request->is_featured;
+        $category->cat_order = $request->cat_order;
+        $category->save();
+
+        return $category;
     }
 
     public function deleteCategory($id)
