@@ -31,4 +31,13 @@ class LanguageController extends Controller
 
         return back();
     }
+
+    public function destroy($id)
+    {
+        $this->language->deleteLanguage($id);
+        
+        session()->flash('success', 'Language deleted successfully.');
+
+        return back();
+    }
 }

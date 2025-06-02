@@ -77,7 +77,7 @@
                                                     <i class="fas fa-edit"></i>
                                                 </a>
 
-                                                <form action="{{ route('admin.categories.destroy', @$lang->id) }}" method="POST" class="show_loader trash">
+                                                <form action="{{ route('admin.languages.destroy', @$lang->id) }}" method="POST" class="show_loader trash">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class=" ml-2 btn btn-danger btn-sm">
@@ -140,67 +140,6 @@
 @push('scripts')
 <script type="text/javascript">
 $(document).ready(function() {
-    //  Status
-    $('body').on('click', '.status', function(e) {
-        e.preventDefault();
-
-        let $this = $(this);
-        let route = $this.attr('href');
-
-        $this.fadeOut(100, function() {
-            $.ajax({
-                url: route,
-                type: "GET",
-                success: function (response) {
-                    // Update text and classes
-                    if (response.status === 'active') {
-                        $this
-                            .removeClass('badge-danger st_inactive')
-                            .addClass('badge-success st_active')
-                            .text('Active');
-                    } else {
-                        $this
-                            .removeClass('badge-success st_active')
-                            .addClass('badge-danger st_inactive')
-                            .text('Inactive');
-                    }
-
-                    $this.fadeIn(100);
-                }
-            });
-        });
-    });
-
-    //  Featured
-    $('body').on('click', '.featured', function(e) {
-        e.preventDefault();
-
-        let $this = $(this);
-        let route = $this.attr('href');
-
-        $this.fadeOut(100, function() {
-            $.ajax({
-                url: route,
-                type: "GET",
-                success: function (response) {
-                    // Update text and classes
-                    if (response.featured === 'active') {
-                        $this
-                            .removeClass('badge-danger')
-                            .addClass('badge-success')
-                            .text('Active');
-                    } else {
-                        $this
-                            .removeClass('badge-success')
-                            .addClass('badge-danger')
-                            .text('Inactive');
-                    }
-
-                    $this.fadeIn(100);
-                }
-            });
-        });
-    });
 
     //  Delete
     $('body').on('click', '.trash', function(e) {
