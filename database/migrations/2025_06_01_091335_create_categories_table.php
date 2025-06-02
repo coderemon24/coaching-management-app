@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('cat_image')->nullable();
             $table->string('cat_status')->nullable();
-            $table->string('is_featured')->nullable();
+            $table->string('is_featured')->default('inactive');
             $table->string('cat_order')->nullable();
 
             $table->timestamp('created_at')->useCurrent();

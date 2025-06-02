@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Helpers\ImageUpload;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 
 class CategoryRepository implements CategoryRepositoryInterface
@@ -26,14 +27,23 @@ class CategoryRepository implements CategoryRepositoryInterface
         return $this->model->find($id);
     }
 
-    public function createCategory(array $data)
+    public function createCategory($request)
     {
-        return $this->model->create($data);
+        $category = new $this->model;
+        $category->cat_name = $request->cat_name;
+        $category->slug = slugify($request->cat_name);
+        $image = ImageUpload::upload('uploads/categories', $request->file('image'));
+        $category->cat_image = $image;
+        $category->cat_status = $request->cat_status;
+        $category->cat_order = $request->cat_order;
+        $category->save();
+
+        return $category;
     }
 
-    public function updateCategory($id, array $data)
+    public function updateCategory($id, $request)
     {
-        return $this->model->where('id', $id)->update($data);
+        return $this->model->where('id', $id)->update($request->all());
     }
 
     public function deleteCategory($id)

@@ -52,18 +52,27 @@
                                         <tr>
                                             <td>{{ ++$key }}</td>
                                             <td>
-                                                <img src="{{ asset(@$category->cat_image) }}"
+                                                <img width="50" src="{{ asset(@$category->cat_image) }}"
                                                     alt="{{ @$category->name }}">
                                             </td>
                                             <td>{{ @$category->cat_name }}</td>
                                             <td>{{ @$category->cat_status }}</td>
                                             <td>{{ @$category->is_featured }}</td>
                                             <td>{{ @$category->cat_order }}</td>
-                                            <td class="text-center">
+                                            <td class="text-center d-flex">
                                                 <a href="{{ route('admin.edit.email.template', @$category->id) }}"
                                                     class="btn btn-primary btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
+
+                                                <form action="#" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class=" ml-2 btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+
                                             </td>
                                         </tr>
                                         @endforeach
@@ -83,7 +92,7 @@
 <!-- Button trigger modal -->
 
 <!-- Modal -->
-<form action="#" enctype="multipart/form-data" method="POST" class="show_loader">
+<form action="{{ route('admin.categories.store') }}" enctype="multipart/form-data" method="POST" class="show_loader">
     @csrf
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
         aria-hidden="true">
@@ -143,7 +152,7 @@
 
                     <div class="form-group">
                         <label for="name">Serial Number <span class="text-danger">*</span></label>
-                        <input type="number" name="cat_order" placeholder="Enter serial number"
+                        <input type="text" min="1"  name="cat_order" placeholder="Enter serial number"
                             class="form-control @error('cat_order') is-invalid @enderror">
                         @error('cat_order')
                         <div class="invalid-feedback message">

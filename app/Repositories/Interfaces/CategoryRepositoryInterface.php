@@ -6,7 +6,7 @@ interface CategoryRepositoryInterface
 {
     public function getCategories();
     public function getCategoryById($id);
-    public function createCategory(array $data);
-    public function updateCategory($id, array $data);
+    public function createCategory($request);
+    public function updateCategory($id, $request);
     public function deleteCategory($id);
 }
