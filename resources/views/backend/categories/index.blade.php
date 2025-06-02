@@ -58,16 +58,16 @@
                                             <td>{{ @$category->cat_name }}</td>
                                             <td class="text-center">
                                                 @if (@$category->cat_status == 'active')
-                                                <a href="javascript:void(0)" class="badge badge-success px-4 py-2">Active</a>
+                                                <a href="{{route("admin.categories.status", $category->id)}}" class="badge badge-success status st_active px-4 py-2">Active</a>
                                                 @else
-                                                <a href="javascript:void(0)" class="badge badge-danger px-4 py-2">Inactive</a>
+                                                <a href="{{route("admin.categories.status", $category->id)}}" class="badge badge-danger status st_inactive px-4 py-2">Inactive</a>
                                                 @endif
                                             </td>
                                             <td class="text-center">
                                                 @if (@$category->is_featured == 'active')
-                                                <a href="javascript:void(0)" class="badge badge-success px-4 py-2">Active</a>
+                                                <a href="{{route("admin.categories.featured", $category->id)}}" data-id="{{ @$category->id }}" class="badge badge-success featured px-4 py-2">Active</a>
                                                 @else
-                                                <a href="javascript:void(0)" class="badge badge-danger px-4 py-2">Inactive</a>
+                                                <a href="{{route("admin.categories.featured", $category->id)}}" data-id="{{ @$category->id }}" class="badge badge-danger featured px-4 py-2">Inactive</a>
                                                 @endif
                                             </td>
                                             <td>{{ @$category->cat_order }}</td>
@@ -153,7 +153,74 @@
         </div>
     </div>
 </form>
-
-
 @endsection
+
+@push('scripts')
+<script type="text/javascript">
+$(document).ready(function() {
+    $('body').on('click', '.status', function(e) {
+        e.preventDefault();
+
+        let $this = $(this);
+        let route = $this.attr('href');
+
+        $this.fadeOut(100, function() {
+            $.ajax({
+                url: route,
+                type: "GET",
+                success: function (response) {
+                    // Update text and classes
+                    if (response.status === 'active') {
+                        $this
+                            .removeClass('badge-danger st_inactive')
+                            .addClass('badge-success st_active')
+                            .text('Active');
+                    } else {
+                        $this
+                            .removeClass('badge-success st_active')
+                            .addClass('badge-danger st_inactive')
+                            .text('Inactive');
+                    }
+
+                    $this.fadeIn(100);
+                }
+            });
+        });
+    });
+
+    $('body').on('click', '.featured', function(e) {
+        e.preventDefault();
+
+        let $this = $(this);
+        let route = $this.attr('href');
+
+        $this.fadeOut(100, function() {
+            $.ajax({
+                url: route,
+                type: "GET",
+                success: function (response) {
+                    // Update text and classes
+                    if (response.featured === 'active') {
+                        $this
+                            .removeClass('badge-danger')
+                            .addClass('badge-success')
+                            .text('Active');
+                    } else {
+                        $this
+                            .removeClass('badge-success')
+                            .addClass('badge-danger')
+                            .text('Inactive');
+                    }
+
+                    $this.fadeIn(100);
+                }
+            });
+        });
+    });
+
+});
+
+
+</script>
+@endpush
 

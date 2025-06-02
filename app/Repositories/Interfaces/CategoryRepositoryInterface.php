@@ -9,4 +9,6 @@ interface CategoryRepositoryInterface
     public function createCategory($request);
     public function updateCategory($id, $request);
     public function deleteCategory($id);
+    public function statusUpdate($id);
+    public function featuredUpdate($id);
 }

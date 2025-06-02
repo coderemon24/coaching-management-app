@@ -77,4 +77,33 @@ class CategoryRepository implements CategoryRepositoryInterface
         }
         $category->delete();
     }
+
+    public function statusUpdate($id)
+    {
+        $category = $this->getCategoryById($id);
+        if($category->cat_status == 'active')
+        {
+            $category->cat_status = 'inactive';
+        }
+        else
+        {
+            $category->cat_status = 'active';
+        }
+        $category->save();
+        return $category;
+    }
+
+    public function featuredUpdate($id)
+    {
+        $category = $this->getCategoryById($id);
+        if($category ->is_featured == 'active')
+        {
+            $category->is_featured = 'inactive';
+        }else
+        {
+            $category->is_featured = 'active';
+        }
+        $category->save();
+        return $category;
+    }
 }

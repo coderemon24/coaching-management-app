@@ -52,6 +52,8 @@ Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
             Route::get('/edit/{id}', 'edit')->name('admin.categories.edit');
             Route::post('/update/{id}', 'update')->name('admin.categories.update');
             Route::delete('/delete/{id}', 'destroy')->name('admin.categories.destroy');
+            Route::get('/status/{id}', 'changeStatus')->name('admin.categories.status');
+            Route::get('/featured/{id}', 'changeFeatured')->name('admin.categories.featured');
         });
 
     });

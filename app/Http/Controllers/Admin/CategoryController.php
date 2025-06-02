@@ -56,4 +56,22 @@ class CategoryController extends Controller
         session()->flash('success', 'Category deleted successfully.');
         return back();
     }
+
+    public function changeStatus($id)
+    {
+        $get_status = $this->category->statusUpdate($id);
+
+        return response()->json([
+            'status' => $get_status->cat_status
+        ]);
+    }
+
+    public function changeFeatured($id)
+    {
+        $get_status = $this->category->featuredUpdate($id);
+
+        return response()->json([
+            'featured' => $get_status->is_featured
+        ]);
+    }
 }
