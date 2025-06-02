@@ -77,7 +77,7 @@
                                                     <i class="fas fa-edit"></i>
                                                 </a>
 
-                                                <form action="{{ route('admin.categories.destroy', @$category->id) }}" method="POST" class="show_loader">
+                                                <form action="{{ route('admin.categories.destroy', @$category->id) }}" method="POST" class="show_loader trash">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class=" ml-2 btn btn-danger btn-sm">
@@ -158,6 +158,7 @@
 @push('scripts')
 <script type="text/javascript">
 $(document).ready(function() {
+    //  Status
     $('body').on('click', '.status', function(e) {
         e.preventDefault();
 
@@ -188,6 +189,7 @@ $(document).ready(function() {
         });
     });
 
+    //  Featured
     $('body').on('click', '.featured', function(e) {
         e.preventDefault();
 
@@ -215,6 +217,26 @@ $(document).ready(function() {
                     $this.fadeIn(100);
                 }
             });
+        });
+    });
+
+    //  Delete
+    $('body').on('click', '.trash', function(e) {
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if(result.isConfirmed) {
+                $this = $(this);
+                $this.submit();
+            }
         });
     });
 
