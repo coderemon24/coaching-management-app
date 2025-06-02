@@ -6,8 +6,8 @@
                 <div class="row mb-2 ">
                     <div class="col-sm-12">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">@lang('messages.home')</a></li>
-                            <li class="breadcrumb-item active">@lang('messages.settings')</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
+                            <li class="breadcrumb-item active">Settings</li>
                         </ol>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
                     <div class="col-md-12 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">@lang('messages.common_settings')</h3>
+                                <h3 class="card-title">Common Settings</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                         <i class="fas fa-minus"></i>
@@ -35,17 +35,13 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="{{route('admin.general.settings')}}">
-                                                        @lang('messages.general_settings')
-                                                    </a>
+                                                    <a href="{{route('admin.general.settings')}}">General Settings</a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>
-                                                    @lang('messages.general_setting_text')
-                                                </p>
+                                                <p>View and update your general settings and active your license.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -58,17 +54,13 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="{{route('admin.email.settings')}}">
-                                                        @lang('messages.email_settings')
-                                                    </a>
+                                                    <a href="{{route('admin.email.settings')}}">Email Settings</a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>
-                                                    @lang('messages.email_setting_text')
-                                                </p>
+                                                <p>View and update your email settings.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -81,17 +73,13 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="{{route('admin.email.templates')}}">
-                                                        @lang('messages.email_templates')
-                                                    </a>
+                                                    <a href="{{route('admin.email.templates')}}">Email Templates</a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>
-                                                    @lang('messages.email_template_text')
-                                                </p>
+                                                <p>View and update your email templates using HTML and variables.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -104,17 +92,13 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">
-                                                        @lang('messages.plugins')
-                                                    </a>
+                                                    <a href="#">Plugins</a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>
-                                                    @lang('messages.plugin_text')
-                                                </p>
+                                                <p>View and update your plugin settings.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -127,17 +111,13 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">
-                                                        @lang('messages.payment_gateways')
-                                                    </a>
+                                                    <a href="#">Payment Gateways</a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>
-                                                    @lang('messages.payment_gateway_text')
-                                                </p>
+                                                <p>View and update your payment gateways and active their license.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -150,17 +130,13 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">
-                                                        @lang('messages.page_heading')
-                                                    </a>
+                                                    <a href="#">Page Heading</a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>
-                                                    @lang('messages.page_heading_text')
-                                                </p>
+                                                <p>View and update your page heading.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -173,17 +149,13 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">
-                                                        @lang('messages.seo_settings')
-                                                    </a>
+                                                    <a href="#">SEO Settings</a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>
-                                                    @lang('messages.seo_setting_text')
-                                                </p>
+                                                <p>View and update your SEO settings and add meta information.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -196,17 +168,13 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="{{route('admin.contact.infos')}}">
-                                                        @lang('messages.contact_infos')
-                                                    </a>
+                                                    <a href="{{route('admin.contact.infos')}}">Contact Information</a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>
-                                                    @lang('messages.contact_info_text')
-                                                </p>
+                                                <p>View and update your contact information.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -219,17 +187,13 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="{{ route('admin.maintenance.mode') }}">
-                                                        @lang('messages.maintenance_mode')
-                                                    </a>
+                                                    <a href="{{ route('admin.maintenance.mode') }}">Maintenance Mode</a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>
-                                                    @lang('messages.maintenance_mode_text')
-                                                </p>
+                                                <p>Enable or disable maintenance mode and configure settings for site updates.</p>
                                             </div>
                                         </div>
                                     </div>

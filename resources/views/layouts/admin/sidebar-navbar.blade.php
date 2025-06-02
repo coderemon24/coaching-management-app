@@ -149,7 +149,7 @@
             <li class="nav-item menu-open">
             <a href="{{route('admin.dashboard')}}" class="nav-link  @if(request()->routeIs('admin.dashboard')) active @endif">
               <i class="nav-icon fas fa-home"></i>
-                @lang('messages.dashboard')
+                {{__('Dashboard')}}
             </a>
           </li>
 
@@ -157,7 +157,7 @@
             <a href="{{route('admin.settings')}}" class="nav-link @if(request()->is('admin/settings*')) active @endif">
               <i class="nav-icon far fa-sliders-h"></i>
               <p>
-                @lang('messages.settings')
+                {{__('Settings')}}
               </p>
             </a>
           </li>
@@ -167,7 +167,7 @@
               {{-- <i class="nav-icon fas fa-chart-pie"></i> --}}
               <i class="nav-icon fab fa-product-hunt"></i>
               <p>
-                {{__('messages.product_management')}}
+                {{__('Product Management')}}
                 <i class="right fas fa-angle-left"></i>
 
               </p>
@@ -177,31 +177,33 @@
               <li class="nav-item">
                 <a href="{{ route('admin.categories') }}" class="nav-link {{request()->is('admin/product-management/categories*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>@lang('messages.category')</p>
+                  <p>
+                    {{__('Categories')}}
+                  </p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>@lang('messages.sub_category')</p>
+                  <p>{{__('Subcategories')}}</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>@lang('messages.brands')</p>
+                  <p>{{__('Brands')}}</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>@lang('messages.coupons')</p>
+                  <p>{{__('Coupons')}}</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>@lang('messages.products')</p>
+                  <p>{{__('Products')}}</p>
                 </a>
               </li>
 
