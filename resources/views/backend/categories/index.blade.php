@@ -77,7 +77,7 @@
                                                     <i class="fas fa-edit"></i>
                                                 </a>
 
-                                                <form action="#" method="POST">
+                                                <form action="{{ route('admin.categories.destroy', @$category->id) }}" method="POST" class="show_loader">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class=" ml-2 btn btn-danger btn-sm">

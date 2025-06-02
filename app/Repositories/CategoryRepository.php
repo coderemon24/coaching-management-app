@@ -71,6 +71,10 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function deleteCategory($id)
     {
-        return $this->model->where('id', $id)->delete();
+        $category = $this->getCategoryById($id);
+        if($category->cat_image && file_exists($category->cat_image)) {
+            ImageUpload::delete($category->cat_image);
+        }
+        $category->delete();
     }
 }

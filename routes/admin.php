@@ -51,7 +51,7 @@ Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
             Route::post('/store', 'store')->name('admin.categories.store');
             Route::get('/edit/{id}', 'edit')->name('admin.categories.edit');
             Route::post('/update/{id}', 'update')->name('admin.categories.update');
-            Route::get('/delete/{id}', 'destroy')->name('admin.categories.delete');
+            Route::delete('/delete/{id}', 'destroy')->name('admin.categories.destroy');
         });
 
     });

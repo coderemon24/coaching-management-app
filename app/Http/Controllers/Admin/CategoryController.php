@@ -48,4 +48,12 @@ class CategoryController extends Controller
 
         return redirect()->route('admin.categories');
     }
+
+    public function destroy($id)
+    {
+        $this->category->deleteCategory($id);
+
+        session()->flash('success', 'Category deleted successfully.');
+        return back();
+    }
 }
