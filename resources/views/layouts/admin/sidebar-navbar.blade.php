@@ -210,6 +210,16 @@
             </ul>
           </li>
 
+          <li class="nav-item">
+            <a href="{{route('admin.languages')}}" class="nav-link @if(request()->is('admin/languages*')) active @endif">
+
+              <i class="nav-icon far fa-language"></i>
+              <p>
+                {{__('Language Management')}}
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

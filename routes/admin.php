@@ -58,5 +58,12 @@ Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
 
     });
 
+    # languages
+    Route::controller('App\\Http\\Controllers\\Admin\\LanguageController')
+    ->prefix('languages')
+    ->group(function () {
+       Route::get('/', 'index')->name('admin.languages');
+    });
+
 
 });
