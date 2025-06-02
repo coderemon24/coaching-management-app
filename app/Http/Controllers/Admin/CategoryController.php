@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
-use Illuminate\Contracts\Session\Session;
-use Illuminate\Http\Request;
-
 class CategoryController extends Controller
 {
     protected $category;
@@ -33,5 +30,11 @@ class CategoryController extends Controller
         $request->session()->flash('success', 'Category created successfully.');
 
         return back();
+    }
+
+    public function edit($id)
+    {
+        $data['category'] = $this->category->getCategoryById($id);
+        return view('backend.categories.edit', $data);
     }
 }

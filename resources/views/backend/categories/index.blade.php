@@ -56,12 +56,24 @@
                                                     alt="{{ @$category->name }}">
                                             </td>
                                             <td>{{ @$category->cat_name }}</td>
-                                            <td>{{ @$category->cat_status }}</td>
-                                            <td>{{ @$category->is_featured }}</td>
+                                            <td class="text-center">
+                                                @if (@$category->cat_status == 'active')
+                                                <a href="javascript:void(0)" class="badge badge-success px-4 py-2">Active</a>
+                                                @else
+                                                <a href="javascript:void(0)" class="badge badge-danger px-4 py-2">Inactive</a>
+                                                @endif
+                                            </td>
+                                            <td class="text-center">
+                                                @if (@$category->is_featured == 'active')
+                                                <a href="javascript:void(0)" class="badge badge-success px-4 py-2">Active</a>
+                                                @else
+                                                <a href="javascript:void(0)" class="badge badge-danger px-4 py-2">Inactive</a>
+                                                @endif
+                                            </td>
                                             <td>{{ @$category->cat_order }}</td>
                                             <td class="text-center d-flex">
-                                                <a href="{{ route('admin.edit.email.template', @$category->id) }}"
-                                                    class="btn btn-primary btn-sm">
+                                                <a href="{{ route('admin.categories.edit', @$category->id) }}"
+                                                    class="btn btn-primary edit btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
 
@@ -87,11 +99,7 @@
     </div>
 </div>
 
-
-{{-- add modal --}}
-<!-- Button trigger modal -->
-
-<!-- Modal -->
+<!-- add modal -->
 <form action="{{ route('admin.categories.store') }}" enctype="multipart/form-data" method="POST" class="show_loader">
     @csrf
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
@@ -109,22 +117,8 @@
                     </button>
                 </div>
                 <div class="modal-body px-4">
-                    <div class="info_wrapper form-group">
-                        <label for="icon" class="text-left">Image <span class="text-danger">*</span></label>
-                        <input type="file" name="image"
-                            class="input_file d-none @error('image') is-invalid @enderror" id="main_logo" />
-                        <label for="main_logo" class="preview_wrapper">
-                            <img width="50"
-                            src="{{asset('assets/upload-icon.png')}}"
-                            class="preview_image">
-                            <div class="logo_text file_name">Choose file</div>
-                        </label>
-                        @error('image')
-                        <div class="invalid-feedback message">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
+
+                    <x-image-input name="image" />
 
                     <div class="form-group">
                         <label for="name">Category Name <span class="text-danger">*</span></label>
@@ -137,18 +131,7 @@
                         @enderror
                     </div>
 
-                    <div class="form-group">
-                        <label for="name">Status <span class="text-danger">*</span></label>
-                        <select name="cat_status" class="form-control pe-4 @error('cat_status') is-invalid @enderror">
-                            <option value="active">Active</option>
-                            <option value="inactive">Inactive</option>
-                        </select>
-                        @error('cat_status')
-                        <div class="invalid-feedback message">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
+                    <x-status-input name="cat_status" selected="active" label="Status" />
 
                     <div class="form-group">
                         <label for="name">Serial Number <span class="text-danger">*</span></label>
@@ -164,11 +147,13 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
                 </div>
             </div>
         </div>
     </div>
 </form>
 
+
 @endsection
+

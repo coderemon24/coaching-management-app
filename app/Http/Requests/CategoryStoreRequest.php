@@ -23,10 +23,10 @@ class CategoryStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cat_name' => 'required|string|max:100',
+            'cat_name' => 'required|string|max:100|unique:categories,cat_name',
             'image' => 'nullable|image|max:55000|mimes:'.ImageMimeType::values(),
             'cat_status' => 'required|in:active,inactive',
-            'cat_order' => 'required|numeric|regex:/^[1-9][0-9]*$/|min:1',
+            'cat_order' => 'required|numeric|regex:/^[1-9][0-9]*$/|min:1|unique:categories,cat_order',
         ];
     }
 }
