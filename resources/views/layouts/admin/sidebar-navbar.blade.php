@@ -149,7 +149,7 @@
             <li class="nav-item menu-open">
             <a href="{{route('admin.dashboard')}}" class="nav-link  @if(request()->routeIs('admin.dashboard')) active @endif">
               <i class="nav-icon fas fa-home"></i>
-                Dashboard
+                @lang('messages.dashboard')
             </a>
           </li>
 
@@ -157,7 +157,7 @@
             <a href="{{route('admin.settings')}}" class="nav-link @if(request()->is('admin/settings*')) active @endif">
               <i class="nav-icon far fa-sliders-h"></i>
               <p>
-                Settings
+                @lang('messages.settings')
               </p>
             </a>
           </li>
@@ -167,7 +167,7 @@
               {{-- <i class="nav-icon fas fa-chart-pie"></i> --}}
               <i class="nav-icon fab fa-product-hunt"></i>
               <p>
-                Products Management
+                {{__('messages.product_management')}}
                 <i class="right fas fa-angle-left"></i>
 
               </p>
@@ -177,31 +177,31 @@
               <li class="nav-item">
                 <a href="{{ route('admin.categories') }}" class="nav-link {{request()->is('admin/product-management/categories*') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Categories</p>
+                  <p>@lang('messages.category')</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Subcategories</p>
+                  <p>@lang('messages.sub_category')</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Brands</p>
+                  <p>@lang('messages.brands')</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Coupons</p>
+                  <p>@lang('messages.coupons')</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Products</p>
+                  <p>@lang('messages.products')</p>
                 </a>
               </li>
 
