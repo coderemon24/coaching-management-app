@@ -57,16 +57,20 @@
                                                 {{ @$lang->code }}
                                             </td>
                                             <td class="text-center">
-                                                <a href="javascript:void(0)" class="badge badge-success px-4 py-2">
-                                                    {{ @$lang->frontend_default }}
+                                                <a href="javascript:void(0)" class="text-secondary"
+                                                style="font-size: 23px">
+                                                    <i class="fas fa-star"></i>
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="javascript:void(0)" class="text-secondary"
+                                                style="font-size: 23px">
+                                                    <i class="fas fa-star"></i>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="javascript:void(0)" class="badge badge-success px-4 py-2">
-                                                    {{ @$lang->frontend_default }}
-                                                </a>
+                                                {{ @$lang->direction === 'ltr' ? 'Left to Right' : 'Right to Left' }}
                                             </td>
-                                            <td>{{ @$lang->direction }}</td>
                                             <td class="text-center d-flex">
                                                 <a href="{{ route('admin.categories.edit', @$lang->id) }}"
                                                     class="btn btn-primary edit btn-sm">

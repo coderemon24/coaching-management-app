@@ -24,12 +24,18 @@ class LanguageRepository implements LanguageRepositoryInterface
 
     public function getLanguageById($id)
     {
-
+        return $this->model->findOrFail($id);
     }
 
     public function createLanguage($request)
     {
+        $language = $this->model;
+        $language->name = $request->name;
+        $language->code = strtolower($request->code);
+        $language->direction = $request->direction;
+        $language->save();
 
+        return $language;
     }
 
     public function updateLanguage($id, $request)

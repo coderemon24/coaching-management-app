@@ -16,8 +16,8 @@ return new class extends Migration
 
             $table->string('name')->nullable()->unique();
             $table->string('code')->nullable()->unique();
-            $table->string('frontend_default')->nullable();
-            $table->string('dashboard_default')->nullable();
+            $table->tinyInteger('frontend_default')->default(0);
+            $table->tinyInteger('dashboard_default')->default(0);
             $table->string('direction')->nullable();
 
             $table->timestamp('created_at')->useCurrent();
