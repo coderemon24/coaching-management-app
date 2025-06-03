@@ -21,7 +21,7 @@
 
     <div class="content">
         <div class="container">
-            <form action="#" method="POST" class="show_loader">
+            <form action="{{ route('admin.languages.dashboard.keyword.update', @$language->id) }}" method="POST" class="show_loader">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">

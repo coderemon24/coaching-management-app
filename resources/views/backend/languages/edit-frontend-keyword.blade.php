@@ -21,7 +21,7 @@
 
     <div class="content">
         <div class="container">
-            <form action="#" method="POST" class="show_loader">
+            <form action="{{ route('admin.languages.frontend.keyword.update', @$language->id) }}" method="POST" class="show_loader">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
@@ -45,7 +45,7 @@
                                 <div class="row">
                                     @foreach($keywords as $key => $value)
                                     <div class="col-md-4">
-                                        <x-input type="text" value="{{@$value}}" name="keyvalues[{{@$key}}]"
+                                        <x-input type="text" value="{{@$value}}" name="key_values[{{@$key}}]"
                                             label="{{@$key}}" placeholder="Enter keyword" />
                                     </div>
                                     @endforeach

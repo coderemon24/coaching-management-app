@@ -16,4 +16,6 @@ interface LanguageRepositoryInterface
     public function dashKeyword($request);
     public function getFrontendKeyword($id);
     public function getDashboardKeyword($id);
+    public function updateFrontendKeyword($request, $id);
+    public function updateDashboardKeyword($request, $id);
 }

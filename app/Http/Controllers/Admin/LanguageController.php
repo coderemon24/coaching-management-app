@@ -119,4 +119,30 @@ class LanguageController extends Controller
 
         return view('backend.languages.edit-dashboard-keyword', $data);
     }
+
+    public function updateFrontendKeyword(Request $request, $id)
+    {
+        $keywords = $this->language->updateFrontendKeyword($request, $id);
+
+        if($keywords == ) {
+            session()->flash('warning', 'Value is required for ' . $keywords . ' keyword.');
+            return back();
+        }
+
+        session()->flash('success', 'Frontend keyword for ' . $request->dashboard_keyword . ' language updated successfully.');
+        return back();
+    }
+
+    public function updateDashboardKeyword(Request $request, $id)
+    {
+        $keywords = $this->language->updateDashboardKeyword($request, $id);
+
+        if($keywords) {
+            session()->flash('warning', 'Value is required for ' . $keywords . ' keyword.');
+            return back();
+        }
+
+        session()->flash('success', 'Dashboard keyword for ' . $request->dashboard_keyword . ' language updated successfully.');
+        return back();
+    }
 }

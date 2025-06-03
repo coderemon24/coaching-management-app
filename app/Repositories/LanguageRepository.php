@@ -252,4 +252,44 @@ class LanguageRepository implements LanguageRepositoryInterface
     {
         return $this->model->findOrFail($id);
     }
+
+    public function updateFrontendKeyword($request, $id)
+    {
+        $get_data = $request['key_values'];
+
+        foreach($get_data as $key => $value) {
+            if($value === null && $value === '') {
+                return $key;
+            }
+        }
+
+        $lang = $this->getLanguageById($id);
+
+        $path = resource_path('lang/' . $lang->code . '.json');
+        $jsonData = json_encode($get_data, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+
+        file_put_contents($path, $jsonData);
+
+        return $lang->name;
+    }
+
+    public function updateDashboardKeyword($request, $id)
+    {
+        $get_data = $request['key_values'];
+
+        foreach($get_data as $key => $value) {
+            if($value === null && $value === '') {
+                return $key;
+            }
+        }
+
+        $lang = $this->getLanguageById($id);
+
+        $path = resource_path('lang/admin_' . $lang->code . '.json');
+        $jsonData = json_encode($get_data, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+
+        file_put_contents($path, $jsonData);
+
+        return $lang->name;
+    }
 }

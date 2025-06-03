@@ -72,6 +72,8 @@ Route::prefix('admin')->middleware(['admin.auth', 'admin.lang'])->group(function
        Route::post('/add-dashboard-keyword', 'addDashboardKeyword')->name('admin.languages.dashboard.keyword');
        Route::get('/edit-frontend-keyword/{id}', 'editFrontendKeyword')->name('admin.languages.frontend.keyword.edit');
        Route::get('/edit-dashboard-keyword/{id}', 'editDashboardKeyword')->name('admin.languages.dashboard.keyword.edit');
+       Route::post('/update-frontend-keyword/{id}', 'updateFrontendKeyword')->name('admin.languages.frontend.keyword.update');
+       Route::post('/update-dashboard-keyword/{id}', 'updateDashboardKeyword')->name('admin.languages.dashboard.keyword.update');
     });
 
 
