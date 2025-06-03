@@ -11,8 +11,7 @@ class LanguageRepository implements LanguageRepositoryInterface
 
     public function __construct()
     {
-        if(class_exists('App\Models\Admin\Language'))
-        {
+        if (class_exists('App\Models\Admin\Language')) {
             $this->model = new Language();
         }
     }
@@ -38,8 +37,8 @@ class LanguageRepository implements LanguageRepositoryInterface
         $default = file_get_contents(resource_path('lang/default.json'));
         $admin_default = file_get_contents(resource_path('lang/admin_default.json'));
 
-        $loc = resource_path('lang/'.$request->code.'.json');
-        $admin_loc = resource_path('lang/admin_'.$request->code.'.json');
+        $loc = resource_path('lang/' . $request->code . '.json');
+        $admin_loc = resource_path('lang/admin_' . $request->code . '.json');
 
         file_put_contents($loc, $default);
         file_put_contents($admin_loc, $admin_default);
@@ -47,17 +46,46 @@ class LanguageRepository implements LanguageRepositoryInterface
         return $language;
     }
 
-    public function updateLanguage($id, $request)
+    public function updateLanguage($request, $id)
     {
+        try {
+            $language = $this->getLanguageById($id);
+            $old_code = $language->code;
+            $language->name = $request->name;
+            $language->code = strtolower($request->code);
+            $language->direction = $request->direction;
 
+            $content = file_get_contents(resource_path('lang/' . $old_code . '.json'));
+            $admin_content = file_get_contents(resource_path('lang/admin_' . $old_code . '.json'));
+
+            $ex_lang = resource_path('lang/' . $old_code . '.json');
+            $ex_admin_lang = resource_path('lang/admin_' . $old_code . '.json');
+
+            if(isset($request->code) && file_exists($ex_lang)) {
+                unlink($ex_lang);
+            }
+            if(isset($request->code) && file_exists($ex_admin_lang)) {
+                unlink($ex_admin_lang);
+            }
+
+            file_put_contents(resource_path('lang/' . $request->code . '.json'), $content);
+            file_put_contents(resource_path('lang/admin_' . $request->code . '.json'), $admin_content);
+
+            $language->save();
+
+            return $language;
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     public function deleteLanguage($id)
     {
         $lang = $this->getLanguageById($id);
 
-        $f_file = resource_path('lang/'.$lang->code.'.json');
-        $a_file = resource_path('lang/admin_'.$lang->code.'.json');
+        $f_file = resource_path('lang/' . $lang->code . '.json');
+        $a_file = resource_path('lang/admin_' . $lang->code . '.json');
 
         unlink($f_file);
         unlink($a_file);
@@ -65,6 +93,5 @@ class LanguageRepository implements LanguageRepositoryInterface
         $lang->delete();
 
         return;
-
     }
 }

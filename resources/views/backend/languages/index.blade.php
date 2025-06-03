@@ -72,7 +72,7 @@
                                                 {{ @$lang->direction === 'ltr' ? 'Left to Right' : 'Right to Left' }}
                                             </td>
                                             <td class="text-center d-flex">
-                                                <a href="{{ route('admin.categories.edit', @$lang->id) }}"
+                                                <a href="{{ route('admin.languages.edit', @$lang->id) }}"
                                                     class="btn btn-primary edit btn-sm">
                                                     <i class="fas fa-edit"></i>
                                                 </a>

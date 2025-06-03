@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LanguageCreateRequest;
+use App\Http\Requests\LanguageUpdateRequest;
 use App\Repositories\Interfaces\LanguageRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -35,9 +36,27 @@ class LanguageController extends Controller
     public function destroy($id)
     {
         $this->language->deleteLanguage($id);
-        
+
         session()->flash('success', 'Language deleted successfully.');
 
         return back();
+    }
+
+    public function edit($id)
+    {
+        $data['lang'] = $this->language->getLanguageById($id);
+        return view('backend.languages.edit', $data);
+    }
+
+    public function update(LanguageUpdateRequest $request, $id)
+    {
+        $request->validated();
+
+        $update = $this->language->updateLanguage($request, $id);
+
+        if ($update) {
+            session()->flash('success', 'Language updated successfully.');
+        }
+        return redirect()->route('admin.languages');
     }
 }
