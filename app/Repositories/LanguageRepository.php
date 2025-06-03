@@ -28,10 +28,22 @@ class LanguageRepository implements LanguageRepositoryInterface
 
     public function createLanguage($request)
     {
+
+        $getLocal = app()->getLocale();
+
         $language = $this->model;
         $language->name = $request->name;
         $language->code = strtolower($request->code);
         $language->direction = $request->direction;
+
+        if($getLocal == 'admin_' . $request->code) {
+            $language->dashboard_default = 1;
+        }
+
+        if($getLocal == $request->code) {
+            $language->frontend_default = 1;
+        }
+
         $language->save();
 
         $default = file_get_contents(resource_path('lang/default.json'));
@@ -42,6 +54,7 @@ class LanguageRepository implements LanguageRepositoryInterface
 
         file_put_contents($loc, $default);
         file_put_contents($admin_loc, $admin_default);
+
 
         return $language;
     }
@@ -54,6 +67,16 @@ class LanguageRepository implements LanguageRepositoryInterface
             $language->name = $request->name;
             $language->code = strtolower($request->code);
             $language->direction = $request->direction;
+
+            $getLocal = app()->getLocale();
+
+            if($getLocal == 'admin_' . $request->code) {
+                $language->dashboard_default = 1;
+            }
+
+            if($getLocal == $request->code) {
+                $language->frontend_default = 1;
+            }
 
             $content = file_get_contents(resource_path('lang/' . $old_code . '.json'));
             $admin_content = file_get_contents(resource_path('lang/admin_' . $old_code . '.json'));
@@ -92,6 +115,43 @@ class LanguageRepository implements LanguageRepositoryInterface
 
         $lang->delete();
 
+        return;
+    }
+
+    public function getDefaultLang($side,$default)
+    {
+        if($side == 'frontend') {
+            $lang = $this->model->where('frontend_default', 1)->first();
+        } else {
+            $lang = $this->model->where('dashboard_default', 1)->first();
+        }
+        return $lang;
+    }
+
+    public function frontendDefault($id)
+    {
+        $get_def = $this->getDefaultLang('frontend',1);
+        if(isset($get_def)) {
+            $get_def->frontend_default = 0;
+            $get_def->save();
+        }
+        $lang = $this->getLanguageById($id);
+        $lang->frontend_default = 1;
+        $lang->save();
+
+        return;
+    }
+
+    public function dashboardDefault($id)
+    {
+        $get_def = $this->getDefaultLang('dashboard',1);
+        if(isset($get_def)) {
+            $get_def->dashboard_default = 0;
+            $get_def->save();
+        }
+        $lang = $this->getLanguageById($id);
+        $lang->dashboard_default = 1;
+        $lang->save();
         return;
     }
 }

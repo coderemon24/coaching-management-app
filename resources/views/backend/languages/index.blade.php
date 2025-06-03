@@ -57,13 +57,17 @@
                                                 {{ @$lang->code }}
                                             </td>
                                             <td class="text-center">
-                                                <a href="javascript:void(0)" class="text-secondary"
+                                                <a href="{{ route('admin.languages.frontend.default', @$lang->id) }}" class=" {{ @$lang->frontend_default === 1 ? 'text-success' : 'text-secondary' }}
+                                                frontend_default
+                                                "
                                                 style="font-size: 23px">
                                                     <i class="fas fa-star"></i>
                                                 </a>
                                             </td>
                                             <td class="text-center">
-                                                <a href="javascript:void(0)" class="text-secondary"
+                                                <a href="{{ route('admin.languages.dashboard.default', @$lang->id) }}" class=" {{ @$lang->dashboard_default === 1 ? 'text-success' : 'text-secondary' }}
+                                                dashboard_default
+                                                "
                                                 style="font-size: 23px">
                                                     <i class="fas fa-star"></i>
                                                 </a>
@@ -158,6 +162,48 @@ $(document).ready(function() {
                 $this = $(this);
                 $this.submit();
             }
+        });
+    });
+
+    //  frontend default
+    $('body').on('click', '.frontend_default', function(e) {
+        e.preventDefault();
+
+        let $this = $(this);
+        let route = $this.attr('href');
+
+        $this.fadeOut(100, function() {
+            $.ajax({
+                url: route,
+                type: "GET",
+                success: function (response) {
+                    $('.frontend_default').removeClass('text-success').addClass('text-secondary');
+                    $this.removeClass('text-secondary').addClass('text-success');
+                    $this.fadeIn(100);
+                    window.location.reload();
+                }
+            });
+        });
+    });
+    
+    //  dashboard default
+    $('body').on('click', '.dashboard_default', function(e) {
+        e.preventDefault();
+
+        let $this = $(this);
+        let route = $this.attr('href');
+
+        $this.fadeOut(100, function() {
+            $.ajax({
+                url: route,
+                type: "GET",
+                success: function (response) {
+                    $('.dashboard_default').removeClass('text-success').addClass('text-secondary');
+                    $this.removeClass('text-secondary').addClass('text-success');
+                    $this.fadeIn(100);
+                    window.location.reload();
+                }
+            });
         });
     });
 

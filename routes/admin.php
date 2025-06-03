@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 
 # admin/*
-Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
+Route::prefix('admin')->middleware(['admin.auth', 'admin.lang'])->group(function () {
     Route::controller('App\\Http\\Controllers\\Admin\\Auth\\LoginController')->group(function () {
         Route::get('/login', 'showLoginForm')->name('admin.login');
         Route::post('/login-form', 'login')->name('admin.login.submit');
@@ -66,6 +66,8 @@ Route::prefix('admin')->middleware(['admin.auth'])->group(function () {
        Route::get('/edit/{id}', 'edit')->name('admin.languages.edit');
        Route::post('/update/{id}', 'update')->name('admin.languages.update');
        Route::delete('/delete/{id}', 'destroy')->name('admin.languages.destroy');
+       Route::get('/frontend/default/{id}', 'frontDefault')->name('admin.languages.frontend.default');
+       Route::get('/dashboard/default/{id}', 'dashDefault')->name('admin.languages.dashboard.default');
     });
 
 

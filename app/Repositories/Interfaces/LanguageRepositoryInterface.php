@@ -9,4 +9,7 @@ interface LanguageRepositoryInterface
     public function createLanguage($request);
     public function updateLanguage($id, $request);
     public function deleteLanguage($id);
+    public function frontendDefault($id);
+    public function dashboardDefault($id);
+    public function getDefaultLang($side,$default);
 }

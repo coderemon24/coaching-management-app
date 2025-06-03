@@ -59,4 +59,18 @@ class LanguageController extends Controller
         }
         return redirect()->route('admin.languages');
     }
+
+    public function frontDefault($id)
+    {
+        $this->language->frontendDefault($id);
+        session()->flash('success', 'Frontend default language updated successfully.');
+        return back();
+    }
+
+    public function dashDefault($id)
+    {
+        $this->language->dashboardDefault($id);
+        session()->flash('success', 'Dashboard default language updated successfully.');
+        return back();
+    }
 }
