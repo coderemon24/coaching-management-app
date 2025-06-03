@@ -73,4 +73,26 @@ class LanguageController extends Controller
         session()->flash('success', 'Dashboard default language updated successfully.');
         return back();
     }
+
+    public function addFrontendKeyword(Request $request)
+    {
+        $request->validate([
+            'front_keyword' => 'required'
+        ]);
+
+        $this->language->frontKeyword($request);
+        session()->flash('success', 'Frontend keyword added successfully.');
+        return back();
+    }
+
+    public function addDashboardKeyword(Request $request)
+    {
+        $request->validate([
+            'dash_keyword' => 'required'
+        ]);
+
+        $this->language->dashKeyword($request);
+        session()->flash('success', 'Dashboard keyword added successfully.');
+        return back();
+    }
 }

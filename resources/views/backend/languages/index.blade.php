@@ -27,6 +27,21 @@
                                 </span>
                                 <span class="ml-2">All Languages</span>
                             </h3>
+                            <div class="center_buttons">
+
+                                <a href="javascript:void(0)" class="btn btn-info btn-sm"
+                                data-toggle="modal" data-target="#frontModal"
+                                >
+                                    <i class="far fa-plus"></i> &nbsp; Add Frontend Keyword
+                                </a>
+
+                                <a href="javascript:void(0)" class="btn btn-info btn-sm ml-2"
+                                data-toggle="modal" data-target="#dashModal"
+                                >
+                                    <i class="far fa-plus"></i> &nbsp; Add Dashboard Keyword
+                                </a>
+
+                            </div>
                             <div class="get-back">
                                 <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal"
                                     data-target="#addModal">
@@ -57,37 +72,47 @@
                                                 {{ @$lang->code }}
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{ route('admin.languages.frontend.default', @$lang->id) }}" class=" {{ @$lang->frontend_default === 1 ? 'text-success' : 'text-secondary' }}
+                                                <a href="{{ route('admin.languages.frontend.default', @$lang->id) }}"
+                                                    class=" {{ @$lang->frontend_default === 1 ? 'text-success' : 'text-secondary' }}
                                                 frontend_default
-                                                "
-                                                style="font-size: 23px">
+                                                " style="font-size: 23px">
                                                     <i class="fas fa-star"></i>
                                                 </a>
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{ route('admin.languages.dashboard.default', @$lang->id) }}" class=" {{ @$lang->dashboard_default === 1 ? 'text-success' : 'text-secondary' }}
+                                                <a href="{{ route('admin.languages.dashboard.default', @$lang->id) }}"
+                                                    class=" {{ @$lang->dashboard_default === 1 ? 'text-success' : 'text-secondary' }}
                                                 dashboard_default
-                                                "
-                                                style="font-size: 23px">
+                                                " style="font-size: 23px">
                                                     <i class="fas fa-star"></i>
                                                 </a>
                                             </td>
                                             <td>
                                                 {{ @$lang->direction === 'ltr' ? 'Left to Right' : 'Right to Left' }}
                                             </td>
-                                            <td class="text-center d-flex">
-                                                <a href="{{ route('admin.languages.edit', @$lang->id) }}"
-                                                    class="btn btn-primary edit btn-sm">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
+                                            <td class="text-center d-flex justify-content-center">
 
-                                                <form action="{{ route('admin.languages.destroy', @$lang->id) }}" method="POST" class="show_loader trash">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class=" ml-2 btn btn-danger btn-sm">
-                                                        <i class="fas fa-trash-alt"></i>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-info btn-sm dropdown-toggle" type="button"
+                                                        data-toggle="dropdown" aria-expanded="false">
+                                                        Action
                                                     </button>
-                                                </form>
+                                                    <div class="dropdown-menu">
+                                                        <a href="{{ route('admin.languages.edit', @$lang->id) }}"
+                                                            class="dropdown-item">
+                                                            Edit
+                                                        </a>
+                                                        <form
+                                                            action="{{ route('admin.languages.destroy', @$lang->id) }}"
+                                                            method="POST" class="show_loader trash">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="dropdown-item">
+                                                                Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
 
                                             </td>
                                         </tr>
@@ -104,7 +129,7 @@
 </div>
 
 <!-- add modal -->
-<form action="{{ route('admin.languages.store') }}"  method="POST" class="show_loader">
+<form action="{{ route('admin.languages.store') }}" method="POST" class="show_loader">
     @csrf
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
         aria-hidden="true">
@@ -127,8 +152,7 @@
                     <x-input type="text" name="code" label="Code" placeholder="Enter language code" />
 
                     <x-select name="direction" label="Direction"
-                    :options="['ltr'=>'Left to Right', 'rtl'=>'Right to Left']"
-                    />
+                        :options="['ltr'=>'Left to Right', 'rtl'=>'Right to Left']" />
 
                 </div>
                 <div class="modal-footer">
@@ -139,11 +163,51 @@
         </div>
     </div>
 </form>
+<!-- dashboard keyword modal -->
+<form action="{{ route('admin.languages.dashboard.keyword') }}" method="POST" class="show_loader">
+    @csrf
+    <div class="modal fade" id="dashModal" tabindex="-1" role="dialog" aria-labelledby="dashModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-body px-4">
+
+                    <x-input type="text" name="dash_keyword" label="Dashboard Keyword" placeholder="Enter keyword" />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- frontend keyword modal -->
+<form action="{{ route('admin.languages.frontend.keyword') }}" method="POST" class="show_loader">
+    @csrf
+    <div class="modal fade" id="frontModal" tabindex="-1" role="dialog" aria-labelledby="frontModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-body px-4">
+
+                    <x-input type="text" name="front_keyword" label="Frontend Keyword" placeholder="Enter keyword" />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 @endsection
 
 @push('scripts')
 <script type="text/javascript">
-$(document).ready(function() {
+    $(document).ready(function() {
 
     //  Delete
     $('body').on('click', '.trash', function(e) {
@@ -185,7 +249,7 @@ $(document).ready(function() {
             });
         });
     });
-    
+
     //  dashboard default
     $('body').on('click', '.dashboard_default', function(e) {
         e.preventDefault();
@@ -212,4 +276,3 @@ $(document).ready(function() {
 
 </script>
 @endpush
-

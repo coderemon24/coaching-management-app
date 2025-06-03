@@ -68,6 +68,8 @@ Route::prefix('admin')->middleware(['admin.auth', 'admin.lang'])->group(function
        Route::delete('/delete/{id}', 'destroy')->name('admin.languages.destroy');
        Route::get('/frontend/default/{id}', 'frontDefault')->name('admin.languages.frontend.default');
        Route::get('/dashboard/default/{id}', 'dashDefault')->name('admin.languages.dashboard.default');
+       Route::post('/add-frontend-keyword', 'addFrontendKeyword')->name('admin.languages.frontend.keyword');
+       Route::post('/add-dashboard-keyword', 'addDashboardKeyword')->name('admin.languages.dashboard.keyword');
     });
 
 

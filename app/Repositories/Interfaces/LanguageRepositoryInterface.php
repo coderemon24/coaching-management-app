@@ -12,4 +12,6 @@ interface LanguageRepositoryInterface
     public function frontendDefault($id);
     public function dashboardDefault($id);
     public function getDefaultLang($side,$default);
+    public function frontKeyword($request);
+    public function dashKeyword($request);
 }

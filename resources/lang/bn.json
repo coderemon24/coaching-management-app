@@ -1,5 +1,6 @@
 {
-    "Login" : "Login",
-    "Register" : "Register",
-    "Logout" : "Logout"
+    "Login": "Login",
+    "Register": "Register",
+    "Logout": "Logout",
+    "China": "China"
 }

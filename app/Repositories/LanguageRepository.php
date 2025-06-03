@@ -154,4 +154,92 @@ class LanguageRepository implements LanguageRepositoryInterface
         $lang->save();
         return;
     }
+
+    public function frontKeyword($request)
+    {
+        $lang = $this->getLanguages();
+
+        foreach ($lang as $key => $value) {
+            # read file
+            $contents = file_get_contents(resource_path('lang/' . $value->code . '.json'));
+            if($contents == false) {
+                continue;
+            }
+
+            # json to associative array
+            $contents = json_decode($contents, true);
+            if(json_last_error() !== JSON_ERROR_NONE) {
+                continue;
+            }
+
+            # add keyword to array
+            $contents[$request->front_keyword] = $request->front_keyword;
+
+            $file_loc = resource_path('lang/' . $value->code . '.json');
+            # convert array to json and put in file
+            $createJson = json_encode($contents, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+            file_put_contents($file_loc, $createJson);
+        }
+
+        # for default file
+        $file_path = resource_path('lang/default.json');
+        $def_contents = file_get_contents($file_path);
+
+        if($def_contents !== false)
+        {
+            # json to associative array
+            $def_contents = json_decode($def_contents, true);
+            # put the content to array
+            $def_contents[$request->front_keyword] = $request->front_keyword;
+            # generate pretty json and put in file
+            $createJson = json_encode($def_contents, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+            file_put_contents($file_path, $createJson);
+        }
+
+        return;
+    }
+
+    public function dashKeyword($request)
+    {
+        $lang = $this->getLanguages();
+
+        foreach ($lang as $key => $value) {
+            # read file
+            $contents = file_get_contents(resource_path('lang/admin_' . $value->code . '.json'));
+            if($contents == false) {
+                continue;
+            }
+
+            # json to associative array
+            $contents = json_decode($contents, true);
+            if(json_last_error() !== JSON_ERROR_NONE) {
+                continue;
+            }
+
+            # add keyword to array
+            $contents[$request->dash_keyword] = $request->dash_keyword;
+
+            $file_loc = resource_path('lang/admin_' . $value->code . '.json');
+            # convert array to json and put in file
+            $createJson = json_encode($contents, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+            file_put_contents($file_loc, $createJson);
+        }
+
+        # for default file
+        $file_path = resource_path('lang/admin_default.json');
+        $def_contents = file_get_contents($file_path);
+
+        if($def_contents !== false)
+        {
+            # json to associative array
+            $def_contents = json_decode($def_contents, true);
+            # put the content to array
+            $def_contents[$request->dash_keyword] = $request->dash_keyword;
+            # generate pretty json and put in file
+            $createJson = json_encode($def_contents, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
+            file_put_contents($file_path, $createJson);
+        }
+
+        return;
+    }
 }
