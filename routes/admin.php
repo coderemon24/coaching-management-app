@@ -70,6 +70,8 @@ Route::prefix('admin')->middleware(['admin.auth', 'admin.lang'])->group(function
        Route::get('/dashboard/default/{id}', 'dashDefault')->name('admin.languages.dashboard.default');
        Route::post('/add-frontend-keyword', 'addFrontendKeyword')->name('admin.languages.frontend.keyword');
        Route::post('/add-dashboard-keyword', 'addDashboardKeyword')->name('admin.languages.dashboard.keyword');
+       Route::get('/edit-frontend-keyword/{id}', 'editFrontendKeyword')->name('admin.languages.frontend.keyword.edit');
+       Route::get('/edit-dashboard-keyword/{id}', 'editDashboardKeyword')->name('admin.languages.dashboard.keyword.edit');
     });
 
 

@@ -102,6 +102,12 @@
                                                             class="dropdown-item">
                                                             Edit
                                                         </a>
+                                                        <a href="{{ route('admin.languages.frontend.keyword.edit', @$lang->id) }}" class="dropdown-item">
+                                                            Edit Frontend Keyword
+                                                        </a>
+                                                        <a href="{{ route('admin.languages.dashboard.keyword.edit', @$lang->id) }}" class="dropdown-item">
+                                                            Edit Dashboard Keyword
+                                                        </a>
                                                         <form
                                                             action="{{ route('admin.languages.destroy', @$lang->id) }}"
                                                             method="POST" class="show_loader trash">

@@ -95,4 +95,28 @@ class LanguageController extends Controller
         session()->flash('success', 'Dashboard keyword added successfully.');
         return back();
     }
+
+    public function editFrontendKeyword($id)
+    {
+        $lang = $this->language->getFrontendKeyword($id);
+        $file_path = resource_path('lang/' . $lang->code . '.json');
+        $get_data = file_get_contents($file_path);
+
+        $data['language'] = $lang;
+        $data['keywords'] = json_decode($get_data, true);
+
+        return view('backend.languages.edit-frontend-keyword', $data);
+    }
+
+    public function editDashboardKeyword($id)
+    {
+        $lang = $this->language->getDashboardKeyword($id);
+        $file_path = resource_path('lang/admin_' . $lang->code . '.json');
+        $get_data = file_get_contents($file_path);
+
+        $data['language'] = $lang;
+        $data['keywords'] = json_decode($get_data, true);
+
+        return view('backend.languages.edit-dashboard-keyword', $data);
+    }
 }

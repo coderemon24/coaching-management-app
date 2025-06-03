@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
         }
         view()->share([
             'generalSetting' => $general,
-            'maintenance' => $maintenance
+            'maintenance' => $maintenance,
         ]);
     }
 }

@@ -242,4 +242,14 @@ class LanguageRepository implements LanguageRepositoryInterface
 
         return;
     }
+
+    public function getFrontendKeyword($id)
+    {
+        return $this->model->findOrFail($id);
+    }
+
+    public function getDashboardKeyword($id)
+    {
+        return $this->model->findOrFail($id);
+    }
 }
