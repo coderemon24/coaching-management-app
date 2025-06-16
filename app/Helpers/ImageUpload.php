@@ -14,6 +14,15 @@ class ImageUpload
         return $path . '/' . $fileName;
     }
 
+    public static function uploadConvertedImage($path="uploads", $file)
+    {
+        $fileName = Str::uuid() . '.webp';
+        $path = public_path($path . '/' . $fileName);
+        file_put_contents($path, $file);
+
+        return $path;
+    }
+
     public static function delete($path)
     {
         if (file_exists(public_path($path))) {
