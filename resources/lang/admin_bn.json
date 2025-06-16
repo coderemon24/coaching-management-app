@@ -1,18 +1,19 @@
 {
-    "General Settings": "ড্যাশবোর্ড সেটিংস",
-    "Home": "হোম",
-    "Dashboard": "ড্যাশবোর্ড",
+    "General Settings": "সাধারণ সেটিংস",
+    "Home": "হোম",
+    "Dashboard": "ড্যাশবোর্ড",
     "Settings": "সেটিংস",
-    "Product Management": "প্রোডাক্ট ম্যানেজমেন্ট",
+    "Product Management": "পণ্য ম্যানেজমেন্ট",
     "Categories": "ক্যাটেগরি",
     "Subcategories": "সাবক্যাটেগরি",
     "Brands": "ব্র্যান্ড",
     "Coupons": "কুপন",
     "Products": "প্রোডাক্ট",
     "Orders": "অর্ডার",
-    "Common Settings": "Common Settings",
-    "Email Settings": "Email Settings",
-    "Payment Gateways": "Payment Gateways",
-    "Email Templates": "Email Templates",
-    "Bangladesh": "Bangladesh"
+    "Common Settings": "কমন সেটিংস",
+    "Email Settings": "ইমেইল সেটিংস",
+    "Payment Gateways": "পেমেন্ট গেটওয়ে",
+    "Email Templates": "ইমেইল টেমপ্লেট",
+    "Bangladesh": "বাংলাদেশ",
+    "Language Management": "ভাষা ম্যানেজমেন্ট"
 }

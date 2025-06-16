@@ -258,7 +258,7 @@ class LanguageRepository implements LanguageRepositoryInterface
         $get_data = $request['key_values'];
 
         foreach($get_data as $key => $value) {
-            if($value === null && $value === '') {
+            if($value === null || $value === '') {
                 return $key;
             }
         }
@@ -270,15 +270,19 @@ class LanguageRepository implements LanguageRepositoryInterface
 
         file_put_contents($path, $jsonData);
 
-        return $lang->name;
+        return false;
     }
 
     public function updateDashboardKeyword($request, $id)
     {
-        $get_data = $request['key_values'];
+        $get_data = $request['keyvalues'];
+
+        if(!is_array($get_data)) {
+            return "Invalid Key Values Data.";
+        }
 
         foreach($get_data as $key => $value) {
-            if($value === null && $value === '') {
+            if($value === null || $value === '') {
                 return $key;
             }
         }
@@ -290,6 +294,6 @@ class LanguageRepository implements LanguageRepositoryInterface
 
         file_put_contents($path, $jsonData);
 
-        return $lang->name;
+        return false;
     }
 }

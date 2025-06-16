@@ -124,8 +124,8 @@ class LanguageController extends Controller
     {
         $keywords = $this->language->updateFrontendKeyword($request, $id);
 
-        if($keywords == ) {
-            session()->flash('warning', 'Value is required for ' . $keywords . ' keyword.');
+        if($keywords) {
+            session()->flash('error', $keywords);
             return back();
         }
 
@@ -138,7 +138,7 @@ class LanguageController extends Controller
         $keywords = $this->language->updateDashboardKeyword($request, $id);
 
         if($keywords) {
-            session()->flash('warning', 'Value is required for ' . $keywords . ' keyword.');
+            session()->flash('error', $keywords);
             return back();
         }
 
