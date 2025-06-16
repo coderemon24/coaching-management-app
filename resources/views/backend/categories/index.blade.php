@@ -7,8 +7,8 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Categories</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __("Home") }}</a></li>
+                        <li class="breadcrumb-item active">{{ __("Categories") }}</li>
                     </ol>
                 </div>
             </div>
@@ -24,12 +24,15 @@
                                 <span class="icon text-info">
                                     <i class="far fa-info-circle"></i>
                                 </span>
-                                <span class="ml-2">All Categories</span>
+                                <span class="ml-2">
+                                    {{ __("All Categories") }}
+                                </span>
                             </h3>
                             <div class="get-back">
                                 <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal"
                                     data-target="#addModal">
-                                    <i class="far fa-plus"></i> &nbsp; Add New
+                                    <i class="far fa-plus"></i> &nbsp;
+                                    {{ __("Add New") }}
                                 </a>
                             </div>
                         </div>
@@ -110,7 +113,7 @@
                     <h5 class="modal-title" id="addModalLabel">
                         <i class="far fa-plus-circle text-info"></i>
                         &nbsp;
-                        Add Category
+                        {{ __("Add Category") }}
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-danger" aria-hidden="true">&times;</span>
@@ -118,7 +121,7 @@
                 </div>
                 <div class="modal-body px-4">
 
-                    <x-image-input name="image" />
+                    <x-image-input name="image" :label="__('Image')" />
 
                     <div class="form-group">
                         <label for="name">Category Name <span class="text-danger">*</span></label>
@@ -131,10 +134,10 @@
                         @enderror
                     </div>
 
-                    <x-status-input name="cat_status" selected="active" label="Status" />
+                    <x-status-input name="cat_status" selected="active" :label="__('Status')" />
 
                     <div class="form-group">
-                        <label for="name">Serial Number <span class="text-danger">*</span></label>
+                        <label for="name">{{ __("Serial Number")}} <span class="text-danger">*</span></label>
                         <input type="text" min="1"  name="cat_order" placeholder="Enter serial number"
                             class="form-control @error('cat_order') is-invalid @enderror">
                         @error('cat_order')
@@ -146,8 +149,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __("Close")}}</button>
+                    <button type="submit" class="btn btn-primary">{{ __("Create")}}</button>
                 </div>
             </div>
         </div>

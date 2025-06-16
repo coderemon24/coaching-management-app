@@ -13,11 +13,13 @@ class ImageInput extends Component
      */
     public $name;
     public $image;
+    public $label;
 
-    public function __construct($image = null, $name = null)
+    public function __construct($image = null, $name = null, $label = null)
     {
         $this->image = $image;
         $this->name = $name;
+        $this->label = $label;
     }
 
     /**

@@ -8,8 +8,8 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Languages</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __("Home") }}</a></li>
+                        <li class="breadcrumb-item active">{{ __("Languages") }}</li>
                     </ol>
                 </div>
             </div>
@@ -25,27 +25,33 @@
                                 <span class="icon text-info">
                                     <i class="far fa-info-circle"></i>
                                 </span>
-                                <span class="ml-2">All Languages</span>
+                                <span class="ml-2">
+                                    {{ __("All Languages") }}
+                                </span>
                             </h3>
                             <div class="center_buttons">
 
                                 <a href="javascript:void(0)" class="btn btn-info btn-sm"
                                 data-toggle="modal" data-target="#frontModal"
                                 >
-                                    <i class="far fa-plus"></i> &nbsp; Add Frontend Keyword
+                                    <i class="far fa-plus"></i> &nbsp;
+                                    {{ __("Add Frontend Language") }}
                                 </a>
 
                                 <a href="javascript:void(0)" class="btn btn-info btn-sm ml-2"
                                 data-toggle="modal" data-target="#dashModal"
                                 >
-                                    <i class="far fa-plus"></i> &nbsp; Add Dashboard Keyword
+                                    <i class="far fa-plus"></i> &nbsp;
+
+                                    {{ __("Add Dashboard Language") }}
                                 </a>
 
                             </div>
                             <div class="get-back">
                                 <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal"
                                     data-target="#addModal">
-                                    <i class="far fa-plus"></i> &nbsp; Add New
+                                    <i class="far fa-plus"></i> &nbsp;
+                                    {{ __("Add New") }}
                                 </a>
                             </div>
                         </div>

@@ -6,8 +6,8 @@
                 <div class="row mb-2 ">
                     <div class="col-sm-12">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                            <li class="breadcrumb-item active">Settings</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{ __("Home") }}</a></li>
+                            <li class="breadcrumb-item active">{{ __("Settings") }}</li>
                         </ol>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
                     <div class="col-md-12 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Common Settings</h3>
+                                <h3 class="card-title">{{ __("Common Settings") }}</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                         <i class="fas fa-minus"></i>
@@ -35,13 +35,15 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="{{route('admin.general.settings')}}">General Settings</a>
+                                                    <a href="{{route('admin.general.settings')}}">{{ __("General Settings") }}</a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>View and update your general settings and active your license.</p>
+                                                <p>
+                                                    {{ __("View and update your general settings and active your license.") }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -54,13 +56,17 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="{{route('admin.email.settings')}}">Email Settings</a>
+                                                    <a href="{{route('admin.email.settings')}}">
+                                                        {{ __("Email Settings") }}
+                                                    </a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>View and update your email settings.</p>
+                                                <p>
+                                                    {{ __("View and update your email settings.") }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -73,13 +79,17 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="{{route('admin.email.templates')}}">Email Templates</a>
+                                                    <a href="{{route('admin.email.templates')}}">
+                                                        {{ __("Email Templates") }}
+                                                    </a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>View and update your email templates using HTML and variables.</p>
+                                                <p>
+                                                    {{ __("View and update your email templates using HTML and variables.") }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -92,13 +102,17 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">Plugins</a>
+                                                    <a href="#">
+                                                        {{ __("Plugin Settings") }}
+                                                    </a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>View and update your plugin settings.</p>
+                                                <p>
+                                                    {{ __("View and update your plugin settings.") }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -111,13 +125,17 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">Payment Gateways</a>
+                                                    <a href="#">
+                                                        {{ __("Payment Gateways") }}
+                                                    </a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>View and update your payment gateways and active their license.</p>
+                                                <p>
+                                                    {{ __("View and update your payment gateways and active their license.") }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -130,13 +148,17 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">Page Heading</a>
+                                                    <a href="#">
+                                                        {{ __("Page Heading") }}
+                                                    </a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>View and update your page heading.</p>
+                                                <p>
+                                                    {{ __("View and update your page heading.") }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -149,13 +171,17 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="#">SEO Settings</a>
+                                                    <a href="#">
+                                                        {{ __("SEO Settings") }}
+                                                    </a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>View and update your SEO settings and add meta information.</p>
+                                                <p>
+                                                    {{ __("View and update your SEO settings.") }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -168,13 +194,17 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="{{route('admin.contact.infos')}}">Contact Information</a>
+                                                    <a href="{{route('admin.contact.infos')}}">
+                                                        {{ __("Contact Information") }}
+                                                    </a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>View and update your contact information.</p>
+                                                <p>
+                                                    {{ __("View and update your contact information.") }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -187,13 +217,17 @@
                                                 </div>
 
                                                 <div class="set_title ">
-                                                    <a href="{{ route('admin.maintenance.mode') }}">Maintenance Mode</a>
+                                                    <a href="{{ route('admin.maintenance.mode') }}">
+                                                        {{ __("Maintenance Mode") }}
+                                                    </a>
                                                 </div>
 
                                             </div>
 
                                             <div class="set_card_desc">
-                                                <p>Enable or disable maintenance mode and configure settings for site updates.</p>
+                                                <p>
+                                                    {{ __("Enable or disable maintenance mode and configure settings for site updates.") }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>

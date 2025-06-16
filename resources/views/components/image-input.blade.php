@@ -1,5 +1,5 @@
 <div class="info_wrapper form-group">
-    <label for="icon" class="text-left">Image <span class="text-danger">*</span></label>
+    <label for="icon" class="text-left">{{ $label }} <span class="text-danger">*</span></label>
     <input type="file" name="{{$name ?? "image"}}" class="input_file d-none @error($name ?? 'image') is-invalid @enderror" id="main_logo" />
     <label for="main_logo" class="preview_wrapper">
         <img width="{{isset($image) && $image ? 200 : 50}}" src="{{isset($image) && $image ? asset($image) : asset('assets/upload-icon.png')}}" class="preview_image">
