@@ -2,19 +2,35 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class ImageUpload
 {
-    public static function upload($path="uploads", $file)
+    public static function upload($path = 'uploads', $file)
     {
-        $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path($path), $fileName);
+        try {
+            $uploadPath = public_path($path);
+            if (!file_exists($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
+            }
 
-        return $path . '/' . $fileName;
+            $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension();
+            $fullPath = $uploadPath . '/' . $fileName;
+
+            // Copy the file from tmp to public path
+            copy($file->getRealPath(), $fullPath);
+
+            // Return relative path to store in DB
+            return $path . '/' . $fileName;
+        } catch (\Exception $e) {
+            // Log error or handle as needed
+            Log::error('Image Upload Failed: ' . $e->getMessage());
+            return null;
+        }
     }
 
-    public static function uploadConvertedImage($path="uploads", $file)
+    public static function uploadConvertedImage($path = "uploads", $file)
     {
         $fileName = Str::uuid() . '.webp';
         $path = public_path($path . '/' . $fileName);

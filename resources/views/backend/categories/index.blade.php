@@ -123,17 +123,18 @@
 
                     <x-image-input name="image" :label="__('Image')" />
 
-                    @foreach()
-                    <div class="form-group">
-                        <label for="name">Name <span class="text-danger">*</span></label>
-                        <input type="text" name="cat_name" placeholder="Enter category name"
-                            class="form-control @error('cat_name') is-invalid @enderror">
-                        @error('cat_name')
-                        <div class="invalid-feedback message">
-                            {{ $message }}
+                    @foreach($languages as $language)
+                        <div class="form-group">
+                            <label for="name">{{ __("Name") }} ({{ $language->name }}) <span class="text-danger">*</span></label>
+                            <input type="text" name="{{$language->code}}_name" placeholder="Enter category name"
+                                class="form-control @error('cat_name') is-invalid @enderror">
+                            @error('cat_name')
+                            <div class="invalid-feedback message">
+                                {{ $message }}
+                            </div>
+                            @enderror
                         </div>
-                        @enderror
-                    </div>
+                    @endforeach
 
                     <x-status-input name="cat_status" selected="active" :label="__('Status')" />
 
