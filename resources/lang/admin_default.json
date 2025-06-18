@@ -43,5 +43,9 @@
     "Create": "Create",
     "Close": "Close",
     "Image": "Image",
-    "Name": "Name"
+    "Name": "Name",
+    "Featured Status": "Featured Status",
+    "Action": "Action",
+    "Active": "Active",
+    "Inactive": "Inactive"
 }

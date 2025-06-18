@@ -21,6 +21,8 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function getCategories()
     {
+        $adminLang = app('adminLang');
+
         $data = $this->model->select(
             'id',
             'cat_name',
@@ -30,6 +32,7 @@ class CategoryRepository implements CategoryRepositoryInterface
             'is_featured',
             'cat_order'
         )
+            ->where('language_id', $adminLang->id)
             ->orderBy('cat_order', 'asc')
             ->get();
         return $data;

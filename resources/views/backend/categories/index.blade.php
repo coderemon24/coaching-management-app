@@ -42,12 +42,16 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Image</th>
-                                            <th>Name</th>
-                                            <th>Status</th>
-                                            <th>Featured</th>
-                                            <th>Serial Number</th>
-                                            <th>Action</th>
+                                            <th>{{ __("Image") }}</th>
+                                            <th>{{ __("Name") }}</th>
+                                            <th>{{ __("Status") }}</th>
+                                            <th>
+                                                {{ __("Featured Status") }}
+                                            </th>
+                                            <th>
+                                                {{ __("Serial Number") }}
+                                            </th>
+                                            <th>{{ __("Action") }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -61,16 +65,24 @@
                                             <td>{{ @$category->cat_name }}</td>
                                             <td class="text-center">
                                                 @if (@$category->cat_status == 'active')
-                                                <a href="{{route("admin.categories.status", $category->id)}}" class="badge badge-success status st_active px-4 py-2">Active</a>
+                                                <a href="{{route("admin.categories.status", $category->id)}}" class="badge badge-success status st_active px-4 py-2">
+                                                    {{ __("Active") }}
+                                                </a>
                                                 @else
-                                                <a href="{{route("admin.categories.status", $category->id)}}" class="badge badge-danger status st_inactive px-4 py-2">Inactive</a>
+                                                <a href="{{route("admin.categories.status", $category->id)}}" class="badge badge-danger status st_inactive px-4 py-2">
+                                                    {{ __("Inactive") }}
+                                                </a>
                                                 @endif
                                             </td>
                                             <td class="text-center">
                                                 @if (@$category->is_featured == 'active')
-                                                <a href="{{route("admin.categories.featured", $category->id)}}" data-id="{{ @$category->id }}" class="badge badge-success featured px-4 py-2">Active</a>
+                                                <a href="{{route("admin.categories.featured", $category->id)}}" data-id="{{ @$category->id }}" class="badge badge-success featured px-4 py-2">
+                                                    {{ __("Active") }}
+                                                </a>
                                                 @else
-                                                <a href="{{route("admin.categories.featured", $category->id)}}" data-id="{{ @$category->id }}" class="badge badge-danger featured px-4 py-2">Inactive</a>
+                                                <a href="{{route("admin.categories.featured", $category->id)}}" data-id="{{ @$category->id }}" class="badge badge-danger featured px-4 py-2">
+                                                    {{ __("Inactive") }}
+                                                </a>
                                                 @endif
                                             </td>
                                             <td>{{ @$category->cat_order }}</td>
@@ -180,12 +192,12 @@ $(document).ready(function() {
                         $this
                             .removeClass('badge-danger st_inactive')
                             .addClass('badge-success st_active')
-                            .text('Active');
+                            .text("{{__('Active')}}");
                     } else {
                         $this
                             .removeClass('badge-success st_active')
                             .addClass('badge-danger st_inactive')
-                            .text('Inactive');
+                            .text("{{__('Inactive')}}");
                     }
 
                     $this.fadeIn(100);
@@ -211,12 +223,12 @@ $(document).ready(function() {
                         $this
                             .removeClass('badge-danger')
                             .addClass('badge-success')
-                            .text('Active');
+                            .text("{{__('Active')}}");
                     } else {
                         $this
                             .removeClass('badge-success')
                             .addClass('badge-danger')
-                            .text('Inactive');
+                            .text("{{__('Inactive')}}");
                     }
 
                     $this.fadeIn(100);

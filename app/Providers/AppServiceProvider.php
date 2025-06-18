@@ -19,6 +19,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('languages', function () {
             return app(LanguageRepositoryInterface::class)->getLanguages();
         });
+        $this->app->singleton('frontendLang', function () {
+            return app(LanguageRepositoryInterface::class)->getDefaultLang('frontend',1);
+        });
+        $this->app->singleton('adminLang', function () {
+            return app(LanguageRepositoryInterface::class)->getDefaultLang('dashboard',1);
+        });
     }
 
     /**
@@ -47,6 +53,8 @@ class AppServiceProvider extends ServiceProvider
             $languages = app('languages');
             $view->with([
                 'languages' => $languages,
+                'frontendLang' => app('frontendLang'),
+                'adminLang' => app('adminLang'),
             ]);
         });
 
