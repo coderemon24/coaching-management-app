@@ -16,6 +16,26 @@ Route::prefix('admin')->middleware(['admin.auth', 'admin.lang'])->group(function
         Route::get('/', 'index')->name('admin.dashboard');
     });
 
+    # languages
+    Route::controller('App\\Http\\Controllers\\Admin\\LanguageController')
+    ->prefix('languages')
+    ->group(function () {
+       Route::get('/', 'index')->name('admin.languages');
+       Route::post('/store', 'store')->name('admin.languages.store');
+       Route::get('/edit/{id}', 'edit')->name('admin.languages.edit');
+       Route::post('/update/{id}', 'update')->name('admin.languages.update');
+       Route::delete('/delete/{id}', 'destroy')->name('admin.languages.destroy');
+       Route::get('/frontend/default/{id}', 'frontDefault')->name('admin.languages.frontend.default');
+       Route::get('/dashboard/default/{id}', 'dashDefault')->name('admin.languages.dashboard.default');
+       Route::post('/add-frontend-keyword', 'addFrontendKeyword')->name('admin.languages.frontend.keyword');
+       Route::post('/add-dashboard-keyword', 'addDashboardKeyword')->name('admin.languages.dashboard.keyword');
+       Route::get('/edit-frontend-keyword/{id}', 'editFrontendKeyword')->name('admin.languages.frontend.keyword.edit');
+       Route::get('/edit-dashboard-keyword/{id}', 'editDashboardKeyword')->name('admin.languages.dashboard.keyword.edit');
+       Route::post('/update-frontend-keyword/{id}', 'updateFrontendKeyword')->name('admin.languages.frontend.keyword.update');
+       Route::post('/update-dashboard-keyword/{id}', 'updateDashboardKeyword')->name('admin.languages.dashboard.keyword.update');
+    });
+
+    # settings
     Route::controller('App\\Http\\Controllers\\Admin\\SettingController')
     # admin/settings/*
     ->prefix('settings')
@@ -56,24 +76,6 @@ Route::prefix('admin')->middleware(['admin.auth', 'admin.lang'])->group(function
         });
     });
 
-    # languages
-    Route::controller('App\\Http\\Controllers\\Admin\\LanguageController')
-    ->prefix('languages')
-    ->group(function () {
-       Route::get('/', 'index')->name('admin.languages');
-       Route::post('/store', 'store')->name('admin.languages.store');
-       Route::get('/edit/{id}', 'edit')->name('admin.languages.edit');
-       Route::post('/update/{id}', 'update')->name('admin.languages.update');
-       Route::delete('/delete/{id}', 'destroy')->name('admin.languages.destroy');
-       Route::get('/frontend/default/{id}', 'frontDefault')->name('admin.languages.frontend.default');
-       Route::get('/dashboard/default/{id}', 'dashDefault')->name('admin.languages.dashboard.default');
-       Route::post('/add-frontend-keyword', 'addFrontendKeyword')->name('admin.languages.frontend.keyword');
-       Route::post('/add-dashboard-keyword', 'addDashboardKeyword')->name('admin.languages.dashboard.keyword');
-       Route::get('/edit-frontend-keyword/{id}', 'editFrontendKeyword')->name('admin.languages.frontend.keyword.edit');
-       Route::get('/edit-dashboard-keyword/{id}', 'editDashboardKeyword')->name('admin.languages.dashboard.keyword.edit');
-       Route::post('/update-frontend-keyword/{id}', 'updateFrontendKeyword')->name('admin.languages.frontend.keyword.update');
-       Route::post('/update-dashboard-keyword/{id}', 'updateDashboardKeyword')->name('admin.languages.dashboard.keyword.update');
-    });
 
 
 });
