@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\Interfaces\LanguageRepositoryInterface;
 use App\Repositories\Interfaces\EmailSettingRepositoryInterface;
 use App\Repositories\Interfaces\GeneralSettingRepositoryInterface;
 use App\Repositories\Interfaces\MaintenanceModeRepositoryInterface;
@@ -14,7 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton('languages', function () {
+            return app(LanguageRepositoryInterface::class)->getLanguages();
+        });
     }
 
     /**
@@ -38,6 +42,13 @@ class AppServiceProvider extends ServiceProvider
                 'mail.from.name' => $email->mail_from_name,
             ]);
         }
+
+        View::composer('backend.*', function ($view) {
+            $languages = app('languages');
+            $view->with([
+                'languages' => $languages,
+            ]);
+        });
 
         // Set general settings
         if ($general) {

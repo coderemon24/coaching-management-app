@@ -124,7 +124,7 @@
                     <x-image-input name="image" :label="__('Image')" />
 
                     <div class="form-group">
-                        <label for="name">Category Name <span class="text-danger">*</span></label>
+                        <label for="name">Name <span class="text-danger">*</span></label>
                         <input type="text" name="cat_name" placeholder="Enter category name"
                             class="form-control @error('cat_name') is-invalid @enderror">
                         @error('cat_name')
