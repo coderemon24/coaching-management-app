@@ -107,6 +107,14 @@ class LanguageRepository implements LanguageRepositoryInterface
     {
         $lang = $this->getLanguageById($id);
 
+        if($lang->frontend_default == 1) {
+            return 'frontend';
+        }
+
+        if($lang->dashboard_default == 1) {
+            return 'dashboard';
+        }
+
         $f_file = resource_path('lang/' . $lang->code . '.json');
         $a_file = resource_path('lang/admin_' . $lang->code . '.json');
 

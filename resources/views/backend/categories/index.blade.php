@@ -123,6 +123,7 @@
 
                     <x-image-input name="image" :label="__('Image')" />
 
+                    @foreach()
                     <div class="form-group">
                         <label for="name">Name <span class="text-danger">*</span></label>
                         <input type="text" name="cat_name" placeholder="Enter category name"

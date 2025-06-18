@@ -35,7 +35,17 @@ class LanguageController extends Controller
 
     public function destroy($id)
     {
-        $this->language->deleteLanguage($id);
+        $lang = $this->language->deleteLanguage($id);
+
+        if($lang == 'frontend') {
+            session()->flash('error', 'Frontend default language can not be deleted.');
+            return back();
+        }
+
+        if($lang == 'dashboard') {
+            session()->flash('error', 'Dashboard default language can not be deleted.');
+            return back();
+        }
 
         session()->flash('success', 'Language deleted successfully.');
 
