@@ -78,26 +78,45 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function updateCategory($id, $request)
     {
-        $category = $this->getCategoryById($id);
-        $category->cat_name = $request->cat_name;
-        $category->slug = slugify($request->cat_name);
+        $existingCategory = $this->getCategoryById($id);
+        $uniqueId = $existingCategory->unique_id;
 
-        if ($request->hasFile('image')) {
-            if ($category->cat_image && file_exists($category->cat_image)) {
-                ImageUpload::delete($category->cat_image);
-            }
+        // Handle image upload (once for all languages)
+        $imagePath = $existingCategory->cat_image;
 
-            $image = ImageUpload::upload('uploads/categories', $request->file('image'));
-            $category->cat_image = $image;
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $imagePath = ImageUpload::update('uploads/categories', $request->file('image'), $existingCategory->cat_image);
         }
 
-        $category->cat_status = $request->cat_status;
-        $category->is_featured = $request->is_featured;
-        $category->cat_order = $request->cat_order;
-        $category->save();
+        foreach ($this->languages as $lang) {
+            $name = $request[$lang->code . '_name'] ?? null;
 
-        return $category;
+            if (!$name) continue;
+
+            // Find category by language + unique_id
+            $category = ($this->model)::where('unique_id', $uniqueId)
+                ->where('language_id', $lang->id)
+                ->first();
+
+            // If not found, create a new translation row
+            if (!$category) {
+                $category = new ($this->model);
+                $category->unique_id = $uniqueId;
+                $category->language_id = $lang->id;
+            }
+
+            $category->cat_name = $name;
+            $category->slug = slugify($name);
+            $category->cat_image = $imagePath;
+            $category->cat_status = $request->cat_status;
+            $category->is_featured = $request->is_featured;
+            $category->cat_order = $request->cat_order;
+            $category->save();
+        }
+
+        return;
     }
+
 
     public function deleteCategory($id)
     {
