@@ -20,12 +20,16 @@ class CategoryUpdateRequest extends FormRequest
 
         $rules = [];
 
-        if ($this->has('cat_name')) {
-            $rules['cat_name'] = [
+        foreach (app('languages') as $language) {
+            $rules[$language->code . '_name'] = [
+                'required',
                 'string',
-                'max:100',
+                'max:255',
                 Rule::unique('categories', 'cat_name')
-                    ->ignore($cat_id),
+                    ->where(function ($query) use ($uniqueId, $language) {
+                        return $query->where('unique_id', '!=', $uniqueId)
+                            ->where('language_id', $language->id);
+                    }),
             ];
         }
 

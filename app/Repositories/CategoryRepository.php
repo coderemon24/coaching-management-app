@@ -78,6 +78,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 
     public function updateCategory($id, $request)
     {
+
         $existingCategory = $this->getCategoryById($id);
         $uniqueId = $existingCategory->unique_id;
 

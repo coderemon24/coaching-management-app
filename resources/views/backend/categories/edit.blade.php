@@ -60,10 +60,10 @@
                                 <div class="form-group">
                                     <label for="name">{{ __("Name") }} ({{$language->name}}) <span
                                             class="text-danger">*</span></label>
-                                    <input type="text" name="cat_name" value="{{ @$data->cat_name }}"
+                                    <input type="text" name="{{$language->code}}_name" value="{{ @$data->cat_name }}"
                                         placeholder="Enter category name"
-                                        class="form-control @error('cat_name') is-invalid @enderror">
-                                    @error('cat_name')
+                                        class="form-control @error('{{$language->code}}_name') is-invalid @enderror">
+                                    @error('{{$language->code}}_name')
                                     <div class="invalid-feedback message">
                                         {{ $message }}
                                     </div>

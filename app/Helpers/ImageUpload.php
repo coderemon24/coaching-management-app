@@ -48,7 +48,7 @@ class ImageUpload
             }
 
             if($oldFile != null){
-                $checkFile = $path . '/' . $oldFile;
+                $checkFile = $oldFile;
                 self::delete($checkFile);
             }
 
