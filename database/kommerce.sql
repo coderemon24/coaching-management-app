@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2025 at 02:55 PM
+-- Generation Time: Jun 23, 2025 at 08:30 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -82,15 +82,25 @@ CREATE TABLE `cache_locks` (
 
 CREATE TABLE `categories` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `unique_id` varchar(255) DEFAULT NULL,
+  `language_id` bigint(20) DEFAULT NULL,
   `cat_name` varchar(255) DEFAULT NULL,
   `slug` varchar(255) DEFAULT NULL,
   `cat_image` varchar(255) DEFAULT NULL,
   `cat_status` varchar(255) DEFAULT NULL,
-  `is_featured` varchar(255) DEFAULT NULL,
+  `is_featured` varchar(255) NOT NULL DEFAULT 'inactive',
   `cat_order` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `unique_id`, `language_id`, `cat_name`, `slug`, `cat_image`, `cat_status`, `is_featured`, `cat_order`, `created_at`, `updated_at`) VALUES
+(56, '6852a631cb1f0', 6, 'Fashion', 'fashion', 'uploads/categories/5234ed3b-9375-490f-b81b-00b7addbba92.webp', 'active', 'active', '1', '2025-06-18 05:42:41', '2025-06-23 00:28:57'),
+(57, '6852a631cb1f0', 7, 'ফ্যাশন', 'fzasn', 'uploads/categories/5234ed3b-9375-490f-b81b-00b7addbba92.webp', 'inactive', 'inactive', '1', '2025-06-18 05:42:41', '2025-06-23 00:29:55');
 
 -- --------------------------------------------------------
 
@@ -271,6 +281,31 @@ CREATE TABLE `job_batches` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `languages`
+--
+
+CREATE TABLE `languages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  `frontend_default` tinyint(4) NOT NULL DEFAULT 0,
+  `dashboard_default` tinyint(4) NOT NULL DEFAULT 0,
+  `direction` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `languages`
+--
+
+INSERT INTO `languages` (`id`, `name`, `code`, `frontend_default`, `dashboard_default`, `direction`, `created_at`, `updated_at`) VALUES
+(6, 'English', 'en', 1, 0, 'ltr', '2025-06-02 23:25:31', '2025-06-23 00:24:43'),
+(7, 'Bangla', 'bn', 0, 1, 'ltr', '2025-06-03 00:16:05', '2025-06-23 00:24:43');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `maintenance_modes`
 --
 
@@ -317,7 +352,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2025_05_27_104241_create_email_templates_table', 3),
 (9, '2025_05_29_081117_create_contact_infos_table', 4),
 (10, '2025_06_01_044633_create_maintenance_modes_table', 5),
-(11, '2025_06_01_091335_create_categories_table', 6);
+(12, '2025_06_01_091335_create_categories_table', 6),
+(14, '2025_06_02_111401_create_languages_table', 7);
 
 -- --------------------------------------------------------
 
@@ -351,7 +387,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('32t1InXLwHBqiwGmiIs1YudtpRIjZ7kcXIEVewVb', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiOXRNR3AzMmd0dktleFhNVDJ3d0VpdVJuVEIyN1dwbzhmNExmN3JjTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9kdWN0LW1hbmFnZW1lbnQvY2F0ZWdvcmllcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1748782168);
+('QgGQzSgAIleatxYhNJQ5av3GbN8BefjmiZQ3rQHM', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiV2NBT1NzS082ajJNMUdrdjhndlJZR2xIMVNDRE9LVkg2bmZvYzB0QyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9wcm9kdWN0LW1hbmFnZW1lbnQvY2F0ZWdvcmllcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1750660195);
 
 -- --------------------------------------------------------
 
@@ -453,6 +489,14 @@ ALTER TABLE `job_batches`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `languages`
+--
+ALTER TABLE `languages`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `languages_name_unique` (`name`),
+  ADD UNIQUE KEY `languages_code_unique` (`code`);
+
+--
 -- Indexes for table `maintenance_modes`
 --
 ALTER TABLE `maintenance_modes`
@@ -499,7 +543,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `contact_infos`
@@ -538,6 +582,12 @@ ALTER TABLE `jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `languages`
+--
+ALTER TABLE `languages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `maintenance_modes`
 --
 ALTER TABLE `maintenance_modes`
@@ -547,7 +597,7 @@ ALTER TABLE `maintenance_modes`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
