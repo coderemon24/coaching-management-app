@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2025 at 08:30 AM
+-- Generation Time: Jun 24, 2025 at 03:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -353,7 +353,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9, '2025_05_29_081117_create_contact_infos_table', 4),
 (10, '2025_06_01_044633_create_maintenance_modes_table', 5),
 (12, '2025_06_01_091335_create_categories_table', 6),
-(14, '2025_06_02_111401_create_languages_table', 7);
+(14, '2025_06_02_111401_create_languages_table', 7),
+(16, '2025_06_24_113116_create_vendors_table', 8),
+(17, '2025_06_24_123107_create_vendor_profiles_table', 9),
+(18, '2025_06_24_124447_create_vendor_documents_table', 10),
+(19, '2025_06_24_125513_create_vendor_settings_table', 11);
 
 -- --------------------------------------------------------
 
@@ -412,6 +416,90 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Test User', 'test@example.com', '2025-05-27 05:04:21', '$2y$12$eTwQlar5wgN/8eZr1dAadeF/.AL7euNGj3J2qS7boNT0sxSNe38Pq', 'SZ5ZFMJuFx', '2025-05-27 05:04:22', '2025-05-27 05:04:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vendors`
+--
+
+CREATE TABLE `vendors` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `status` enum('pending','approved','suspended','rejected') NOT NULL DEFAULT 'pending',
+  `verified_at` timestamp NULL DEFAULT NULL,
+  `joined_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vendor_documents`
+--
+
+CREATE TABLE `vendor_documents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `vendor_id` bigint(20) UNSIGNED NOT NULL,
+  `business_name` varchar(255) DEFAULT NULL,
+  `trade_license_no` varchar(255) DEFAULT NULL,
+  `trade_license_file` varchar(255) DEFAULT NULL,
+  `nid_or_passport_no` varchar(255) DEFAULT NULL,
+  `nid_or_passport_file` varchar(255) DEFAULT NULL,
+  `tax_id` varchar(255) DEFAULT NULL,
+  `tax_id_file` varchar(255) DEFAULT NULL,
+  `document_status` enum('pending','approved','rejected') NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vendor_profiles`
+--
+
+CREATE TABLE `vendor_profiles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `vendor_id` bigint(20) UNSIGNED NOT NULL,
+  `shop_name` varchar(255) DEFAULT NULL,
+  `shop_slug` varchar(255) DEFAULT NULL,
+  `shop_logo` varchar(255) DEFAULT NULL,
+  `shop_banner` varchar(255) DEFAULT NULL,
+  `shop_description` text DEFAULT NULL,
+  `shop_address` varchar(255) DEFAULT NULL,
+  `shop_phone` varchar(255) DEFAULT NULL,
+  `shop_email` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `postal_code` varchar(255) DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vendor_settings`
+--
+
+CREATE TABLE `vendor_settings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `vendor_id` bigint(20) UNSIGNED NOT NULL,
+  `auto_approve_orders` tinyint(1) NOT NULL DEFAULT 0,
+  `max_product_limit` int(11) NOT NULL DEFAULT 100,
+  `is_open` tinyint(1) NOT NULL DEFAULT 1,
+  `is_featured` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -530,6 +618,37 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indexes for table `vendors`
+--
+ALTER TABLE `vendors`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `vendors_slug_unique` (`slug`),
+  ADD KEY `vendors_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `vendor_documents`
+--
+ALTER TABLE `vendor_documents`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vendor_documents_vendor_id_foreign` (`vendor_id`);
+
+--
+-- Indexes for table `vendor_profiles`
+--
+ALTER TABLE `vendor_profiles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `vendor_profiles_shop_name_unique` (`shop_name`),
+  ADD UNIQUE KEY `vendor_profiles_shop_slug_unique` (`shop_slug`),
+  ADD KEY `vendor_profiles_vendor_id_foreign` (`vendor_id`);
+
+--
+-- Indexes for table `vendor_settings`
+--
+ALTER TABLE `vendor_settings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vendor_settings_vendor_id_foreign` (`vendor_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -597,13 +716,65 @@ ALTER TABLE `maintenance_modes`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `vendors`
+--
+ALTER TABLE `vendors`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `vendor_documents`
+--
+ALTER TABLE `vendor_documents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `vendor_profiles`
+--
+ALTER TABLE `vendor_profiles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `vendor_settings`
+--
+ALTER TABLE `vendor_settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `vendors`
+--
+ALTER TABLE `vendors`
+  ADD CONSTRAINT `vendors_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `vendor_documents`
+--
+ALTER TABLE `vendor_documents`
+  ADD CONSTRAINT `vendor_documents_vendor_id_foreign` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `vendor_profiles`
+--
+ALTER TABLE `vendor_profiles`
+  ADD CONSTRAINT `vendor_profiles_vendor_id_foreign` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `vendor_settings`
+--
+ALTER TABLE `vendor_settings`
+  ADD CONSTRAINT `vendor_settings_vendor_id_foreign` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
