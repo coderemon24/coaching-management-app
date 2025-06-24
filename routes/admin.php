@@ -11,7 +11,6 @@ Route::prefix('admin')->middleware(['admin.auth', 'admin.lang'])->group(function
         Route::post('/logout', 'logout')->name('admin.logout');
     });
 
-
     Route::controller('App\\Http\\Controllers\\Admin\\AdminController')->group(function () {
         Route::get('/', 'index')->name('admin.dashboard');
     });
