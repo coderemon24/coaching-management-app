@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('name')->nullable();
+            $table->string('slug')->unique()->nullable();
+            $table->enum('status',['pending', 'approved', 'suspended', 'rejected'])->default('pending');
+            $table->timestamp('verified_at')->nullable();
+            $table->timestamp('joined_at')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes();
         });
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Admin\Vendor;
+use App\Models\Admin\Vendors\Vendor;
 use App\Repositories\Interfaces\VendorRepositoryInterface;
 
 class VendorRepository implements VendorRepositoryInterface
