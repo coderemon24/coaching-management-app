@@ -29,8 +29,8 @@
 
 Most coaching centers still run on:
 - 📒 Admission notebook
-- 🧾 Fee হিসাব Excel এ
-- ✅ Attendance খাতায়
+- 🧾 Fee calculation in Excel
+- ✅ Attendance taken manually
 - 📩 SMS reminder manual
 
 This app turns that **chaos into a clean system** — and is designed to become a **multi-tenant SaaS** (one platform → many coaching centers).
@@ -55,11 +55,11 @@ This app turns that **chaos into a clean system** — and is designed to become 
 - Apache (DocumentRoot → `/public`)
 
 **Frontend**
-- Vite
+- Javascript
+- Jquery
 - TailwindCSS 4
-- Axios
 
-**Dev/Infra**
+**Dev/Infrastructure**
 - Docker Compose (App + DB + phpMyAdmin)
 
 ---
@@ -70,3 +70,4 @@ This app turns that **chaos into a clean system** — and is designed to become 
 ```bash
 git clone https://github.com/coderemon24/coaching-management-app.git
 cd coaching-management-app
+docker compose --env-file .env.docker -d --build
