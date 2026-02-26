@@ -50,7 +50,7 @@ This app turns that **chaos into a clean system** — and is designed to become 
 ## 🧱 Tech Stack
 
 **Backend**
-- Laravel 12 (PHP ^8.2)  
+- Laravel 12 (PHP ^8.3)  
 - MySQL 8  
 - Apache (DocumentRoot → `/public`)
 
