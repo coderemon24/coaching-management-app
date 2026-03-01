@@ -133,98 +133,203 @@
   </nav>
   <!-- /.navbar -->
 
+  @php
+      $sidebarAccent = @$generalSetting->site_color ?: '#2563eb';
+  @endphp
+  <style>
+    .modern-sidebar {
+      background: linear-gradient(180deg, #f8fbff 0%, #f0f5ff 46%, #f8f9fc 100%);
+      border-right: 1px solid rgba(15, 23, 42, 0.08);
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    .modern-sidebar .brand-link {
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      padding: 0.95rem 0.95rem 0.85rem;
+    }
+
+    .modern-sidebar .brand-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .modern-sidebar .nav-header.sidebar-label {
+      color: #64748b;
+      font-size: 0.64rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      padding: 1rem 1rem 0.45rem;
+    }
+
+    .modern-sidebar .nav-sidebar .nav-link {
+      margin: 0.13rem 0.6rem;
+      border-top-left-radius: 0.60rem;
+      color: #334155;
+      font-weight: 400;
+      font-size: 0.88rem;
+      padding: 0.40rem 0.62rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-bottom-left-radius: 0.60rem;
+    }
+
+    .modern-sidebar .nav-sidebar .nav-link .nav-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 0.62rem;
+      margin: 0;
+      color: #334155;
+      background: #ffffff;
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+      font-size: 0.90rem;
+    }
+
+    .modern-sidebar .nav-sidebar .nav-link:hover {
+      background: rgba(255, 255, 255, 0.8);
+      transform: translateX(2px);
+      color: #0f172a;
+    }
+
+    .modern-sidebar .nav-sidebar .nav-link:hover .nav-icon {
+      color: #1D0786;
+    }
+
+    .modern-sidebar .nav-sidebar .nav-link.active {
+      background: #ffffff;
+      color: #1D0786;
+      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    .modern-sidebar .nav-sidebar .nav-link.active .nav-icon {
+      background: #eff6ff;
+      color: #1D0786;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+    }
+
+    .modern-sidebar .menu-soon {
+      font-size: 0.64rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.22rem 0.36rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.08);
+      color: #475569;
+      margin-left: auto;
+    }
+  </style>
+
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-light-primary elevation-4">
+  <aside class="main-sidebar sidebar-light-primary elevation-4 modern-sidebar">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
-        <h4 class="pl-4">
-            {{@$generalSetting->site_name ?? 'Kommerce'}}
-        </h4>
-      {{-- <img class="img-fluid brand-logo" src="{{asset(@$generalSetting->site_logo) ?? asset('assets/logo/kommerce.png')}}" alt="kommerce"> --}}
+    <a href="{{ route('admin.dashboard') }}" class="brand-link">
+      <h4 class="brand-title">
+        {{ @$generalSetting->site_name ?? 'Kommerce' }}
+      </h4>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      <nav class="mt-2 pb-3">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-            <li class="nav-item">
-            <a href="{{route('admin.dashboard')}}" class="nav-link  @if(request()->routeIs('admin.dashboard')) active @endif">
-              <i class="nav-icon fas fa-home"></i>
-                {{__('Dashboard')}}
-            </a>
-          </li>
-
-
-
-          <li class="nav-item {{request()->is('admin/product-management*') ? 'menu-open' : ''}}">
-            <a href="#" class="nav-link {{request()->is('admin/product-management*') ? 'active' : ''}}">
-              {{-- <i class="nav-icon fas fa-chart-pie"></i> --}}
-              <i class="nav-icon fab fa-product-hunt"></i>
-              <p>
-                {{__('Product Management')}}
-                <i class="right fas fa-angle-left"></i>
-
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-                <a href="{{ route('admin.categories') }}" class="nav-link {{request()->is('admin/product-management/categories*') ? 'active' : ''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    {{__('Categories')}}
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>{{__('Subcategories')}}</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>{{__('Brands')}}</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>{{__('Coupons')}}</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>{{__('Products')}}</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-
+          <li class="nav-header sidebar-label">{{ __('Overview') }}</li>
           <li class="nav-item">
-            <a href="{{route('admin.settings')}}" class="nav-link @if(request()->is('admin/settings*')) active @endif">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link @if(request()->routeIs('admin.dashboard')) active @endif">
+              <i class="nav-icon fas fa-th-large"></i>
+              <p>{{ __('Dashboard') }}</p>
+            </a>
+          </li>
+
+          <li class="nav-header sidebar-label">{{ __('Students Panel') }}</li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <i class="nav-icon fas fa-user-plus"></i>
+              <p>{{ __('Student Admission') }}</p>
+              <span class="menu-soon">{{ __('Soon') }}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <i class="nav-icon fas fa-layer-group"></i>
+              <p>{{ __('Batches') }}</p>
+              <span class="menu-soon">{{ __('Soon') }}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <i class="nav-icon fas fa-user-check"></i>
+              <p>{{ __('Attendance System') }}</p>
+              <span class="menu-soon">{{ __('Soon') }}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <i class="nav-icon fas fa-id-card"></i>
+              <p>{{ __('Student Directory') }}</p>
+              <span class="menu-soon">{{ __('Soon') }}</span>
+            </a>
+          </li>
+
+          <li class="nav-header sidebar-label">{{ __('Finance & Billing') }}</li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <i class="nav-icon fas fa-wallet"></i>
+              <p>{{ __('Monthly Fee Tracking') }}</p>
+              <span class="menu-soon">{{ __('Soon') }}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <i class="nav-icon fas fa-hand-holding-usd"></i>
+              <p>{{ __('Payment Collection') }}</p>
+              <span class="menu-soon">{{ __('Soon') }}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="javascript:void(0)" class="nav-link">
+              <i class="nav-icon fas fa-file-invoice-dollar"></i>
+              <p>{{ __('Expense Tracking') }}</p>
+              <span class="menu-soon">{{ __('Soon') }}</span>
+            </a>
+          </li>
+
+          <li class="nav-header sidebar-label">{{ __('Settings') }}</li>
+          <li class="nav-item">
+            <a href="{{ route('admin.settings') }}" class="nav-link @if(request()->routeIs('admin.settings')) active @endif">
               <i class="nav-icon fas fa-cog"></i>
-              <p>
-                {{__('Settings')}}
-              </p>
+              <p>{{ __('System Settings') }}</p>
             </a>
           </li>
-
           <li class="nav-item">
-            <a href="{{route('admin.languages')}}" class="nav-link @if(request()->is('admin/languages*')) active @endif">
-
-              <i class="nav-icon far fa-language"></i>
-              <p>
-                {{__('Language Management')}}
-              </p>
+            <a href="{{ route('admin.general.settings') }}" class="nav-link @if(request()->routeIs('admin.general.settings')) active @endif">
+              <i class="nav-icon fas fa-sliders-h"></i>
+              <p>{{ __('General Settings') }}</p>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="{{ route('admin.email.settings') }}" class="nav-link @if(request()->routeIs('admin.email.settings')) active @endif">
+              <i class="nav-icon fas fa-envelope-open-text"></i>
+              <p>{{ __('Email Settings') }}</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.languages') }}" class="nav-link @if(request()->is('admin/languages*')) active @endif">
+              <i class="nav-icon fas fa-language"></i>
+              <p>{{ __('Language Management') }}</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

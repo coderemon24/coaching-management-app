@@ -17,7 +17,6 @@ class RepositoryServiceProvider extends ServiceProvider
             "EmailTemplate" => "singleton",
             "ContactInfo" => "singleton",
             "MaintenanceMode" => "singleton",
-            "Category" => "singleton",
             "Language" => "singleton",
             "Vendor" => "singleton",
         ];
