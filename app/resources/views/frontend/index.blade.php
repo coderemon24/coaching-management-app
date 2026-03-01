@@ -147,21 +147,21 @@
         <p class="section-subtitle">SSC, HSC, and University Admission tracks designed for Bangladesh curriculum and exam pattern.</p>
         <div class="mt-8 grid gap-4 md:grid-cols-3">
           <article class="card-tilt surface rounded-3xl p-6">
-            <img src="assets/images/4.jpg" alt="SSC students in a science coaching session" class="h-40 w-full rounded-2xl object-cover" loading="lazy" />
+            <img src="{{ asset('frontend') }}/assets/images/4.jpg" alt="SSC students in a science coaching session" class="h-40 w-full rounded-2xl object-cover" loading="lazy" />
             <h3 class="mt-4 text-xl font-bold">SSC Focus Batch</h3>
             <p class="mt-2 text-sm text-muted">Class 9-10 | Math, Science, English</p>
             <p class="mt-4 text-sm">Weekly CQ/MCQ drills, model tests, and board strategy sessions.</p>
             <a href="programs.html" class="mt-5 inline-flex text-sm font-semibold" style="color: var(--primary);">Explore SSC</a>
           </article>
           <article class="card-tilt surface rounded-3xl p-6">
-            <img src="assets/images/5.jpg" alt="HSC level students attending lecture" class="h-40 w-full rounded-2xl object-cover" loading="lazy" />
+            <img src="{{ asset('frontend') }}/assets/images/5.jpg" alt="HSC level students attending lecture" class="h-40 w-full rounded-2xl object-cover" loading="lazy" />
             <h3 class="mt-4 text-xl font-bold">HSC Board Mastery</h3>
             <p class="mt-2 text-sm text-muted">Class 11-12 | Science, Commerce, Arts</p>
             <p class="mt-4 text-sm">Structured concept lectures + weekly exams + guardian feedback.</p>
             <a href="programs.html" class="mt-5 inline-flex text-sm font-semibold" style="color: var(--primary);">Explore HSC</a>
           </article>
           <article class="card-tilt surface rounded-3xl p-6">
-            <img src="assets/images/1.jpg" alt="Admission students preparing for competitive exams" class="h-40 w-full rounded-2xl object-cover" loading="lazy" />
+            <img src="{{ asset('frontend') }}/assets/images/1.jpg" alt="Admission students preparing for competitive exams" class="h-40 w-full rounded-2xl object-cover" loading="lazy" />
             <h3 class="mt-4 text-xl font-bold">Admission Warriors</h3>
             <p class="mt-2 text-sm text-muted">BUET, Medical, Varsity & GST</p>
             <p class="mt-4 text-sm">Shortcuts না, smart strategy + high-frequency question bank.</p>
@@ -230,49 +230,49 @@
         <div class="mt-8 space-y-4">
           <div class="success-highlights-row" data-marquee="rtl" data-marquee-style="highlights-row" data-marquee-duration="22">
             <article class="surface rounded-3xl p-5">
-              <img src="assets/images/2.jpg" alt="Top achiever student portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/2.jpg" alt="Top achiever student portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">HSC 2025</p>
               <h3 class="mt-1 text-lg font-bold">Ayesha Rahman</h3>
               <p class="text-sm">GPA 5.00 | Viqarunnisa</p>
             </article>
             <article class="surface rounded-3xl p-5">
-              <img src="assets/images/3.webp" alt="Medical admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/3.webp" alt="Medical admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">Medical 2025</p>
               <h3 class="mt-1 text-lg font-bold">Samiul Hasan</h3>
               <p class="text-sm">DMCH Merit Top 220</p>
             </article>
             <article class="surface rounded-3xl p-5">
-              <img src="assets/images/4.jpg" alt="Engineering admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/4.jpg" alt="Engineering admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">BUET 2025</p>
               <h3 class="mt-1 text-lg font-bold">Tahmid Alif</h3>
               <p class="text-sm">EEE Selected</p>
             </article>
             <article class="surface rounded-3xl p-5">
-              <img src="assets/images/5.jpg" alt="SSC achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/5.jpg" alt="SSC achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">SSC 2025</p>
               <h3 class="mt-1 text-lg font-bold">Nusrat Jahan</h3>
               <p class="text-sm">GPA 5.00 | Ideal School</p>
             </article>
             <article class="surface rounded-3xl p-5" aria-hidden="true">
-              <img src="assets/images/2.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/2.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">HSC 2025</p>
               <h3 class="mt-1 text-lg font-bold">Ayesha Rahman</h3>
               <p class="text-sm">GPA 5.00 | Viqarunnisa</p>
             </article>
             <article class="surface rounded-3xl p-5" aria-hidden="true">
-              <img src="assets/images/3.webp" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/3.webp" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">Medical 2025</p>
               <h3 class="mt-1 text-lg font-bold">Samiul Hasan</h3>
               <p class="text-sm">DMCH Merit Top 220</p>
             </article>
             <article class="surface rounded-3xl p-5" aria-hidden="true">
-              <img src="assets/images/4.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/4.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">BUET 2025</p>
               <h3 class="mt-1 text-lg font-bold">Tahmid Alif</h3>
               <p class="text-sm">EEE Selected</p>
             </article>
             <article class="surface rounded-3xl p-5" aria-hidden="true">
-              <img src="assets/images/5.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/5.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">SSC 2025</p>
               <h3 class="mt-1 text-lg font-bold">Nusrat Jahan</h3>
               <p class="text-sm">GPA 5.00 | Ideal School</p>
@@ -280,49 +280,49 @@
           </div>
           <div class="success-highlights-row" data-marquee="ltr" data-marquee-style="highlights-row" data-marquee-duration="22">
             <article class="surface rounded-3xl p-5">
-              <img src="assets/images/1.jpg" alt="Commerce achiever student portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/1.jpg" alt="Commerce achiever student portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">HSC 2025</p>
               <h3 class="mt-1 text-lg font-bold">Rafsan Karim</h3>
               <p class="text-sm">GPA 5.00 | Notre Dame College</p>
             </article>
             <article class="surface rounded-3xl p-5">
-              <img src="assets/images/2.jpg" alt="University admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/2.jpg" alt="University admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">DU 2025</p>
               <h3 class="mt-1 text-lg font-bold">Maliha Islam</h3>
               <p class="text-sm">IBA Merit Top 90</p>
             </article>
             <article class="surface rounded-3xl p-5">
-              <img src="assets/images/3.webp" alt="Science student board achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/3.webp" alt="Science student board achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">SSC 2025</p>
               <h3 class="mt-1 text-lg font-bold">Adnan Chowdhury</h3>
               <p class="text-sm">GPA 5.00 | Rajuk Uttara</p>
             </article>
             <article class="surface rounded-3xl p-5">
-              <img src="assets/images/4.jpg" alt="Engineering admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/4.jpg" alt="Engineering admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">RUET 2025</p>
               <h3 class="mt-1 text-lg font-bold">Farhana Noor</h3>
               <p class="text-sm">CSE Selected</p>
             </article>
             <article class="surface rounded-3xl p-5" aria-hidden="true">
-              <img src="assets/images/1.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/1.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">HSC 2025</p>
               <h3 class="mt-1 text-lg font-bold">Rafsan Karim</h3>
               <p class="text-sm">GPA 5.00 | Notre Dame College</p>
             </article>
             <article class="surface rounded-3xl p-5" aria-hidden="true">
-              <img src="assets/images/2.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/2.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">DU 2025</p>
               <h3 class="mt-1 text-lg font-bold">Maliha Islam</h3>
               <p class="text-sm">IBA Merit Top 90</p>
             </article>
             <article class="surface rounded-3xl p-5" aria-hidden="true">
-              <img src="assets/images/3.webp" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/3.webp" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">SSC 2025</p>
               <h3 class="mt-1 text-lg font-bold">Adnan Chowdhury</h3>
               <p class="text-sm">GPA 5.00 | Rajuk Uttara</p>
             </article>
             <article class="surface rounded-3xl p-5" aria-hidden="true">
-              <img src="assets/images/4.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <img src="{{ asset('frontend') }}/assets/images/4.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
               <p class="mt-4 text-sm text-muted">RUET 2025</p>
               <h3 class="mt-1 text-lg font-bold">Farhana Noor</h3>
               <p class="text-sm">CSE Selected</p>
