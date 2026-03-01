@@ -6,7 +6,7 @@
         <div class="card card-outline card">
             <div class="card-header text-center">
                 <a href="#" class="login-logo">
-                    <img class="img-fluid brand-logo" src="{{asset('assets/logo/kommerce-dark.png')}}" alt="kommerce">
+                    <img class="img-fluid brand-logo" width="70" src="{{ @$generalSetting->site_logo ? asset($generalSetting->site_logo) : asset('assets/logo/kommerce.png') }}" alt="{{ @$generalSetting->site_name }}">
                 </a>
             </div>
             <div class="card-body">
@@ -64,7 +64,10 @@
 
                         <!-- /.col -->
                         <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-block" style="
+                                background-color:{{@$generalSetting->site_color}}!important;
+                                border-color:{{@$generalSetting->site_color}}!important;
+                                ">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -81,7 +84,9 @@
                 <!-- /.social-auth-links -->
 
                 <p class="mb-1">
-                    <a href="forgot-password.html">Forgot Password?</a>
+                    <a href="forgot-password.html" style="
+                    color:{{@$generalSetting->site_color}} !important;
+                    ">Forgot Password?</a>
                 </p>
             </div>
             <!-- /.card-body -->
