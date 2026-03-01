@@ -134,10 +134,13 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-      <img class="img-fluid brand-logo" src="{{asset(@$generalSetting->site_logo) ?? asset('assets/logo/kommerce.png')}}" alt="kommerce">
+        <h4 class="pl-4">
+            {{@$generalSetting->site_name ?? 'Kommerce'}}
+        </h4>
+      {{-- <img class="img-fluid brand-logo" src="{{asset(@$generalSetting->site_logo) ?? asset('assets/logo/kommerce.png')}}" alt="kommerce"> --}}
     </a>
 
     <!-- Sidebar -->
@@ -146,21 +149,14 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-            <li class="nav-item menu-open">
+            <li class="nav-item">
             <a href="{{route('admin.dashboard')}}" class="nav-link  @if(request()->routeIs('admin.dashboard')) active @endif">
               <i class="nav-icon fas fa-home"></i>
                 {{__('Dashboard')}}
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="{{route('admin.settings')}}" class="nav-link @if(request()->is('admin/settings*')) active @endif">
-              <i class="nav-icon far fa-sliders-h"></i>
-              <p>
-                {{__('Settings')}}
-              </p>
-            </a>
-          </li>
+
 
           <li class="nav-item {{request()->is('admin/product-management*') ? 'menu-open' : ''}}">
             <a href="#" class="nav-link {{request()->is('admin/product-management*') ? 'active' : ''}}">
@@ -208,6 +204,15 @@
               </li>
 
             </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('admin.settings')}}" class="nav-link @if(request()->is('admin/settings*')) active @endif">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                {{__('Settings')}}
+              </p>
+            </a>
           </li>
 
           <li class="nav-item">

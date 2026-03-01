@@ -1,0 +1,471 @@
+@extends('layouts.app')
+
+@section('content')
+<section class="hero-noise px-4 py-14 lg:py-20">
+      <div class="hero-edu-icons" aria-hidden="true">
+        <span class="hero-edu-icon hero-icon-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 9.75 9.75-4.5 9.75 4.5-9.75 4.5-9.75-4.5z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 11.5V16c0 .8 2.7 2.5 6 2.5s6-1.7 6-2.5v-4.5" />
+          </svg>
+        </span>
+        <span class="hero-edu-icon hero-icon-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.75 5.5A2.25 2.25 0 0 1 7 3.25h10a2.25 2.25 0 0 1 2.25 2.25v13a2.25 2.25 0 0 1-2.25 2.25H7a2.25 2.25 0 0 1-2.25-2.25v-13z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7.75h8M8 11.75h8M8 15.75h5" />
+          </svg>
+        </span>
+        <span class="hero-edu-icon hero-icon-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m4 20 4.5-1 9.2-9.2a2.1 2.1 0 0 0 0-3l-.5-.5a2.1 2.1 0 0 0-3 0L5 15.5 4 20z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="m13.5 7.5 3 3" />
+          </svg>
+        </span>
+        <span class="hero-edu-icon hero-icon-4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="5" y="4" width="14" height="16" rx="2" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 8h7M8.5 12h7M8.5 16H12" />
+          </svg>
+        </span>
+        <span class="hero-edu-icon hero-icon-5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="8" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l2.8 2" />
+          </svg>
+        </span>
+        <span class="hero-edu-icon hero-icon-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 4.5h6.5a2 2 0 0 1 2 2V19.5H8a2 2 0 0 0-2 2V4.5z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M18 4.5h-6.5a2 2 0 0 0-2 2V19.5H16a2 2 0 0 1 2 2V4.5z" />
+          </svg>
+        </span>
+      </div>
+
+      <div class="hero-content mx-auto grid max-w-7xl gap-8 lg:grid-cols-2 lg:items-center lg:px-8">
+        <div>
+          <p class="hero-reveal inline-flex rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-muted" style="border-color: var(--border);">Dhaka-Focused Premium Coaching</p>
+          <h1 class="hero-reveal mt-4 text-4xl font-black leading-tight sm:text-5xl">
+            Build Future-Ready Results,
+            <span style="color: var(--primary);">Beyond Marks</span>
+          </h1>
+          <p class="hero-reveal mt-4 max-w-xl text-base text-muted sm:text-lg">Trusted by students and guardians across Dhaka. Concept-first learning, disciplined routine, and personal mentoring. <span class="font-semibold">"আজকের প্রস্তুতি, আগামী দিনের সাফল্য"</span></p>
+          <div class="hero-reveal mt-7 flex flex-wrap gap-3">
+            <a href="admission.html" class="btn btn-primary">Enroll Now</a>
+            <a href="programs.html" class="btn btn-outline">Free Demo Class</a>
+          </div>
+          <div class="hero-reveal mt-6 flex items-center gap-5 text-sm text-muted">
+            <span>Hotline: <strong>+880 1700-000000</strong></span>
+            <span>Open: Sat-Thu, 8AM-9PM</span>
+          </div>
+        </div>
+
+        <div class="surface rounded-[1.8rem] p-5 sm:p-7">
+          <div class="brand-gradient rounded-3xl p-1">
+            <div class="rounded-[1.35rem] bg-white/80 p-6 dark:bg-slate-900/70" style="background: color-mix(in srgb, var(--surface-solid), transparent 12%);">
+              <div class="relative mb-5 overflow-hidden rounded-2xl">
+                <iframe
+                  class="h-52 w-full"
+                  src="https://www.youtube.com/embed/PHJVAQ6kFHM?autoplay=1&mute=1&loop=1&playlist=PHJVAQ6kFHM&controls=0&modestbranding=1&rel=0&playsinline=1"
+                  title="Prime Scholar Weekly Performance Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+                <div class="absolute flex gap-3 items-center left-3 top-3 rounded-full bg-slate-900/70 px-3 py-1 text-xs font-semibold text-white">
+                  <span class="relative flex size-3">
+                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75"></span>
+                    <span class="relative inline-flex size-3 rounded-full bg-red-600"></span>
+                  </span>
+                  <span>Dhaka Live Class</span>
+                </div>
+              </div>
+              <h2 class="hero-reveal text-2xl font-extrabold">Weekly Performance Snapshot</h2>
+              <p class="hero-reveal mt-2 text-sm text-muted">Guardian update + student progress report every week.</p>
+              <div class="hero-reveal mt-6 grid grid-cols-2 gap-3">
+                <div class="surface-solid rounded-2xl p-4">
+                  <p class="text-xs text-muted">Attendance</p>
+                  <p class="text-xl font-extrabold">96%</p>
+                </div>
+                <div class="surface-solid rounded-2xl p-4">
+                  <p class="text-xs text-muted">Mock Tests</p>
+                  <p class="text-xl font-extrabold">12 / Month</p>
+                </div>
+                <div class="surface-solid rounded-2xl p-4">
+                  <p class="text-xs text-muted">Mentor Calls</p>
+                  <p class="text-xl font-extrabold">1:1 Weekly</p>
+                </div>
+                <div class="surface-solid rounded-2xl p-4">
+                  <p class="text-xs text-muted">Improvement</p>
+                  <p class="text-xl font-extrabold">+27%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal px-4 pb-8 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-4 sm:grid-cols-3">
+        <article class="surface rounded-3xl p-6 text-center">
+          <span class="mx-auto mb-3 inline-flex h-12 w-12 items-center justify-center rounded-2xl brand-gradient text-slate-900">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 14a4 4 0 1 0-8 0" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.5 18a5.5 5.5 0 0 1 11 0" />
+              <circle cx="12" cy="9" r="3" />
+            </svg>
+          </span>
+          <p class="text-sm text-muted">Students Mentored</p>
+          <p class="mt-2 text-3xl font-black" data-counter="8500">0</p>
+        </article>
+        <article class="surface rounded-3xl p-6 text-center">
+          <span class="mx-auto mb-3 inline-flex h-12 w-12 items-center justify-center rounded-2xl brand-gradient text-slate-900">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m4 14 4-4 3 3 5-5 4 4" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 19h16" />
+            </svg>
+          </span>
+          <p class="text-sm text-muted">Success Rate</p>
+          <p class="mt-2 text-3xl font-black"><span data-counter="94">0</span>%</p>
+        </article>
+        <article class="surface rounded-3xl p-6 text-center">
+          <span class="mx-auto mb-3 inline-flex h-12 w-12 items-center justify-center rounded-2xl brand-gradient text-slate-900">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9">
+              <rect x="4" y="4" width="16" height="16" rx="3" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 2v4M16 2v4M8 12h8M8 16h5" />
+            </svg>
+          </span>
+          <p class="text-sm text-muted">Years of Excellence</p>
+          <p class="mt-2 text-3xl font-black" data-counter="12">0</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="reveal px-4 py-10 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <h2 class="section-title">Programs Preview</h2>
+        <p class="section-subtitle">SSC, HSC, and University Admission tracks designed for Bangladesh curriculum and exam pattern.</p>
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <article class="card-tilt surface rounded-3xl p-6">
+            <img src="assets/images/4.jpg" alt="SSC students in a science coaching session" class="h-40 w-full rounded-2xl object-cover" loading="lazy" />
+            <h3 class="mt-4 text-xl font-bold">SSC Focus Batch</h3>
+            <p class="mt-2 text-sm text-muted">Class 9-10 | Math, Science, English</p>
+            <p class="mt-4 text-sm">Weekly CQ/MCQ drills, model tests, and board strategy sessions.</p>
+            <a href="programs.html" class="mt-5 inline-flex text-sm font-semibold" style="color: var(--primary);">Explore SSC</a>
+          </article>
+          <article class="card-tilt surface rounded-3xl p-6">
+            <img src="assets/images/5.jpg" alt="HSC level students attending lecture" class="h-40 w-full rounded-2xl object-cover" loading="lazy" />
+            <h3 class="mt-4 text-xl font-bold">HSC Board Mastery</h3>
+            <p class="mt-2 text-sm text-muted">Class 11-12 | Science, Commerce, Arts</p>
+            <p class="mt-4 text-sm">Structured concept lectures + weekly exams + guardian feedback.</p>
+            <a href="programs.html" class="mt-5 inline-flex text-sm font-semibold" style="color: var(--primary);">Explore HSC</a>
+          </article>
+          <article class="card-tilt surface rounded-3xl p-6">
+            <img src="assets/images/1.jpg" alt="Admission students preparing for competitive exams" class="h-40 w-full rounded-2xl object-cover" loading="lazy" />
+            <h3 class="mt-4 text-xl font-bold">Admission Warriors</h3>
+            <p class="mt-2 text-sm text-muted">BUET, Medical, Varsity & GST</p>
+            <p class="mt-4 text-sm">Shortcuts না, smart strategy + high-frequency question bank.</p>
+            <a href="programs.html" class="mt-5 inline-flex text-sm font-semibold" style="color: var(--primary);">Explore Admission</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal px-4 py-10 lg:px-8">
+      <div class="mx-auto max-w-7xl rounded-[2rem] surface p-6 sm:p-8">
+        <h2 class="section-title">Why Choose Us</h2>
+        <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+          <article class="surface-solid rounded-2xl p-4">
+            <p class="font-semibold">Expert Faculty</p>
+            <p class="mt-2 text-sm text-muted">University top graduates + experienced mentors.</p>
+          </article>
+          <article class="surface-solid rounded-2xl p-4">
+            <p class="font-semibold">Smart Routine</p>
+            <p class="mt-2 text-sm text-muted">Balanced study plan with revision blocks.</p>
+          </article>
+          <article class="surface-solid rounded-2xl p-4">
+            <p class="font-semibold">Guardian Dashboard</p>
+            <p class="mt-2 text-sm text-muted">Attendance and progress updates weekly.</p>
+          </article>
+          <article class="surface-solid rounded-2xl p-4">
+            <p class="font-semibold">Exam Lab</p>
+            <p class="mt-2 text-sm text-muted">Frequent mock tests in real exam environment.</p>
+          </article>
+          <article class="surface-solid rounded-2xl p-4">
+            <p class="font-semibold">Career Mentoring</p>
+            <p class="mt-2 text-sm text-muted">Goal mapping for subject & university choice.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal px-4 py-10 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 class="section-title">Weekly Routine Preview</h2>
+            <p class="section-subtitle">Routine আপডেট প্রতি শুক্রবার রাতে প্রকাশিত হয়।</p>
+          </div>
+          <a href="schedule.html" class="btn btn-outline">See Full Schedule</a>
+        </div>
+        <div class="table-wrap surface-solid">
+          <table class="table" aria-label="Weekly routine">
+            <thead>
+              <tr><th>Program</th><th>Days</th><th>Time</th><th>Mode</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>SSC Science A</td><td>Sat, Mon, Wed</td><td>4:00 PM - 6:00 PM</td><td>Offline</td><td><span class="badge badge-open">Open</span></td></tr>
+              <tr><td>HSC ICT Pro</td><td>Sun, Tue, Thu</td><td>6:30 PM - 8:30 PM</td><td>Hybrid</td><td><span class="badge badge-few">Few Seats</span></td></tr>
+              <tr><td>Medical Crash</td><td>Fri + Sat</td><td>9:00 AM - 12:00 PM</td><td>Offline</td><td><span class="badge badge-closed">Closed</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal px-4 py-10 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <h2 class="section-title">Success Highlights</h2>
+        <p class="section-subtitle">Top achievers from Dhaka branches. আলহামদুলিল্লাহ, this year results were remarkable.</p>
+        <div class="mt-8 space-y-4">
+          <div class="success-highlights-row" data-marquee="rtl" data-marquee-style="highlights-row" data-marquee-duration="22">
+            <article class="surface rounded-3xl p-5">
+              <img src="assets/images/2.jpg" alt="Top achiever student portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">HSC 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Ayesha Rahman</h3>
+              <p class="text-sm">GPA 5.00 | Viqarunnisa</p>
+            </article>
+            <article class="surface rounded-3xl p-5">
+              <img src="assets/images/3.webp" alt="Medical admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">Medical 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Samiul Hasan</h3>
+              <p class="text-sm">DMCH Merit Top 220</p>
+            </article>
+            <article class="surface rounded-3xl p-5">
+              <img src="assets/images/4.jpg" alt="Engineering admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">BUET 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Tahmid Alif</h3>
+              <p class="text-sm">EEE Selected</p>
+            </article>
+            <article class="surface rounded-3xl p-5">
+              <img src="assets/images/5.jpg" alt="SSC achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">SSC 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Nusrat Jahan</h3>
+              <p class="text-sm">GPA 5.00 | Ideal School</p>
+            </article>
+            <article class="surface rounded-3xl p-5" aria-hidden="true">
+              <img src="assets/images/2.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">HSC 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Ayesha Rahman</h3>
+              <p class="text-sm">GPA 5.00 | Viqarunnisa</p>
+            </article>
+            <article class="surface rounded-3xl p-5" aria-hidden="true">
+              <img src="assets/images/3.webp" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">Medical 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Samiul Hasan</h3>
+              <p class="text-sm">DMCH Merit Top 220</p>
+            </article>
+            <article class="surface rounded-3xl p-5" aria-hidden="true">
+              <img src="assets/images/4.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">BUET 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Tahmid Alif</h3>
+              <p class="text-sm">EEE Selected</p>
+            </article>
+            <article class="surface rounded-3xl p-5" aria-hidden="true">
+              <img src="assets/images/5.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">SSC 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Nusrat Jahan</h3>
+              <p class="text-sm">GPA 5.00 | Ideal School</p>
+            </article>
+          </div>
+          <div class="success-highlights-row" data-marquee="ltr" data-marquee-style="highlights-row" data-marquee-duration="22">
+            <article class="surface rounded-3xl p-5">
+              <img src="assets/images/1.jpg" alt="Commerce achiever student portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">HSC 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Rafsan Karim</h3>
+              <p class="text-sm">GPA 5.00 | Notre Dame College</p>
+            </article>
+            <article class="surface rounded-3xl p-5">
+              <img src="assets/images/2.jpg" alt="University admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">DU 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Maliha Islam</h3>
+              <p class="text-sm">IBA Merit Top 90</p>
+            </article>
+            <article class="surface rounded-3xl p-5">
+              <img src="assets/images/3.webp" alt="Science student board achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">SSC 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Adnan Chowdhury</h3>
+              <p class="text-sm">GPA 5.00 | Rajuk Uttara</p>
+            </article>
+            <article class="surface rounded-3xl p-5">
+              <img src="assets/images/4.jpg" alt="Engineering admission achiever portrait" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">RUET 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Farhana Noor</h3>
+              <p class="text-sm">CSE Selected</p>
+            </article>
+            <article class="surface rounded-3xl p-5" aria-hidden="true">
+              <img src="assets/images/1.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">HSC 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Rafsan Karim</h3>
+              <p class="text-sm">GPA 5.00 | Notre Dame College</p>
+            </article>
+            <article class="surface rounded-3xl p-5" aria-hidden="true">
+              <img src="assets/images/2.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">DU 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Maliha Islam</h3>
+              <p class="text-sm">IBA Merit Top 90</p>
+            </article>
+            <article class="surface rounded-3xl p-5" aria-hidden="true">
+              <img src="assets/images/3.webp" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">SSC 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Adnan Chowdhury</h3>
+              <p class="text-sm">GPA 5.00 | Rajuk Uttara</p>
+            </article>
+            <article class="surface rounded-3xl p-5" aria-hidden="true">
+              <img src="assets/images/4.jpg" alt="" class="h-36 w-full rounded-2xl object-cover" loading="lazy" />
+              <p class="mt-4 text-sm text-muted">RUET 2025</p>
+              <h3 class="mt-1 text-lg font-bold">Farhana Noor</h3>
+              <p class="text-sm">CSE Selected</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal px-4 py-10 lg:px-8">
+      <div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
+        <div>
+          <h2 class="section-title">Guardian Testimonials</h2>
+          <p class="section-subtitle">Real feedback from families who trusted Prime Scholar.</p>
+        </div>
+        <div class="surface rounded-3xl p-6">
+          <article class="testimonial-slide">
+            <p class="text-lg font-semibold">"আমার ছেলের discipline অনেক improve করেছে. Weekly call system is very helpful."</p>
+            <p class="mt-3 text-sm text-muted">- Mrs. Farzana, Dhanmondi</p>
+          </article>
+          <article class="testimonial-slide">
+            <p class="text-lg font-semibold">"Teachers explain from basic. Guardian portal দেখে মনে শান্তি পাই."</p>
+            <p class="mt-3 text-sm text-muted">- Mr. Mahmud, Mirpur</p>
+          </article>
+          <article class="testimonial-slide">
+            <p class="text-lg font-semibold">"Admission batch-এর test system is premium. ছেলে DU তে chance পেয়েছে."</p>
+            <p class="mt-3 text-sm text-muted">- Mrs. Nargis, Uttara</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal px-4 py-10 lg:px-8">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-5 flex items-end justify-between gap-3">
+          <div>
+            <h2 class="section-title">Latest Notices</h2>
+            <p class="section-subtitle">পরীক্ষা, ক্লাস, ডেমো সেশন সংক্রান্ত সর্বশেষ নোটিশ।</p>
+          </div>
+          <a href="notice.html" class="btn btn-outline">All Notices</a>
+        </div>
+        <div class="mt-6 space-y-4">
+          <div class="notice-marquee-row" data-marquee="rtl" data-marquee-style="notices-row" data-marquee-duration="24">
+            <article class="notice-item surface rounded-3xl p-5">
+              <p class="text-xs uppercase tracking-wide text-muted">Exam Update</p>
+              <h3 class="mt-2 text-lg font-bold">HSC Physics Model Test - Friday</h3>
+              <p class="mt-2 text-sm text-muted">Date: 06 March, 2026 | Mirpur Campus</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5">
+              <p class="text-xs uppercase tracking-wide text-muted">Demo Class</p>
+              <h3 class="mt-2 text-lg font-bold">SSC Free Demo Enrollment Open</h3>
+              <p class="mt-2 text-sm text-muted">Date: 09 March, 2026 | Dhanmondi</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5">
+              <p class="text-xs uppercase tracking-wide text-muted">Holiday</p>
+              <h3 class="mt-2 text-lg font-bold">Branch Off Day Notice (Shab-e-Barat)</h3>
+              <p class="mt-2 text-sm text-muted">Date: 15 March, 2026 | All Branches</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5">
+              <p class="text-xs uppercase tracking-wide text-muted">Admission</p>
+              <h3 class="mt-2 text-lg font-bold">HSC Evening Batch Form Deadline</h3>
+              <p class="mt-2 text-sm text-muted">Date: 20 March, 2026 | Uttara Campus</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5" aria-hidden="true">
+              <p class="text-xs uppercase tracking-wide text-muted">Exam Update</p>
+              <h3 class="mt-2 text-lg font-bold">HSC Physics Model Test - Friday</h3>
+              <p class="mt-2 text-sm text-muted">Date: 06 March, 2026 | Mirpur Campus</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5" aria-hidden="true">
+              <p class="text-xs uppercase tracking-wide text-muted">Demo Class</p>
+              <h3 class="mt-2 text-lg font-bold">SSC Free Demo Enrollment Open</h3>
+              <p class="mt-2 text-sm text-muted">Date: 09 March, 2026 | Dhanmondi</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5" aria-hidden="true">
+              <p class="text-xs uppercase tracking-wide text-muted">Holiday</p>
+              <h3 class="mt-2 text-lg font-bold">Branch Off Day Notice (Shab-e-Barat)</h3>
+              <p class="mt-2 text-sm text-muted">Date: 15 March, 2026 | All Branches</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5" aria-hidden="true">
+              <p class="text-xs uppercase tracking-wide text-muted">Admission</p>
+              <h3 class="mt-2 text-lg font-bold">HSC Evening Batch Form Deadline</h3>
+              <p class="mt-2 text-sm text-muted">Date: 20 March, 2026 | Uttara Campus</p>
+            </article>
+          </div>
+
+          <div class="notice-marquee-row" data-marquee="ltr" data-marquee-style="notices-row" data-marquee-duration="24">
+            <article class="notice-item surface rounded-3xl p-5">
+              <p class="text-xs uppercase tracking-wide text-muted">Routine</p>
+              <h3 class="mt-2 text-lg font-bold">Friday Revision Class Time Updated</h3>
+              <p class="mt-2 text-sm text-muted">Date: 22 March, 2026 | Dhanmondi + Mirpur</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5">
+              <p class="text-xs uppercase tracking-wide text-muted">Result</p>
+              <h3 class="mt-2 text-lg font-bold">Weekly MCQ Ranking Published</h3>
+              <p class="mt-2 text-sm text-muted">Date: 25 March, 2026 | Student Portal</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5">
+              <p class="text-xs uppercase tracking-wide text-muted">Seminar</p>
+              <h3 class="mt-2 text-lg font-bold">Guardian Counseling Session - Batch A</h3>
+              <p class="mt-2 text-sm text-muted">Date: 27 March, 2026 | Farmgate Branch</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5">
+              <p class="text-xs uppercase tracking-wide text-muted">Mock Exam</p>
+              <h3 class="mt-2 text-lg font-bold">Medical Full-Length Mock Test 03</h3>
+              <p class="mt-2 text-sm text-muted">Date: 30 March, 2026 | All Branches</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5" aria-hidden="true">
+              <p class="text-xs uppercase tracking-wide text-muted">Routine</p>
+              <h3 class="mt-2 text-lg font-bold">Friday Revision Class Time Updated</h3>
+              <p class="mt-2 text-sm text-muted">Date: 22 March, 2026 | Dhanmondi + Mirpur</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5" aria-hidden="true">
+              <p class="text-xs uppercase tracking-wide text-muted">Result</p>
+              <h3 class="mt-2 text-lg font-bold">Weekly MCQ Ranking Published</h3>
+              <p class="mt-2 text-sm text-muted">Date: 25 March, 2026 | Student Portal</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5" aria-hidden="true">
+              <p class="text-xs uppercase tracking-wide text-muted">Seminar</p>
+              <h3 class="mt-2 text-lg font-bold">Guardian Counseling Session - Batch A</h3>
+              <p class="mt-2 text-sm text-muted">Date: 27 March, 2026 | Farmgate Branch</p>
+            </article>
+            <article class="notice-item surface rounded-3xl p-5" aria-hidden="true">
+              <p class="text-xs uppercase tracking-wide text-muted">Mock Exam</p>
+              <h3 class="mt-2 text-lg font-bold">Medical Full-Length Mock Test 03</h3>
+              <p class="mt-2 text-sm text-muted">Date: 30 March, 2026 | All Branches</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reveal px-4 pb-16 pt-6 lg:px-8">
+      <div class="mx-auto max-w-7xl rounded-[2rem] brand-gradient p-[1px]">
+        <div class="flex flex-col items-center justify-between gap-5 rounded-[1.95rem] px-6 py-8 text-center sm:flex-row sm:text-left" style="background: var(--surface-solid);">
+          <div>
+            <h2 class="text-2xl font-extrabold">Ready to level up this academic year?</h2>
+            <p class="mt-1 text-sm text-muted">Admission চলছে - seat confirm করতে আজই apply করুন।</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a href="admission.html" class="btn btn-primary">Apply for Admission</a>
+            <a href="tel:+8801700000000" class="btn btn-secondary">Call Admission Desk</a>
+          </div>
+        </div>
+      </div>
+    </section>
+@endsection
