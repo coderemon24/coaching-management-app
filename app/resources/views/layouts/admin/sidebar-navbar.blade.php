@@ -254,10 +254,9 @@
 
           <li class="nav-header sidebar-label">{{ __('Students Panel') }}</li>
           <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
+            <a href="{{ route('admin.students') }}" class="nav-link @if(request()->routeIs('admin.students')) active @endif">
               <i class="nav-icon fas fa-user-plus"></i>
               <p>{{ __('Student Admission') }}</p>
-              <span class="menu-soon">{{ __('Soon') }}</span>
             </a>
           </li>
           <li class="nav-item">

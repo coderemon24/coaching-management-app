@@ -58,7 +58,21 @@ Route::prefix('admin')->middleware(['admin.auth', 'admin.lang'])->group(function
         Route::post('/update/maintenance-mode', 'updateMaintenanceMode')->name('admin.update.maintenance.mode');
     });
 
-    
+
+    #   students panel
+    Route::prefix('students')->group(function (){
+        # students admission
+        Route::controller('App\\Http\\Controllers\\Admin\\Students\\AdmissionController')
+        ->prefix('admissions')
+        ->group(function () {
+            Route::get('/', 'index')->name('admin.students');
+            Route::get('/create', 'create')->name('admin.students.create');
+            Route::post('/store', 'store')->name('admin.students.store');
+            Route::get('/edit/{id}', 'edit')->name('admin.students.edit');
+            Route::post('/update/{id}', 'update')->name('admin.students.update');
+            Route::delete('/delete/{id}', 'destroy')->name('admin.students.destroy');
+        });
+    });
 
 
 
