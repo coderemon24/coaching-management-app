@@ -17,14 +17,25 @@ class LoginController extends Controller
     {
         $request->validate([
             'username' => 'required|string',
-            'password' => 'required',
+            'password' => 'required|string',
             'remember' => 'nullable|boolean',
         ]);
 
-        $credentials = $request->only('username', 'password');
+        $loginInput = $request->input('username');
+        $password = $request->input('password');
         $remember = $request->filled('remember');
 
-        if (Auth::guard('admin')->attempt($credentials, $remember)) {
+        // Allow login with either username or email
+        $fieldType = filter_var($loginInput, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        if (Auth::guard('admin')->attempt([$fieldType => $loginInput, 'password' => $password], $remember)) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('admin.dashboard'));
+        }
+
+        // Fallback attempt with alternate field
+        $alternateField = ($fieldType === 'email') ? 'username' : 'email';
+        if (Auth::guard('admin')->attempt([$alternateField => $loginInput, 'password' => $password], $remember)) {
             $request->session()->regenerate();
             return redirect()->intended(route('admin.dashboard'));
         }

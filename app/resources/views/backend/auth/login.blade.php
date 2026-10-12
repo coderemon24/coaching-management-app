@@ -18,7 +18,7 @@
                     <div class="form-group mb-3">
                         <div class="input-group ">
                         <input type="text" class="form-control @error('username') is-invalid @enderror"
-                            placeholder="Username" name="username" required>
+                            placeholder="Username or Email" name="username" value="{{ old('username') }}" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
